@@ -1,0 +1,30 @@
+{
+  "top_menu": [
+    {
+      "module_uoa": "", 
+      "module_uoas": [
+        ""
+      ], 
+      "url_extra": "action=index&module_uoa=wfe&native_action=show&native_module_uoa=request", 
+      "native_module_uoa":"request",
+      "native_action":"show",
+      "name": "Dashboard"
+    }, 
+    {
+      "module_uoa": "experiment", 
+      "url_extra_browse":"ck_top_search_tag=request&ck_top_repo=local&aview=yes&no_limit=yes&skip_links=yes&skip_desc=yes",
+      "module_uoas": [
+        "experiment", 
+        "bc0409fb61f0aa82"
+      ], 
+      "name": "Raw experiments"
+    }, 
+    {
+      "name": "Get ReQuEST framework", 
+      "url": "https://github.com/ctuning/ck-request"
+    }
+  ],
+  "extra_html_after_menu":"",
+  "share": " <!-- AddToAny BEGIN -->\n <div class=\"a2a_kit a2a_default_style\" style=\"margin:0 auto;font-size:12px;width:60px;\">\n  <a class=\"a2a_dd\" href=\"https://www.addtoany.com/share_save\">Share</a>\n </div>\n <script type=\"text/javascript\" src=\"//static.addtoany.com/menu/page.js\"></script>\n <!-- AddToAny END -->\n",
+  "template_file": "_resources/_template.html"
+}

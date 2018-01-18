@@ -1,0 +1,18 @@
+{
+  "data_uoa": "ck-request",
+  "data_uid": "c51322a8eae14587",
+  "data_alias": "ck-request",
+  "data_name": "ck-request",
+  "dict": {
+    "shared": "git",
+    "url": "https://github.com/ctuning/ck-request",
+    "repo_deps": [
+      {
+        "repo_uoa": "ck-ai"
+      },
+      {
+        "repo_uoa": "ck-dissemination-modules"
+      }
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+<!-- copied from ck-quest repo! -->
+
+<!---------------------------------------------------------------------------------------->
+<center>
+<h2>ReQuEST: 1st Reproducible Quality-Efficient Systems Tournament</h2>
+
+<h3>Call for Pareto efficient deep learning</h3>
+
+<p>
+<i>Intent to submit: <b>February 5, 2018 AoE</b></i>
+
+<p>
+Associated ReQuEST workshop co-located with <a href="https://www.asplos2018.org">ASPLOS 2018</a><br>
+March 24th, 2018 (afternoon), Williamsburg, VA, USA
+
+<p>
+Long term ReQuEST goals: <a href="$#ck_root_page_url#$request$#ck_page_suffix#$">cKnowledge.org/request</a>
+
+<!---------------------------------------------------------------------------------------->
+
+<div id="ck_menu2">
+ <div style="background-color:#e5e5FF;padding:5px;margin:5px">
+  <center>
+   <a href="#call">Call for contributions</a>
+   &nbsp;&nbsp;&nbsp;
+   <a href="#organizers">Organizers</a>
+   &nbsp;&nbsp;&nbsp;
+   <a href="#submission">Submission</a>
+   &nbsp;&nbsp;&nbsp;
+   <a href="#important_dates">Important dates</a>
+   &nbsp;&nbsp;&nbsp;
+   <a href="#industrial_board">Industrial board</a>
+   &nbsp;&nbsp;&nbsp;
+   <a href="$#ck_root_page_url#$request$#ck_page_suffix#$#goals">Goals</a>
+  </center>
+ </div>
+</div>
+
+ <a href="https://www.cornell.edu"><img src="$#ck_url_template_pull#$_resources/logo-cornell-university3.png" style="padding:10px;" width="70" /></a>
+ <a href="https://www.washington.edu"><img src="$#ck_url_template_pull#$_resources/logo-university-of-washington2.png" style="padding:10px;" width="200"/></a>
+ <a href="https://www.cam.ac.uk"><img src="$#ck_url_template_pull#$_resources/logo-university-of-cambridge2.png" style="padding:10px;" width="70" /></a>
+ <a href="https://www.epfl.ch"><img src="$#ck_url_template_pull#$_resources/logo-epfl2.png" style="padding:10px;" width="140"/></a>
+ <a href="https://www.utoronto.ca/"><img src="$#ck_url_template_pull#$_resources/logo-university-of-toronto2.png" style="padding:10px;" width="160"/></a>
+ <a href="http://dividiti.com"><img src="$#ck_url_template_pull#$_resources/logo_dvdt_500.png" style="padding:10px;"  width="38"/></a>
+ <a href="http://cTuning.org"><img src="$#ck_url_template_pull#$_resources/CTuning_foundation_logo3.png" style="padding:10px;"  width="110"/></a>
+ <a href="http://sigarch.org"><img src="$#ck_url_template_pull#$_resources/logo-sigarch.png" style="padding:10px;" width="180" /></a>
+ <a href="http://acm.org"><img src="$#ck_url_template_pull#$_resources/logo_acm_resized.jpg" style="padding:10px;" width="75" /></a>
+
+</center>
+
+<hr>
+
+<!---------------------------------------------------------------------------------------->
+<a id="news"><h3>News</h3>
+
+<ul>
+ <li><b>2017.Dec:</b> Open call for Pareto efficient, portable and reusable deep learning algorithms is now available. <i>Intent to submit: no later than <b>February 5, 2018</b></i>
+</ul>
+
+<!---------------------------------------------------------------------------------------->
+<a id="call"><h3>Call for contributions</h3>
+
+Co-designing emerging workloads across the hardware/software
+stack to optimize for speed, accuracy, costs
+and other metrics is extremely complex and time consuming. 
+
+The lack of a rigorous methodology and common tools for open, 
+reproducible  and multi-objective optimization makes it challenging 
+or even impossible to evaluate
+and compare different published works across numerous
+heterogeneous hardware platforms, software frameworks,
+compilers, libraries, algorithms, data sets, and environments.
+
+<p>
+The 1st ReQuEST workshop aims to bring together
+multidisciplinary researchers in systems, compilers,
+architecture and machine learning 
+to optimize the quality vs. efficiency Pareto optimality of 
+deep learning systems on complete hardware/software platforms
+in a standardized, reproducible and comparable fashion.
+
+The target application for the first incarnation of ReQuEST will
+be the <b>ImageNet Large Scale Visual Recognition Challenge
+(ILSVRC)</b> and will focus solely on optimizing inference
+on real systems <!-- as suggested by our industrial advisory board -->.
+
+Restricting the competition to a single application domain will allow us 
+to test an open-source tournament infrastructure, validate it across 
+multiple platforms and environments, and prepare 
+a dedicated live scoreboard with the "winning" solutions similar
+to this <a href="http://cKnowledge.org/repo">live optimization repository</a>.
+For future incarnations of ReQuEST, we will provide broader application coverage.
+
+<p>
+Unlike the classical ILSVRC where submissions are ranked based
+on accuracy, ReQuEST submissions will be evaluated 
+across multiple metrics and trade-offs (exposed by authors): 
+accuracy, speed, throughput, energy, cost of usage, etc.
+
+Furthermore, in contrast with other deep learning benchmarking challenges 
+where experimental results are submitted in a form of JSON, CSV or XLS files,
+ReQuEST participants will be asked to submit a complete <i>workflow
+artifact</i> (see submission procedures) which encompasses toolchains, 
+frameworks, algorithm, libraries, and target hardware platform; 
+any of which can be fine-tuned, or customized at will by the participant
+to implement their optimization technique (i.e. not a Docker or VM image).
+
+<div style="color:#9f0000;">
+<i>We strongly encourage artifact submissions for already published techniques 
+since one of the ReQuEST goals is to prepare an open set of reference 
+and optimized implementations of popular deep learning algorithms 
+as portable and customizable workflows
+which can be easily reused, improved and build upon!</i>
+</div>
+
+<p>
+Example optimizations include:
+<ul>
+ <li>Design space exploration of model topologies, operators, activation functions, configurations.
+ <li>Hyper-parameter search and meta-learning techniques that help optimize accuracy and inference time.
+ <li>Comparison of different deep learning systems (for example TensorFlow vs. Caffe2 vs. CNTK vs. MXNet).
+ <li>Model optimizations that trade accuracy for speed or efficiency (model compression).
+ <li>Operator-level quantization, binarization or ternarization techniques to improve overall inference time (binary networks, XNOR nets).
+ <li>Library optimizations targeting deep learning operators on mobile systems (e.g. depthwise convolution).
+ <li>FPGA acceleration that takes advantage of narrow integer types.
+ <li>Software optimizations targeting GPU-less mobile/IoT systems.
+</ul>
+
+A ReQuEST artifact evaluation committee (AEC) will be tasked
+to independently reproduce and evaluate workflow submissions 
+on compliant hardware platforms to reproduce results 
+and aggregate them in a multi-objective public leaderboard. 
+
+Due to the multi-faceted nature of the
+competition, submissions won't be ranked according to a single
+metric, but instead the AEC will assess their Pareto optimality
+across two or more metrics exposed by authors.
+
+There won't be a single ranking of submissions since this competition 
+is multi-objective: it accounts for classification accuracy, 
+inference latency, energy, ownership/usage cost and so on.
+
+As such, there won't be a single winner, but better and worse designs based on their
+relative Pareto optimality (up to 3 design points allowed per submission). 
+
+<p>
+The workshop co-located with <a href="https://www.asplos2018.org">ASPLOS 2018</a> will be the opportunity for the participants
+to share their research and implementation insights with the research community.
+A common academic and industrial panel will be held at the end of the
+workshop to discuss how to improve common SW/HW co-design methodology 
+for deep learning and other real-world applications.
+
+<br>
+<br>
+<center>
+<b>Feel free to <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">contact us</a> if you have questions or suggestions!</b>
+</center>
+
+<!---------------------------------------------------------------------------------------->
+<a id="important_dates"><h3>Important dates</h3>
+<ul>
+ <li>Intent to submit: <b>February 5, 2018 AoE</b> <i>(feel free to contact us sooner 
+     to help you prepare artifacts for evaluation via 
+     <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">email</a>, 
+     <a href="https://groups.google.com/forum/#!forum/collective-knowledge">public mailing list</a>, 
+     or <a href="https://request-workshop.slack.com">dedicated Slack channel</a>)</i>
+ <li>Unifying experimental workflows to the CK format: <b>February 5-February 12, 2018</b>
+ <li>Submissions due: <b>February 12, 2018 AoE</b>
+ <li>Artifact Evaluation: <b>February 13-February 21, 2018</b>
+ <li>Author notification: <b>February  22, 2018</b>
+ <li>ASPLOS early registration deadline: <b>February 23, 2018</b> 
+     (Useful links: <a href="https://www.asplos2018.org/registration/#reg">ASPLOS resigration</a> ; <a href="https://www.asplos2018.org/registration/#visa">visa support</a>)
+ <li>Revised artifacts and papers due: <b>March 9, 2018</b>
+ <li>Workshop with presentations and discussions of winning workflows: <b>March 24, 2018</b>
+</ul>
+
+<!---------------------------------------------------------------------------------------->
+<a id="organizers"><h3>Organizers (A-Z)</h3>
+
+<ul>
+ <li><a href="https://www.cs.washington.edu/people/faculty/luisceze">Luis Ceze</a>, University of Washington, USA
+ <li><a href="http://www.eecg.toronto.edu/~enright">Natalie Enright Jerger</a>, University of Toronto, Canada
+ <li><a href="https://parsa.epfl.ch/~falsafi">Babak Falsafi</a>, EPFL, Switzerland
+ <li><a href="http://fursin.net/research.html">Grigori Fursin</a>, cTuning foundation, France <i>(Framework chair)</i>
+ <li><a href="https://uk.linkedin.com/in/lokhmotov">Anton Lokhmotov</a>, dividiti, UK <i>(Industrial chair)</i>
+ <li><a href="https://homes.cs.washington.edu/~moreau">Thierry Moreau</a>, University of Washington, USA <i>(Publicity chair)</i>
+ <li><a href="http://www.cs.cornell.edu/~asampson">Adrian Sampson</a>, Cornell University, USA
+ <li><a href="https://www.energy.cam.ac.uk/directory/ps751@cam.ac.uk">Phillip Stanley Marbell</a>, University of Cambridge, UK
+</ul>
+
+<!---------------------------------------------------------------------------------------->
+<a id="submission"><h3>Submission</h3>
+
+<p>
+Please read <a href="$#ck_root_page_url#$request$#ck_page_suffix#$#submission">ReQuEST submission guidelines</a> 
+to check recommended platforms, prepare your submission and know more about evaluation procedures.
+You will need to prepare a short document (4 pages max) describing your optimization technique and related artifacts,
+and submit it as a PDF via ReQuEST HotCRP website (TBA). If accepted, you will have an option to publish
+this extended abstract with an Artifact Appendix and related artifacts in the <a href="http://dl.acm.org">ACM Digital Library</a>.
+
+<!---------------------------------------------------------------------------------------->
+<a id="industrial_board"><h3>Industrial advisory board</h3>
+
+ <i>To be announced - <a href="mailto:anton@dividiti.com">contact us</a> 
+ if you are interested to join this board or know more!</i>
+
+ <p>
+ Members of the ReQuEST industrial advisory board suggest realistic workloads,
+ collaborate on a common methodology for reproducible evaluation and optimization,
+ arrange access to rare hardware to Artifact Evaluation Committee,
+ and provide prizes for the most efficient solutions.
+
+<br>
+<br>
+
+<center><a href="https://www.slideshare.net/GrigoriFursin/adapting-to-a-cambrian-aiswhw-explosion-with-open-codesign-competitions-and-collective-knowledge"><img src="$#ck_url_template_pull#$_resources/b4b07ad3a7839327-cropped.png" width="600"></a></center>
+
+<br>
+<br>

@@ -1,0 +1,42 @@
+{
+  "affiliations": {
+    "1": {
+      "name": "University of Washington, USA"
+    },
+    "2": {
+      "name": "dividiti, UK"
+    },
+    "3": {
+      "name": "cTuning foundation, France"
+    }
+  },
+  "authors": [
+    {
+      "affiliation": "1",
+      "name": "Thierry Moreau"
+    },
+    {
+      "affiliation": "2",
+      "name": "Anton Lokhmotov"
+    },
+    {
+      "affiliation": "3",
+      "name": "Grigori Fursin"
+    }
+  ],
+  "live": "yes",
+  "publish_iso_date": "2017-12-28",
+  "tags": [
+    "ck-paper",
+    "request",
+    "pareto-efficient ML-systems tournaments"
+  ],
+  "template": "interactive-ck-article.html",
+  "skip_discussion_link":"yes",
+  "title": "Introducing ReQuEST: an Open Platform for Reproducible and Quality-Efficient Systems-ML Tournaments",
+  "top": "no",
+  "type": {
+    "name": "tech.report"
+  },
+  "when": "December 2017"
+}
