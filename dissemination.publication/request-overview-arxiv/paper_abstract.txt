@@ -15,4 +15,4 @@ optimality of various workloads on diverse and complete
 hardware/software systems.
 As a long-term goal, we want to build a public repository 
 of the most efficient algorithms and systems
-which can be easily reused and built upon.
+which can be easily customized, reused and built upon.
