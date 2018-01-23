@@ -8,7 +8,11 @@ Collective Knowledge workflow for ReQUEST tournaments
 Introduction
 ============
 
-See [ReQuEST homepage](http://cKnowledge.org/request) for more details about our reproducible Quality-Efficient Systems tournaments.
+See [ReQuEST website](http://cKnowledge.org/request) 
+and [arXiv report](https://arxiv.org/pdf/1801.06378.pdf) 
+for more details about our open and reproducible tournaments
+on Pareto-efficient co-design of the whole software and hardware
+stack for deep learning and other emerging workloads.
 
 Prerequisites
 =============
@@ -18,3 +22,5 @@ Installation
 ============
 
 > ck pull repo:ck-request
+
+TBD
