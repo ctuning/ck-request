@@ -31,6 +31,7 @@
     "request",
     "pareto-efficient ML-systems tournaments"
   ],
+  "top_url":{"name":"arXiv", "url":"https://arxiv.org/abs/1801.06378"},
   "template": "interactive-ck-article.html",
   "skip_discussion_link":"yes",
   "title": "Introducing ReQuEST: an Open Platform for Reproducible and Quality-Efficient Systems-ML Tournaments",
