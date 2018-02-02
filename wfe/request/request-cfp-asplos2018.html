@@ -33,16 +33,15 @@ ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#
  </div>
 </div>
 
-
+ <a href="http://acm.org"><img src="$#ck_url_template_pull#$_resources/logo_acm_resized.jpg" style="padding:10px;" width="75" /></a>
+ <a href="http://sigarch.org"><img src="$#ck_url_template_pull#$_resources/logo-sigarch.png" style="padding:10px;" width="180" /></a>
  <a href="https://www.cornell.edu"><img src="$#ck_url_template_pull#$_resources/logo-cornell-university3.png" style="padding:10px;" width="70" /></a>
  <a href="https://www.washington.edu"><img src="$#ck_url_template_pull#$_resources/logo-university-of-washington2.png" style="padding:10px;" width="200"/></a>
  <a href="https://www.cam.ac.uk"><img src="$#ck_url_template_pull#$_resources/logo-university-of-cambridge2.png" style="padding:10px;" width="70" /></a>
  <a href="https://www.epfl.ch"><img src="$#ck_url_template_pull#$_resources/logo-epfl2.png" style="padding:10px;" width="140"/></a>
  <a href="https://www.utoronto.ca/"><img src="$#ck_url_template_pull#$_resources/logo-university-of-toronto2.png" style="padding:10px;" width="160"/></a>
- <a href="http://dividiti.com"><img src="$#ck_url_template_pull#$_resources/logo_dvdt_500.png" style="padding:10px;"  width="38"/></a>
+ <a href="http://dividiti.com"><img src="$#ck_url_template_pull#$_resources/logo_dvdt_500.png" style="padding:10px;"  width="35"/></a>
  <a href="http://cTuning.org"><img src="$#ck_url_template_pull#$_resources/CTuning_foundation_logo3.png" style="padding:10px;"  width="110"/></a>
- <a href="http://sigarch.org"><img src="$#ck_url_template_pull#$_resources/logo-sigarch.png" style="padding:10px;" width="180" /></a>
- <a href="http://acm.org"><img src="$#ck_url_template_pull#$_resources/logo_acm_resized.jpg" style="padding:10px;" width="75" /></a>
 
 <a id="organizers">
 <div style="padding:10px;">
@@ -109,7 +108,7 @@ ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#
 
 <p>
 The 1st ReQuEST tournament is co-located with <a href="https://www.asplos2018.org">ACM ASPLOS'18</a>
-and will focus solely on optimizing the whole software/hardware stack for image classification algorithms 
+and will focus solely on optimizing the whole software/hardware stack for image classification
 based on <a href="http://www.image-net.org/challenges/LSVRC"><b>ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</b></a>.
 
 However, unlike the classical ILSVRC where submissions are ranked based
@@ -124,6 +123,28 @@ to test our open-source ReQuEST tournament infrastructure,
 validate it across multiple platforms and environments, 
 and prepare a dedicated live scoreboard with results
 similar to this <a href="http://cKnowledge.org/repo">public CK dashaboard</a>.
+
+<p>
+We encourage participants to target accessible, off-the-shelf hardware to allow
+our evaluation committee to conveniently reproduce their results. Example systems include:
+<ul>
+ <li> 
+  Server-class: AWS/Azure cloud instance, any x86-based desktop system.
+ </li>
+ <li>
+  Mobile-class: Any ARM-based (e.g. NVIDIA Jetson TX2, Raspberry Pi 3, Xilinx PYNQ board), or Intel-Atom-based SoC development board, Android-based smartphone or tablets.
+ </li>
+ <li>
+  IoT-class: Low-power ARM micro-controllers (e.g. Freescale FRDM KL03 Development Board).
+ </li>
+</ul>
+
+If a submission relies on an exotic hardware platform, the participants can
+either provide restricted access to their evaluation platform
+to the artifact evaluation committee, or at least notify 
+us in advance (at least 3 weeks notice) about their choice 
+so that a similar platform can be acquired in time 
+(assuming costs are not prohibitive).
 
  <div style="color:#9f0000;">
  <i>We also strongly encourage artifact submissions for already published optimization 
@@ -239,6 +260,13 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 <!---------------------------------------------------------------------------------------->
 <a id="evaluation"><h3>Evaluation</h3>
 
+ ReQuest is backed by the <a href="https://www.acm.org/publications/task-force-on-data-software-and-reproducibility">ACM Task Force on Data, Software, and Reproducibility in Publication</a>
+ and will use the standard <a href="http://cTuning.org/ae/reviewing.html">ACM artifact evaluation methodology</a>.
+ Artifact evaluation will be single blind (see <a href="http://cTuning.org/ae">PPoPP, CGO, PACT, RTSS and SuperComputing</a>),
+ and the reviews can be made public (see <a href="http://adapt-workshop.org/submission2016.html">ADAPT</a>) upon the authors' request.
+ Quality and efficiency metrics will be collected for each submission, and compiled on a ReQuEST live scoreboard similar 
+ to this <a href="http://cKnowledge.org/repo">open optimization repository</a>.
+
  <p>
  <!------------------------------------------------------------------------->
  <b>Step 1: converting all workflows to the common CK format</b>
@@ -254,7 +282,7 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
   The authors can choose how to communicate with us during this step: either privately via HotCRP, 
   semi-privately via a <a href="https://request-workshop.slack.com">dedicated Slack channel with all authors and reviewers</a>,
   or publicly via <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>
-  (thus making the community immediatelly aware of their artifact).
+  (thus making the community immediately aware of their artifact).
 
  </div>
 
@@ -263,9 +291,6 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
  <b>Step 2: validating results</b>
 
  <div style="padding:5px;">
-  We will follow <a href="http://cTuning.org/ae/reviewing.html">standard procedures</a> 
-  at systems conferences to evaluate experimental results.
-
   A ReQuEST artifact evaluation committee (AEC) will be tasked
   to independently evaluate workflow submissions 
   on compliant hardware platforms, reproduce results 
@@ -296,8 +321,9 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 
   <p>
   Due to the multi-faceted nature of the
-  competition, submissions won't be ranked according to a single
-  metric, but instead the AEC will assess their Pareto optimality
+  competition, submissions will not be ranked according to a single
+  metric (since it often result in over-engineered solutions), 
+  but instead the AEC will assess their Pareto optimality
   across two or more metrics exposed by authors.
 
   There won't be a single ranking of submissions since this competition 
@@ -306,6 +332,9 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 
   As such, there won't be a single winner, but better and worse designs based on their
   relative Pareto optimality (up to 3 design points allowed per submission). 
+
+
+   <p>
 
  </div>
 
@@ -353,11 +382,12 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
  </div>
 
  <!------------------------------------------------------------------------->
- <b>Step 5: presenting winning workflows at the ASPLOS'18 workshop</b>
+ <b>Step 5: presenting winning or novel workflows at the ASPLOS'18 workshop</b>
 
  <div style="padding:5px;">
   <p>
-  Authors of the winning configurations will be invited to present
+  Authors of the winning configurations or novel solutions 
+  will be invited to present
   their approaches at the ReQuEST'18 workshop co-located 
   with <a href="https://www.asplos2018.org">ASPLOS 2018</a>
   (ACM conference on Architectural Support for Programming Languages and Operating Systems 
