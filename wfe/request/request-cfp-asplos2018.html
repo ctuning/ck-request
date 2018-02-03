@@ -6,11 +6,11 @@
 <h2>1st Reproducible Tournament on Pareto-efficient Image Classification</h2>
 
 <p>
-Associated ACM ReQuEST workshop is co-located with <a href="https://www.asplos2018.org">ASPLOS 2018</a><br>
-March 24th, 2018 (afternoon), Williamsburg, VA, USA
+The associated ACM ReQuEST workshop is co-located with <a href="https://www.asplos2018.org">ASPLOS 2018</a><br>
+March 24th, 2018 (afternoon), Williamsburg, VA, USA.
 
 <p>
-ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#ck_page_suffix#$">cKnowledge.org/request</a>
+A ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#ck_page_suffix#$">cKnowledge.org/request</a>
 
 
 <!---------------------------------------------------------------------------------------->
@@ -62,7 +62,7 @@ ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#
  </div>
 
  <div style="width:500px;padding:10px;margin:10px;background-color:#FFFFDF;text-align:left;display:inline-block;vertical-align:top;">
-  <h3>Advisory/industrial board (A-Z)</h3>
+  <h3>Advisory/Industrial Board (A-Z)</h3>
 
   <ul>
     <li><a href="https://ie.linkedin.com/in/michaelablott">Michaela Blott</a>, Xilinx
@@ -78,8 +78,8 @@ ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#
     <li><a href="https://www.linkedin.com/in/peng-wu-411b5b">Peng Wu</a>, Huawei
   </ul>
 
-  <i><a href="mailto:anton@dividiti.com">Contact us</a> 
-  if you are interested to join the board!</i>
+  <i>Please <a href="mailto:anton@dividiti.com">contact us</a> 
+  if you are interested to join the Advisory Board!</i>
 
  </div>
 </div>
@@ -93,7 +93,7 @@ ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#
  <li>Informal intent to submit: <b>February 7, 2018 AoE</b><br> 
      &nbsp;&nbsp;<i>Please send us an <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">email</a>
      briefly describing your submission including hardware/software dependencies
-     and optimized metrics. We will then start helping you to convert your artifacts 
+     and optimization metrics. We will start helping you convert your artifacts 
      to the <a href="http://cKnowledge.org">Collective Knowledge</a> format.</i>
  <li>Artifact submissions due: <b>February 12, 2018 AoE</b><br>
      &nbsp;&nbsp;<i>Please see details in the call for submissions below.</i>
@@ -111,7 +111,7 @@ ReQuEST introduction and long-term goals: <a href="$#ck_root_page_url#$request$#
 
 <p>
 The 1st ReQuEST tournament is co-located with <a href="https://www.asplos2018.org">ACM ASPLOS'18</a>
-and will focus solely on optimizing the whole software/hardware stack for image classification
+and will focus on optimizing the whole model/software/hardware stack for image classification
 based on <a href="http://www.image-net.org/challenges/LSVRC"><b>ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</b></a>.
 
 However, unlike the classical ILSVRC where submissions are ranked based
@@ -119,13 +119,13 @@ on accuracy, ReQuEST submissions will be evaluated
 on complete platforms across multiple metrics and trade-offs selected by authors 
 (speed, accuracy, energy,  throughput, device price, usage cost, etc.)
 in a unified, reproducible and comparable fashion
-using <a href="https://github.com/ctuning/ck">Collective Knowledge framework (CK)</a>.
+using the <a href="https://github.com/ctuning/ck">Collective Knowledge</a> framework (CK).
 
 Restricting the competition to a single application domain will allow us 
 to test our open-source ReQuEST tournament infrastructure, 
 validate it across multiple platforms and environments, 
 and prepare a dedicated live scoreboard with results
-similar to this <a href="http://cKnowledge.org/repo">public CK dashaboard</a>.
+similar to this <a href="http://cKnowledge.org/repo">public CK dashboard</a>.
 
 <p>
 We encourage participants to target accessible, off-the-shelf hardware to allow
@@ -144,18 +144,10 @@ our evaluation committee to conveniently reproduce their results. Example system
 
 If a submission relies on an exotic hardware platform, the participants can
 either provide restricted access to their evaluation platform
-to the artifact evaluation committee, or at least notify 
-us in advance (at least 3 weeks notice) about their choice 
+to the artifact evaluation committee, or notify 
+us in advance (please try to give us at least 3 weeks notice) about their choice 
 so that a similar platform can be acquired in time 
 (assuming costs are not prohibitive).
-
- <div style="color:#9f0000;">
- <i>We also strongly encourage artifact submissions for already published optimization 
- techniques since one of the goal of ReQuEST tournaments is to prepare 
- a reference (baseline) set of implementations of various algorithms 
- shared as portable, customizable and reusable CK components 
- with a common API.</i>
- </div>
 
 <p>
 Example optimizations include:
@@ -163,12 +155,20 @@ Example optimizations include:
  <li>Design space exploration of model topologies, operators, activation functions, configurations.
  <li>Hyper-parameter search and meta-learning techniques that help optimize accuracy and inference time.
  <li>Comparison of different deep learning systems (for example TensorFlow vs. Caffe2 vs. CNTK vs. MXNet).
- <li>Model optimizations that trade accuracy for speed or efficiency (model compression).
- <li>Operator-level quantization, binarization or ternarization techniques to improve overall inference time (binary networks, XNOR nets).
+ <li>Model optimizations that trade accuracy for speed or efficiency (e.g. reduced precision and model compression).
+ <li>Operator-level quantization, binarization or ternarization techniques to improve overall inference time (e.g. binary networks, XNOR nets).
  <li>Library optimizations targeting deep learning operators on mobile systems (e.g. depthwise convolution).
- <li>FPGA acceleration that takes advantage of narrow integer types.
+ <li>FPGA acceleration that takes advantage of narrow integer bitwidth.
  <li>Software optimizations targeting GPU-less mobile/IoT systems.
 </ul>
+
+ <div style="color:#9f0000;">
+ <i>We strongly encourage artifact submissions for already published optimization 
+ techniques since one of the goal of ReQuEST tournaments is to prepare 
+ a reference (baseline) set of implementations of various algorithms 
+ shared as portable, customizable and reusable CK components 
+ with a common API.</i>
+ </div>
 
 
 <!---------------------------------------------------------------------------------------->
@@ -182,7 +182,7 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 <div style="padding:5px;">
 
  <!------------------------------------------------------------------------->
- <b>Step 1: prepare experimental workflow</b>
+ <b>Step 1: Prepare your experimental workflow</b>
 
  <div style="padding:5px;">
    Authors must prepare all scripts to build and run their experimental workflow,
@@ -206,29 +206,29 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 
    <p>
    If authors are not using CK (the learning curve can still be quite steep), 
-   we will help them convert their submission to the CK during evaluation
+   we will help them convert their submission to the CK format during evaluation
    to unify experiments and automate validation of results.
 
    This can also help the community reuse such artifacts and workflows
-   since ACM plans to <a href="https://www.acm.org/publications/dl-pilot-integrations">integrate CK with their digital library</a>.
+   since ACM is planning to <a href="https://www.acm.org/publications/dl-pilot-integrations">integrate CK with their Digital Library</a>.
  </div>
 
  <!------------------------------------------------------------------------->
- <b>Step 2: pack/share your workflow</b>
+ <b>Step 2: Pack/share your workflow</b>
 
  <div style="padding:5px;">
    Authors must make all artifacts and experimental workflows publicly available
    via GitHub, GitLab, BitBucket and similar services or pack them in a zip/tar archive 
    or Docker/VM image.
    
-   In exceptional cases, when rare hardware is used, authors can provide
-   a remote access to their platform.
+   In exceptional cases, when a rare hardware platform is used, authors can provide
+   remote access to their platform.
  </div>
 
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 3: prepare extended abstract with an Artifact Appendix</b>
+ <b>Step 3: Prepare extended abstract with an Artifact Appendix</b>
 
  <div style="padding:5px;">
    Authors must prepare an extended abstract (4 pages max)
@@ -240,23 +240,22 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 
    It must also include an Artifact Appendix (already included to above template) 
    with a detailed specification of the experimental workflow, 
-   a list of optimized metrics (speed, accuracy, energy, costs, etc)
+   a list of optimization metrics (speed, accuracy, energy, costs, etc)
    and a baseline to compete with other submissions.
 
-   This specification must also describe how to obtain all related artifacts 
+   This specification must also describe how to obtain all the related artifacts 
    to let reviewers independently evaluate experiments
    and validate optimization claims.
  </div>
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 4: submit extended abstract</b>
+ <b>Step 4: Submit extended abstract</b>
 
  <div style="padding:5px;">
    Authors must submit an extended abstract as a PDF via <a href="https://asplos18request.hotcrp.com">ReQuEST HotCRP website</a>.
 
-   In case of problems, authors should contact <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">organizers</a>.
-
+   In case of problems, authors should contact the <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">organizers</a>.
  </div>
 </div>
 
@@ -272,10 +271,10 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 1: converting all workflows to the common CK format</b>
+ <b>Step 1: Convert all workflows to the common CK format</b>
 
  <div style="padding:5px;">
-  If submission is not in the CK format, we will help authors convert it to the CK format
+  If a submission is not in the CK format, we will help authors convert it to the CK format
   while reusing various artifacts already shared by the community
  (see <a href="https://github.com/ctuning/ck/wiki/Shared-repos#ck-powered-projects-with-whole-experimental-setups-artifacts-and-workflows-shared-in-ck-format">CK AI repositories</a>,
   <a href="https://github.com/ctuning/ck/wiki/Shared-modules">CK modules (wrappers)</a>,
@@ -291,7 +290,7 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 2: validating results</b>
+ <b>Step 2: Validate results</b>
 
  <div style="padding:5px;">
   A ReQuEST artifact evaluation committee (AEC) will be tasked
@@ -318,7 +317,7 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
   and <a href="https://gitlab.com/michel-steuwer/cgo_2017_artifact/issues/1">2</a>)
   and/or via <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>.
 
-  If organizers submit their workflows (mainly to provide reference implementations),
+  If the organizers submit their workflows (mainly to provide reference implementations),
   such submissions must go through public evaluation
   and are not entitled for prizes.
 
@@ -327,28 +326,27 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
   competition, submissions will not be ranked according to a single
   metric (since it often result in over-engineered solutions), 
   but instead the AEC will assess their Pareto optimality
-  across two or more metrics exposed by authors.
+  across two or more metrics exposed by the authors.
 
-  There won't be a single ranking of submissions since this competition 
+  There will not be a single ranking of submissions since this competition 
   is multi-objective: it accounts for classification accuracy, 
   inference latency, energy, ownership/usage cost and so on.
 
-  As such, there won't be a single winner, but better and worse designs based on their
+  As such, there will not be a single winner, but rather better and worse designs based on their
   relative Pareto optimality (up to 3 design points allowed per submission). 
 
-
-   <p>
+  <p>
 
  </div>
 
  <!------------------------------------------------------------------------->
- <b>Step 3: visualizing results in a public scoreboard</b>
+ <b>Step 3: Visualizing results in a public scoreboard</b>
 
  <p>
  <div style="padding:5px;">
-  We will work with authors to correctly visualize all benchmarking results 
+  We will work with authors to correctly visualize all the benchmarking results 
   and SW/HW/model configurations on a  <a href="http://cKnowledge.org/repo">public scoreboard</a>
-  while grouping them according to certain categories of their choice (e.g.embedded vs. server). 
+  while grouping them according to certain categories of their choice (e.g. embedded vs. server). 
 
   <p>
   We will then announce winning SW/HW/model configurations which are either 
@@ -358,7 +356,7 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
  </div>
 
  <!------------------------------------------------------------------------->
- <b>Step 5: publishing extended abstracts and artifacts in the ACM Digital Library</b>
+ <b>Step 4: Publishing extended abstracts and artifacts in the ACM Digital Library</b>
 
  <p>
  <div style="padding:5px;">
@@ -385,13 +383,13 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
  </div>
 
  <!------------------------------------------------------------------------->
- <b>Step 5: presenting winning or novel workflows at the ASPLOS'18 workshop</b>
+ <b>Step 5: Presenting winning or original workflows at the ASPLOS 2018 workshop</b>
 
  <div style="padding:5px;">
   <p>
-  Authors of the winning configurations or novel solutions 
+  Authors of the winning configurations or original solutions 
   will be invited to present
-  their approaches at the ReQuEST'18 workshop co-located 
+  their approaches at the 1st ReQuEST workshop co-located 
   with <a href="https://www.asplos2018.org">ASPLOS 2018</a>
   (ACM conference on Architectural Support for Programming Languages and Operating Systems 
   - the premier forum for multidisciplinary systems research spanning computer architecture 
@@ -418,8 +416,8 @@ including CGO, PPoPP, PACT and SuperComputing (artifact evaluation):
  After the workshop we will prepare a report with the results to the ReQuEST board. 
  Members of the ReQuEST advisory/industrial board will then look over and comment on the results,
  collaborate on a common methodology for reproducible evaluation and optimization,
- suggest realistic workloads and arrange access to rare hardware to Artifact Evaluation Committee for the future tournaments,
- and provide prizes for the most efficient solutions.
+ suggest realistic workloads and arrange access to rare hardware to Artifact Evaluation Committee for future tournaments,
+ and provide prizes for distinguished solutions.
 
 <!---------------------------------------------------------------------------------------->
 <!-- 
