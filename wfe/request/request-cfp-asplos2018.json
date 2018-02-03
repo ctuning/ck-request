@@ -1,9 +1,9 @@
 {
- "title":"1st QuEST tournament at ASPLOS'18",
+ "title":"1st ReQuEST tournament at ASPLOS'18",
 
  "menu":["ai"],
 
- "keywords":"ai/sw/hw co-design, quest tournament, pareto, multi-objective optimization, efficient deep learning",
+ "keywords":"ai/sw/hw co-design, request tournament, pareto, multi-objective optimization, efficient deep learning",
 
  "template_file": "_resources/_template_min.html"
 }
