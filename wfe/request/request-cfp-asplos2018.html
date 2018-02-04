@@ -169,9 +169,10 @@ Example optimizations include:
  techniques since one of the ReQuEST goals is to prepare 
  a reference (baseline) set of implementations of various algorithms 
  shared as portable, customizable and reusable CK components 
- with a common API.</i>
+ with a common API. 
+ 
+ In fact, the ReQuEST submissions will be directly fed into <a href="https://www.acm.org/publications/dl-pilot-integrations">pilot CK integrations with the ACM Digital Library</a>. </i>
  </div>
-
 
 <!---------------------------------------------------------------------------------------->
 <a id="submission"><h3>Submission</h3>
@@ -185,81 +186,56 @@ SuperComputing ("artifact evaluation"):
 <div style="padding:5px;">
 
  <!------------------------------------------------------------------------->
- <b>Step 1: Prepare your experimental workflow</b>
+ <b>Step 1: Share your experimental artifacts and workflows</b>
 
  <div style="padding:5px;">
-   Authors must prepare all scripts to build and run their experimental workflow,
-   measure characteristics, compare with reference implementation, 
-   and validate results on a target platform.
-
-   Authors must also make sure that all artifacts required 
-   to run their experimental workflow are publicly available.
-
-   <p>
-   If authors are familiar with the open-source 
-   <a href="http://github.com/ctuning/ck">Collective Knowledge workflow framework (CK)</a>,
-   they are encouraged to convert their scripts and artifacts 
-   to <a href="https://github.com/ctuning/ck/wiki/Portable-workflows">portable CK workflows</a>.
-
-   Such workflows can automatically prepare environment, detect required software,
-   install missing packages and run experiments thus simplifying validation of results.
-
-   Authors can see and reuse various examples of already shared CK workflows and artifacts 
-   <a href="https://github.com/ctuning/ck/wiki/Shared-repos#ck-powered-projects-with-whole-experimental-setups-artifacts-and-workflows-shared-in-ck-format">here</a>.
-
-   <p>
-   If authors are not using CK (the learning curve can still be quite steep), 
-   we will help them convert their submission to the CK format during evaluation
-   to unify experiments and automate validation of results.
-
-   This can also help the community reuse such artifacts and workflows
-   since ACM is planning to <a href="https://www.acm.org/publications/dl-pilot-integrations">integrate CK with their Digital Library</a>.
- </div>
-
- <!------------------------------------------------------------------------->
- <b>Step 2: Pack/share your workflow</b>
-
- <div style="padding:5px;">
-   Authors must make all artifacts and experimental workflows publicly available
-   via GitHub, GitLab, BitBucket and similar services or pack them in a zip/tar archive 
+   You should make all artifacts and experimental workflows publicly available
+   via GitHub, GitLab, Bitbucket or similar, or pack them in a zip/tar archive 
    or Docker/VM image.
-   
-   In exceptional cases, when a rare hardware platform is used, authors can provide
-   remote access to their platform.
- </div>
 
+   You should also provide instructions and scripts to build and run your
+   workflows on a target platform, measure the characteristics and compare the
+   results against a reference implementation.
+   
+   <p> If you are already familiar with the open-source <a
+   href="http://github.com/ctuning/ck">Collective Knowledge</a> framework (CK),
+   you are encouraged to convert your experimental workflows to to <a
+   href="https://github.com/ctuning/ck/wiki/Portable-workflows">portable CK
+   workflows</a>.  Such workflows can automatically set up the environment,
+   detect required software dependencies, install missing packages and run
+   experiments, thus automating artifact evaluation.  (See some examples <a
+   href="https://github.com/ctuning/ck/wiki/Shared-repos#ck-powered-projects-with-whole-experimental-setups-artifacts-and-workflows-shared-in-ck-format">here</a>.)
+
+   <p> If you are not familiar with CK, worry not! We will gladly help you
+   convert your submission to CK during the <a href="#evaluation">evalution
+   stage</a>.
+
+ </div>
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 3: Prepare extended abstract with an Artifact Appendix</b>
+ <b>Step 2: Submit an extended abstract with Artifact Appendix</b>
 
  <div style="padding:5px;">
-   Authors must prepare an extended abstract (4 pages max)
+   You should prepare an extended abstract (max 4 pages)
    using this <a href="http://cKnowledge.org/request/request-template.tex">ReQuEST LaTex template</a> 
    with a <a href="http://www.sigplan.org/sites/default/files/sigplanconf.cls">SIGPLAN conference style</a>.
 
-   This document must include their name, affiliation, and a brief description 
-   of a novel optimization technique or already published work.
+   Include your name, affiliation, and a brief description of your work (which
+   can be novel or already presented elsewhere). Please also fill in the
+   Artifact Appendix in the above template, including how to obtain your
+   artifacts and workflows. Provide a detailed specification of your
+   experimental workflow, a list of optimization metrics (speed, accuracy,
+   energy, costs, etc.) and the expected results (which the reviewers will need
+   to independently validate).
 
-   It must also include an Artifact Appendix (already included to above template) 
-   with a detailed specification of the experimental workflow, 
-   a list of optimization metrics (speed, accuracy, energy, costs, etc)
-   and a baseline to compete with other submissions.
-
-   This specification must also describe how to obtain all the related artifacts 
-   to let reviewers independently evaluate experiments
-   and validate optimization claims.
+   Please submit your extended abstract as a PDF via the <a
+   href="https://asplos18request.hotcrp.com">ReQuEST HotCRP website</a>.
+   Please contact the <a
+   href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">organizers</a>
+   if your encounter any problems.
  </div>
 
- <p>
- <!------------------------------------------------------------------------->
- <b>Step 4: Submit extended abstract</b>
-
- <div style="padding:5px;">
-   Authors must submit an extended abstract as a PDF via <a href="https://asplos18request.hotcrp.com">ReQuEST HotCRP website</a>.
-
-   In case of problems, authors should contact the <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">organizers</a>.
- </div>
 </div>
 
 <!---------------------------------------------------------------------------------------->
