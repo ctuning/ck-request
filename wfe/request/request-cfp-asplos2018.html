@@ -145,11 +145,10 @@ our evaluation committee to conveniently reproduce their results. Example system
 </ul>
 
 If a submission relies on an exotic hardware platform, the participants can
-either provide restricted access to their evaluation platform
-to the artifact evaluation committee, or notify 
-the organizers in advance (please try to give us at least 3 weeks notice) about their choice 
-so that a similar platform can be acquired in time 
-(assuming the cost is not prohibitive).
+either provide restricted access to their evaluation platform to the artifact
+evaluation committee, or notify the organizers in advance (please try to give
+us at least 3 weeks notice) about their choice so that a similar platform can
+be acquired in time (assuming the cost is not prohibitive).
 
 <p>
 Example optimizations include:
@@ -219,7 +218,7 @@ SuperComputing ("artifact evaluation"):
  <div style="padding:5px;">
    You should prepare an extended abstract (max 4 pages)
    using this <a href="http://cKnowledge.org/request/request-template.tex">ReQuEST LaTex template</a> 
-   with a <a href="http://www.sigplan.org/sites/default/files/sigplanconf.cls">SIGPLAN conference style</a>.
+   in the <a href="http://www.sigplan.org/sites/default/files/sigplanconf.cls">SIGPLAN conference style</a>.
 
    Include your name, affiliation, and a brief description of your work (which
    can be novel or already presented elsewhere). Please also fill in the
@@ -241,118 +240,141 @@ SuperComputing ("artifact evaluation"):
 <!---------------------------------------------------------------------------------------->
 <a id="evaluation"><h3>Evaluation</h3>
 
- ReQuest is backed by the <a href="https://www.acm.org/publications/task-force-on-data-software-and-reproducibility">ACM Task Force on Data, Software, and Reproducibility in Publication</a>
- and will use the standard <a href="http://cTuning.org/ae/reviewing.html">ACM artifact evaluation methodology</a>.
- Artifact evaluation will be single blind (see <a href="http://cTuning.org/ae">PPoPP, CGO, PACT, RTSS and SuperComputing</a>),
- and the reviews can be made public (see <a href="http://adapt-workshop.org/submission2016.html">ADAPT</a>) upon the authors' request.
- Quality and efficiency metrics will be collected for each submission, and compiled on a ReQuEST live scoreboard similar 
- to this <a href="http://cKnowledge.org/repo">open optimization repository</a>.
+ ReQuEST is backed by the <a href="https://www.acm.org/publications/task-force-on-data-software-and-reproducibility">ACM Task Force on Data, Software, and Reproducibility in Publication</a>
+ and uses the standard <a href="http://cTuning.org/ae/reviewing.html">artifact evaluation methodology</a>.
+ Artifact evaluation is single blind (see <a href="http://cTuning.org/ae">PPoPP, CGO, PACT, RTSS and SuperComputing</a>).
+ Reviews will be performed by the <a href="#organizers">organizers</a> and volunteers ("reviewers"), and can be made public upon the authors' request (see <a href="http://adapt-workshop.org/submission2016.html">ADAPT</a>).
+ Quality and efficiency metrics will be collected for each submission, and displayed on a live ReQuEST scoreboard similar 
+ to this <a href="http://cKnowledge.org/repo">open CK repository</a>.
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 1: Convert all workflows to the common CK format</b>
+ <b>Step 1: Collaborate on converting your workflows to CK</b>
 
  <div style="padding:5px;">
-  If a submission is not in the CK format, we will help authors convert it to the CK format
+  If your submission is not in the CK format, we will help you convert it to the CK format
   while reusing various artifacts already shared by the community
  (see <a href="https://github.com/ctuning/ck/wiki/Shared-repos#ck-powered-projects-with-whole-experimental-setups-artifacts-and-workflows-shared-in-ck-format">CK AI repositories</a>,
   <a href="https://github.com/ctuning/ck/wiki/Shared-modules">CK modules (wrappers)</a>,
   <a href="https://github.com/ctuning/ck/wiki/Shared-soft-descriptions">CK software detection plugins</a>,
   <a href="https://github.com/ctuning/ck/wiki/Shared-packages">portable CK packages</a>).
 
-  The authors can choose how to communicate with us during this step: either privately via HotCRP, 
+  You may choose how to communicate with us during this step: either privately via HotCRP,
   semi-privately via a <a href="https://request-workshop.slack.com">dedicated Slack channel with all authors and reviewers</a>,
-  or publicly via <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>
-  (thus making the community immediately aware of their artifact).
+  or, <a href="http://adapt-workshop.org/motivation2016.html">preferably</a>,
+  publicly via the <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>
+  (thus making the community immediately aware of your artifact).
 
  </div>
 
  <p>
  <!------------------------------------------------------------------------->
- <b>Step 2: Validate results</b>
+ <b>Step 2: Collaborate on validating your results</b>
 
  <div style="padding:5px;">
-  A ReQuEST artifact evaluation committee (AEC) will be tasked
-  to independently evaluate workflow submissions 
-  on compliant hardware platforms, reproduce results 
-  and aggregate them in a multi-objective public leaderboard. 
-
-  It will be a cooperative and interactive process between authors 
-  and evaluators to help authors fix problems
-  and avoid ambiguities.
 
   <p>
-  Authors should tell us if they prefer a public 
-  (preferable - see <a href="http://adapt-workshop.org/motivation2016.html">our motivation</a>) 
-  or a private evaluation
-  which includes discussions with evaluators.
+  We will form a ReQuEST artifact evaluation committee (AEC) from the
+  organizers and volunteers (&quot;reviewers&quot;).  The AEC task is to
+  objectively evaluate submissions on appropriate hardware platforms,
+  reproduce results and aggregate them on a multi-objective public scoreboard. 
 
-  A private evaluation and communication is performed via HotCRP.
-  A semi-private evaluation and discussion can be performed via 
-  <a href="https://request-workshop.slack.com">dedicated Slack channel with all authors and reviewers</a>.
-
-  A public evaluation can be performed by opening tickets on GitHub and similar 
-  services (see examples <a href="https://github.com/thu-pacman/self-checkpoint/issues/1">1</a>
-  and <a href="https://gitlab.com/michel-steuwer/cgo_2017_artifact/issues/1">2</a>)
-  and/or via <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>.
-
-  If the organizers submit their workflows (mainly to provide reference implementations),
-  such submissions must go through public evaluation
-  and are not entitled for prizes.
+  AE will be a friendly and interactive process between the authors and the
+  reviewers, with the goal of making the artifacts as useful as possible for
+  the community. For example, the reviewers may encounter some unexpected
+  problems, and ask the authors for help to fix them.
 
   <p>
-  Due to the multi-faceted nature of the
-  competition, submissions will not be ranked according to a single
-  metric (since it often result in over-engineered solutions), 
-  but instead the AEC will assess their Pareto optimality
-  across two or more metrics exposed by the authors.
+  Again, the authors can communicate with the reviewers privately via HotCRP,
+  semi-privately via <a href="https://request-workshop.slack.com">Slack</a>,
+  or publicly by opening tickets in shared repositories (see examples <a
+  href="https://github.com/thu-pacman/self-checkpoint/issues/1">1</a> and <a
+  href="https://gitlab.com/michel-steuwer/cgo_2017_artifact/issues/1">2</a>)
+  and/or via the <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>.
 
-  There will not be a single ranking of submissions since this competition 
-  is multi-objective: it accounts for classification accuracy, 
-  inference latency, energy, ownership/usage cost and so on.
-
-  As such, there will not be a single winner, but rather better and worse designs based on their
-  relative Pareto optimality (up to 3 design points allowed per submission). 
+  If any of the organizers submit their workflows (mainly to provide reference
+  implementations), their submissions will go through public evaluation.
 
   <p>
+
+ <!------------------------------------------------------------------------->
+ <b>Step 3: Collaborate on visualizing your results on a public scoreboard</b>
+
+ <p>
+ <div style="padding:5px;">
+
+  <p>
+  
+  Due to the multi-faceted nature of the competition, submissions will not
+  be ranked according to a single metric (as this often results in
+  over-engineered solutions), but instead the AEC will assess their Pareto
+  optimality on two or more metrics exposed by the authors.  As such, there
+  will not be a single winner, but rather better and worse designs based on
+  their relative Pareto optimality (up to 3 design points allowed per each
+  submission).
+
+  We will collaborate with the authors to correctly visualize the results and
+  SW/HW/model configurations on a  <a href="http://cKnowledge.org/repo">public
+  scoreboard</a> while grouping them according to certain categories of their
+  choice (e.g. embedded vs. server). A unique submission may define a
+  category in its own right.
+
+  To win, the results of an entry will normally lie close to the Pareto-optimal
+  frontier in its category.  However, a winning entry can be also praised for
+  its originality, reproducibility, adaptability, scalability, portability,
+  ease of use, etc.
 
  </div>
+
+</div>
 
 <!---------------------------------------------------------------------------------------->
 <a id="Presentation"><h3>Presentation</h3>
 
  <!------------------------------------------------------------------------->
- <b>Step 3: Visualizing results in a public scoreboard</b>
+ <b>Step 1: Present at the ReQuEST workshop at ASPLOS'18</b>
 
  <p>
  <div style="padding:5px;">
-  We will work with authors to correctly visualize all the benchmarking results 
-  and SW/HW/model configurations on a  <a href="http://cKnowledge.org/repo">public scoreboard</a>
-  while grouping them according to certain categories of their choice (e.g. embedded vs. server). 
+  
+  <p>
+
+  We will announce the winning SW/HW/model configurations at the end of
+  February, and invite the authors to present their work at the 1st ReQuEST
+  workshop co-located with <a href="https://www.asplos2018.org">ASPLOS 2018</a>
+  (ACM conference on Architectural Support for Programming Languages and
+  Operating Systems, which is the premier forum for multidisciplinary systems
+  research spanning computer architecture and hardware, programming languages
+  and compilers, operating systems and networking).
+
+  This will give the authors an opportunity to share their research and
+  implementation insights with the research community as well as discuss future
+  R&amp;D directions.
 
   <p>
-  We will then announce winning SW/HW/model configurations which are either 
-  close to Pareto-frontier in their category or if there is only one
-  submission in a given category which becomes the reference one.
+  A common academic and industrial panel will be held at the end of the
+  workshop to discuss how to improve the common SW/HW co-design methodology
+  and infrastructure for deep learning and other real-world workloads.
+
+</div>
 
  </div>
 
  <!------------------------------------------------------------------------->
- <b>Step 4: Publishing extended abstracts and artifacts in the ACM Digital Library</b>
+ <b>Step 2: Publish in the ACM Digital Library</b>
 
  <p>
  <div style="padding:5px;">
 
-  Authors of the winning workflows will be able to publish their extended abstracts with an Artifact Appendix
-  and related artifacts in the <a href="http://dl.acm.org">ACM Digital Library</a> (even for already published
-  techniques since the focus of the workshop on validated and reusable artifacts)! 
+  The authors of the winning submissions will publish their extended abstracts with an Artifact Appendix
+  and related artifacts in the <a href="http://dl.acm.org">ACM Digital Library</a> (even if their techniques have already been published, since the workshop focuses on validated and reusable artifacts!) 
 
-  <i>Furthermore, we partnered with <a href="http://acm.org">ACM</a> to award 
-  <a href="https://www.acm.org/publications/policies/artifact-review-badging">"available, reusable, replicated" badges</a>
-  to all winning artifacts. 
+  <i>Furthermore, we have partnered with <a href="http://acm.org">ACM</a> to award 
+  <a href="https://www.acm.org/publications/policies/artifact-review-badging">&quot;available / reusable / replicated&quot; badges</a>
+  to all the winning artifacts. 
 
-  This will make them discoverable via ACM Digital Library
-  (check it out by selecting "Artifact Badge" for field and then select any badge you wish 
+  This will make them discoverable via the ACM Digital Library
+  (check this out by selecting &quot;Artifact Badge&quot; for a field and then select any badge you wish 
   in the <a href="https://dl.acm.org/advsearch.cfm?coll=DL&dl=ACM">ACM DL advanced search</a>)!</i>
 
   <p>
@@ -364,42 +386,19 @@ SuperComputing ("artifact evaluation"):
 
  </div>
 
- <!------------------------------------------------------------------------->
- <b>Step 5: Presenting winning or original workflows at the ASPLOS 2018 workshop</b>
-
- <div style="padding:5px;">
-  <p>
-  Authors of the winning configurations or original solutions 
-  will be invited to present
-  their approaches at the 1st ReQuEST workshop co-located 
-  with <a href="https://www.asplos2018.org">ASPLOS 2018</a>
-  (ACM conference on Architectural Support for Programming Languages and Operating Systems 
-  - the premier forum for multidisciplinary systems research spanning computer architecture 
-  and hardware, programming languages and compilers, operating systems and networking).
-
-  It will give an opportunity for the participants
-  to share their research and implementation insights with the research community
-  as well as discuss future R&D directions.
-
-  <p>
-  A common academic and industrial panel will be held at the end of the
-  workshop to discuss how to improve common SW/HW co-design methodology
-  and infrastructure for deep learning and other real-world applications.
- </div>
-
 <center>
-<b>Feel free to <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org">contact us</a> if you have questions or suggestions!</b>
+<b>Feel free to <a href="mailto:moreau@cs.washington.edu;Grigori.Fursin@cTuning.org;anton@dividiti.com">contact us</a> if you have questions or suggestions!</b>
 </center>
 
 <!---------------------------------------------------------------------------------------->
 <a id="industrial_board"><h3>Advisory/industrial board</h3>
 
- <p>
- After the workshop we will prepare a report with the results to the ReQuEST board. 
- Members of the ReQuEST advisory/industrial board will then look over and comment on the results,
- collaborate on a common methodology for reproducible evaluation and optimization,
- suggest realistic workloads and arrange access to rare hardware to Artifact Evaluation Committee for future tournaments,
- and provide prizes for distinguished solutions.
+ <p> After the workshop, we will prepare a public report for the
+ ReQuEST Advisory/Industrial Board.  The board members will provide their
+ feedback on the results, collaborate on a common methodology for reproducible
+ evaluation and optimization, suggest realistic workloads, help provide access
+ to rare hardware platforms to the Artifact Evaluation Committee for future
+ tournaments, and provide prizes for distinguished entries.
 
 <!---------------------------------------------------------------------------------------->
 <!-- 
