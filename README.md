@@ -20,7 +20,6 @@ stack for AI, deep learning and other emerging workloads.
 # Installation
 
 Note that *#* means *sudo* on Linux and can be skipped on Windows.
-You can find note how to install 
 
 
 ```
