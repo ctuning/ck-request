@@ -14,7 +14,7 @@ stack for AI, deep learning and other emerging workloads.
 <!-------------------------------------------------------------------------------------->
 # Validated results from tournaments in the [CK format](https://github.com/ctuning/ck)
 
-* [ASPLOS'18: multi-objective image classification](ck-request-asplos18-results)
+* [ASPLOS'18: multi-objective image classification](https://github.com/ctuning/ck-request-asplos18-results)
 
 <!-------------------------------------------------------------------------------------->
 # Prerequisites
