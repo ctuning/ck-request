@@ -28,6 +28,11 @@ $ ck pull repo:ck-request
 ```
 
 <!-------------------------------------------------------------------------------------->
+# Validated results from tournaments
+
+* [ASPLOS'18: multi-objective image classification](ck-request-asplos18-results)
+
+<!-------------------------------------------------------------------------------------->
 # Preparing submission
 
 We use the following public submission for ReQuEST@ASPLOS'18 as example: 
@@ -63,6 +68,4 @@ You can see it on Linux as following:
 
 
 
-<!-------------------------------------------------------------------------------------->
-# References
  
