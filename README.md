@@ -12,6 +12,11 @@ on Pareto-efficient co-design of the whole software and hardware
 stack for AI, deep learning and other emerging workloads.
 
 <!-------------------------------------------------------------------------------------->
+# Validated results from tournaments in the [CK format](https://github.com/ctuning/ck)
+
+* [ASPLOS'18: multi-objective image classification](ck-request-asplos18-results)
+
+<!-------------------------------------------------------------------------------------->
 # Prerequisites
 
 * Collective Knowledge Framework: see [minimal installation guidelines](https://github.com/ctuning/ck#minimal-installation)
@@ -26,11 +31,6 @@ Note that *#* means *sudo* on Linux and can be skipped on Windows.
 # pip install ck
 $ ck pull repo:ck-request
 ```
-
-<!-------------------------------------------------------------------------------------->
-# Validated results from tournaments
-
-* [ASPLOS'18: multi-objective image classification](ck-request-asplos18-results)
 
 <!-------------------------------------------------------------------------------------->
 # Preparing submission
