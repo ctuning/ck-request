@@ -121,8 +121,6 @@ You then need to manually pull it once via CK (later it will be pulled automatic
 $ ck pull repo:ck-crowdtuning
 ```
 
-## Checking 
-
 ## Checking software dependencies
 
 Next you need to determine all explicit software dependencies 
