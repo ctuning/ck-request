@@ -35,9 +35,6 @@ $ ck pull repo:ck-request
 <!-------------------------------------------------------------------------------------->
 # Preparing submission for evaluation
 
-We use the following public ReQuEST@ASPLOS'18 submission as example: 
-https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl
-
 Since the long-term ReQuEST goal is to develop a common experimental framework
 as well as to encourage the community to share artifacts as reusable, 
 portable and customizable components, we convert all submissions 
@@ -59,6 +56,9 @@ from shared components, unify collection of statistics,
 reproduce results and even [crowdsource experiments](http://cKnowledge.org/repo) 
 across devices and data sets provided by volunteers.
 
+We will use the following public ReQuEST@ASPLOS'18 submission to explain conversion to the CK format: 
+https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl .
+
 <!-------------------------------------------------------------------------------------->
 ## Creating dummy CK repository
 
@@ -68,10 +68,10 @@ contain CK wrappers with your artifacts and workflows.
 For simplicity, we create a dummy repository at GitHub 
 with some user-friendly name of your workflow while prefixing 
 it with *ck-request-{name of competition}-{your workflow name}*,
-i.e. https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl
+i.e. https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl .
 
-See various CK repositories created for ASPLOS'18 tournament 
-[here](https://github.com/ctuning/ck-request-asplos18-results).
+You can see other public CK repositories prepared for ASPLOS'18 tournament here:
+https://github.com/ctuning/ck-request-asplos18-results .
 
 We then pull it via CK to create a local copy as following:
 
