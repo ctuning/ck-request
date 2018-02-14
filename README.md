@@ -33,32 +33,57 @@ $ ck pull repo:ck-request
 ```
 
 <!-------------------------------------------------------------------------------------->
-# Preparing submission
+# Preparing submission for evaluation
 
-We use the following public submission for ReQuEST@ASPLOS'18 as example: 
-https://github.com/dividiti/request-asplos18-mobilenets-armcl-opencl
+We use the following public ReQuEST@ASPLOS'18 submission as example: 
+https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl
+
+Since the long-term ReQuEST goal is to develop a common experimental framework
+as well as to encourage the community to share artifacts as reusable, 
+portable and customizable components, we convert all submissions 
+to the open [Collective Knowledge format (CK)](http://cKnowledge.org).
+
+We suggest you to check at least 
+a few [getting started guides](https://github.com/ctuning/ck/wiki) 
+to understand CK concepts. 
+CK helps users add and share unified Python wrappers 
+([CK modules](https://github.com/ctuning/ck/wiki/Shared-modules)) 
+with a common JSON API and meta information for groups of similar objects. 
+Rather than writing their own ad-hoc scripts, researchers can then 
+reuse and extend such shared modules or share new objects with the same API.
+CK also includes a [cross-platform package manager](https://github.com/ctuning/ck/wiki/Portable-workflows) 
+which can detect and set up required tools or install missing ones while allowing
+easy co-existence of multiple versions.
+Finally, CK allows to assemble portable experimental workflows
+from shared components, unify collection of statistics, 
+reproduce results and even [crowdsource experiments](http://cKnowledge.org/repo) 
+across devices and data sets provided by volunteers.
 
 <!-------------------------------------------------------------------------------------->
 ## Creating dummy CK repository
 
-For simplicity, we expect that you have your research workflow 
-and all related artifacts available at GitHub (or any other similar service). 
-Let’s call it *my-workflow*: https://github.com/my-organization/my-workflow .
+First, we need to create a dummy CK repository which will later 
+contain CK wrappers with your artifacts and workflows.
 
-You need to create a new dummy repository at GitHub (or similar service), 
-say “request-asplos18-my-workflow”, and pull it using CK:
+For simplicity, we create a dummy repository at GitHub 
+with some user-friendly name of your workflow while prefixing 
+it with *ck-request-{name of competition}-{your workflow name}*,
+i.e. https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl
+
+See various CK repositories created for ASPLOS'18 tournament 
+[here](https://github.com/ctuning/ck-request-asplos18-results).
+
+We then pull it via CK to create a local copy as following:
 
 ```
- $ ck pull repo --url=https://github.com/my-organization/request-asplos18-my-workflow
+ $ ck pull repo --url=https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl
 ```
-We strongly suggest to create a meaningful name 
-related to a given ReQuEST submission such as 
-*request-asplos18-mobilenets-armcl-opencl*
-
 CK will create a local copy of this repository in *$HOME/CK* 
-and will add a *.ckr.json* file there. This file describes CK repository 
-including unique ID and dependencies on other repositories. 
-You can see it on Linux as following:
+while adding *.ckr.json* file there. This file describes 
+CK repository including unique ID and dependencies on other repositories
+(in case you would like to reuse already existing modules and artifacts). 
+
+You can find this file on Linux as following:
 ```
  $ cat `ck find repo:request-asplos18-my-workflow`/.ckr.json
 ```
