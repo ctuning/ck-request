@@ -155,12 +155,16 @@ The simplest one is when CK module just prints notes about how to obtain and ins
 a required software, and then re-run its detection via CK.
 
 However, a more convenient way is to provide a related CK package which will automatically
-download, install and even build required software with all sub-dependencies for a given
-platform (CK currently supports Linux, Android, Windows and MacOS).
+download, install and even build required software, models, data sets
+with all sub-dependencies and version ranges 
+for a given platform (CK currently supports Linux, Android, Windows and MacOS).
 
 You can check and reuse already [shared packages](https://github.com/ctuning/ck/wiki/Shared-packages)
 or add similar ones to [*ck-env*](https://github.com/ctuning/ck-env/tree/master/package), 
-[*ck-math*](https://github.com/ctuning/ck-math/tree/master/package) 
+[*ck-math*](https://github.com/ctuning/ck-math/tree/master/package),
+[*ck-caffe*](https://github.com/dividiti/ck-caffe),
+[*ck-tensorflow*](https://github.com/ctuning/ck-tensorflow),
+[*ck-mxnet*](https://github.com/ctuning/ck-mxnet)
 or other related repositories.
 
 Feel free to ask [the CK community](http://groups.google.com/group/collective-knowledge) 
