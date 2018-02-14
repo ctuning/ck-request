@@ -132,7 +132,7 @@ which you need for your experimental workflow (pipeline).
 Please, check if CK [already has modules to detect all your software dependencies](https://github.com/ctuning/ck/wiki/Shared-soft-descriptions).
 Most of these modules are available in the [ck-env](https://github.com/ctuning/ck-env/tree/master/soft) repository.
 Basically, they allow one to automatically detect all installed versions of required software on a given machine,
-prepare their environments in such a way that they can co-exist, and register all verisions in the CK.
+prepare their environments in such a way that they can co-exist, and register all versions in the CK.
 
 For example, you can detect GCC and LLVM on your machine as following:
 ```
@@ -156,7 +156,7 @@ there are two possibilities.
 The simplest one is when CK module just prints notes about how to obtain and install
 a required software, and then re-run its detection via CK.
 
-However, a more conveient way is to provide a related CK package which will automatically
+However, a more convenient way is to provide a related CK package which will automatically
 download, install and even build required software with all sub-dependencies for a given
 platform (CK currently supports Linux, Android, Windows and MacOS).
 
