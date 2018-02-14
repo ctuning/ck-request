@@ -88,9 +88,40 @@ You can find this file on Linux as following:
  $ cat `ck find repo:request-asplos18-my-workflow`/.ckr.json
 ```
 
+## Reusing existing artifacts
+
+The idea of CK is to help researchers reuse artifacts and build upon them.
+Please, check [shared CK repositories](https://github.com/ctuning/ck/wiki/Shared-repos) 
+and their [modules](https://github.com/ctuning/ck/wiki/Shared-modules).
+
+To participate in ReQuEST tournaments you will need to add at least
+one dependency on a *ck-crowdtuning* repository to be able to reuse
+a common program compilation and execution pipeline
+with a [cross-platform package manager](https://github.com/ctuning/ck/wiki/Portable-workflows) 
+and [customizable crowd-tuner](https://github.com/ctuning/ck/wiki/Compiler-autotuning).
+
+You can add it by editing the *.ckr.json* file:
+```
+{
+ ...
+
+ "dict": {
+    ...
+    "repo_deps": [
+      {"repo_uoa": "ck-crowdtuning"}
+    ]
+ ...
+}
+
+```
+
+## Checking/adding software dependencies
+
+[software descriptions]() and [packages]().
 
 
+# Questions and comments
 
-
-
- 
+Feel free to contact [ReQuEST organizers](http://cKnowledge.org/request), 
+send your questions and comments to the [CK mailing list](http://groups.google.com/group/collective-knowledge)
+or join our [LinkedIn group on reproducible R&D](https://www.linkedin.com/groups?home=&gid=7433414&trk=my_groups-tile-grp).
