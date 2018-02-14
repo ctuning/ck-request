@@ -163,7 +163,8 @@ or add similar ones to [*ck-env*](https://github.com/ctuning/ck-env/tree/master/
 [*ck-math*](https://github.com/ctuning/ck-math/tree/master/package) 
 or other related repositories.
 
-Feel free to ask CK community for help or further details about CK software and packages!
+Feel free to ask [the CK community](http://groups.google.com/group/collective-knowledge) 
+for help or further details about CK software and packages!
 
 ## Adding basic experiment pipeline (compile and run)
 
