@@ -90,9 +90,10 @@ You can find this file on Linux as following:
 
 ## Reusing existing artifacts
 
-The idea of CK is to help researchers reuse artifacts and build upon them.
-Please, check [shared CK repositories](https://github.com/ctuning/ck/wiki/Shared-repos) 
-and their [modules](https://github.com/ctuning/ck/wiki/Shared-modules).
+The idea of CK is to help researchers reuse and extend artifacts.
+Please, check first [shared CK repositories](https://github.com/ctuning/ck/wiki/Shared-repos) 
+and their [modules](https://github.com/ctuning/ck/wiki/Shared-modules) 
+to build upon existing artifacts.
 
 To participate in ReQuEST tournaments you will need to add at least
 one dependency on a *ck-crowdtuning* repository to be able to reuse
@@ -115,9 +116,60 @@ You can add it by editing the *.ckr.json* file:
 
 ```
 
-## Checking/adding software dependencies
+You then need to manually pull it once via CK (later it will be pulled automatically with all other sub-dependencies):
+```
+$ ck pull repo:ck-crowdtuning
+```
 
-[software descriptions]() and [packages]().
+## Checking 
+
+## Checking software dependencies
+
+Next you need to determine all explicit software dependencies 
+such as MXNet, Caffe, TensorFlow, BLAS, LLVM, GCC, CUDA, OpenCL and others
+which you need for your experimental workflow (pipeline).
+
+Please, check if CK [already has modules to detect all your software dependencies](https://github.com/ctuning/ck/wiki/Shared-soft-descriptions).
+Most of these modules are available in the [ck-env](https://github.com/ctuning/ck-env/tree/master/soft) repository.
+Basically, they allow one to automatically detect all installed versions of required software on a given machine,
+prepare their environments in such a way that they can co-exist, and register all verisions in the CK.
+
+For example, you can detect GCC and LLVM on your machine as following:
+```
+$ ck detect soft:compiler.gcc
+$ ck detect soft --tags=compiler,llvm
+
+$ ck show env
+
+$ ck show env --tags=compiler
+```
+
+However, if a CK module for a given software doesn't exist, you need to add one yourself
+as briefly described in [this wiki page](https://github.com/ctuning/ck/wiki/Portable-workflows) 
+and then share it with the community via *ck-env* or your own repository.
+
+## Adding cross-platform packages
+
+If a CK module is available for required software, but it is not detected on a platform,
+there are two possibilities.
+
+The simplest one is when CK module just prints notes about how to obtain and install
+a required software, and then re-run its detection via CK.
+
+However, a more conveient way is to provide a related CK package which will automatically
+download, install and even build required software with all sub-dependencies for a given
+platform (CK currently supports Linux, Android, Windows and MacOS).
+
+You can check and reuse already [shared packages](https://github.com/ctuning/ck/wiki/Shared-packages)
+or add similar ones to [*ck-env*](https://github.com/ctuning/ck-env/tree/master/package), 
+[*ck-math*](https://github.com/ctuning/ck-math/tree/master/package) 
+or other related repositories.
+
+Feel free to ask CK community for help or further details about CK software and packages!
+
+## Adding basic experiment pipeline (compile and run)
+
+
 
 
 # Questions and comments
