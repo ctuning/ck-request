@@ -159,6 +159,12 @@ download, install and even build required software, models, data sets
 with all sub-dependencies and version ranges 
 for a given platform (CK currently supports Linux, Android, Windows and MacOS).
 
+For example, it is possible to build [Caffe](https://github.com/dividiti/ck-caffe/wiki/Installation) 
+or [TensoFlow](https://github.com/ctuning/ck-tensorflow/wiki/Installation) 
+in a unified way via CK with various sub-dependencies 
+(OpenBLAS, CLBlast, ArmCL), programming models (OpenMP, CUDA, OpenCL), targets (CPU, GPU)
+and OS (Linux, Windows, MacOS, Android).
+
 You can check and reuse already [shared packages](https://github.com/ctuning/ck/wiki/Shared-packages)
 or add similar ones to [*ck-env*](https://github.com/ctuning/ck-env/tree/master/package), 
 [*ck-math*](https://github.com/ctuning/ck-math/tree/master/package),
