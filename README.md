@@ -237,6 +237,9 @@ in a unified way as following:
 ```
 $ ck pipeline program --help
 $ ck pipeline program:request-asplos18-my-program
+or
+$ ck benchmark program:request-asplos18-my-program
+
 ```
 
 You can obtain output characteristics from another CK module or your own Python script as following:
@@ -251,6 +254,10 @@ if r['return']>0: ck.err(r)
 
 print (r)
 ```          
+
+There are various ways to customize your pipeline but the most obvious 
+is via environment variables specified via *--env.NAME=VALUE*
+as shown in [this use-case](https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl#make-a-sample-run).
 
 ## Preparing ReQuEST workflow to expose characteristics specific to a given tournament
 
