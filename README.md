@@ -148,7 +148,7 @@ and then share it with the community via *ck-env* or your own repository.
 
 ## Adding cross-platform packages
 
-If a CK module is available for required software, but it is not detected on a platform,
+If a CK module is available for required software, but a given version is not detected on a host platform,
 there are two possibilities.
 
 The simplest one is when CK module just prints notes about how to obtain and install
@@ -176,8 +176,97 @@ or other related repositories.
 Feel free to ask [the CK community](http://groups.google.com/group/collective-knowledge) 
 for help or further details about CK software and packages!
 
-## Adding basic experiment pipeline (compile and run)
+## Adding portable experimental workflow to build and run project
 
+It is now possible to assemble basic experimental workflow to build and run 
+a given ReQuEST application on any supported platform with any dependencies.
+
+We already provided a CK workflow template to build, run and even autotune any application.
+You can reuse it by pulling [ck-autotuning](https://github.com/ctuning/ck-autotuning) repository
+and adding new *program* entry:
+
+```
+$ ck pull repo:ck-autotuning
+$ ck add request-asplos18-my-workflow:program:request-asplos18-my-program
+```
+
+or you can find CK entry with the most close program shared by the community,
+copy it to your repository and then customize its JSON meta and scripts.
+For example, you can reuse Caffe-based image classification program as following:
+
+```
+$ ck pull repo --url=https://github.com/dividiti/ck-caffe
+$ ck ls ck-caffe:program:
+$ ck cp caffe-classification request-asplos18-my-workflow:program:request-asplos18-my-program
+  or
+$ ck cp caffe-classification-cuda request-asplos18-my-workflow:program:request-asplos18-my-program
+  or
+$ ck cp caffe-classification-opencl request-asplos18-my-workflow:program:request-asplos18-my-program
+  or
+$ ck cp  request-asplos18-my-workflow:program:request-asplos18-my-program
+```
+
+Then you can edit JSON meta of your new program entry to describe software dependencies
+from the previous section and provide unified scripts to build and run 
+your program depending on the target platform (Linux, Windows, MacOS, Android)
+as briefly described in this [wiki](https://github.com/ctuning/ck/wiki/Portable-workflows#implementing-portable-and-customizable-workload-template-example-of-a-universal-workload-characterization)
+and [tech. report](http://cknowledge.org/repo/web.php?wcid=report:rpi3-crowd-tuning-2017-interactive):
+
+```
+$ ck edit program:request-asplos18-my-program
+or
+$ vim `ck find program:request-asplos18-my-program`/.cm/meta.json
+```
+
+Since CK uses DevOps and Wikipedia concepts for R&D, you can see 
+a [similar meta](https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl/blob/master/program/mobilenets-armcl-opencl/.cm/meta.json) 
+from the community and then adapt yours accordingly!
+
+CK also allows you to record various reference outputs using *program.output* module
+and then validate correctness of results across different software, compilers, run-time systems 
+and platforms.
+
+For example, it is possible to check that there are no distorted images, wrong predications
+or that numerical accuracy is within specific thresholds. 
+
+This, in turn, helps the community to crowdsource bug detection across different
+environments using CK (crowd-fuzzing) as described in this [tech. report](https://arxiv.org/abs/1801.08024).
+
+It is then possible to run *program* pipeline while collecting various statistics 
+in a unified way as following:
+```
+$ ck pipeline program --help
+$ ck pipeline program:request-asplos18-my-program
+```
+
+You can obtain output characteristics from another CK module or your own Python script as following:
+```
+import ck.kernel as ck
+
+r=ck.access({'action':'pipeline',
+             'module_uoa':'program',
+             'data_uoa':'request-asplos18-my-program',
+             'out':'con'})
+if r['return']>0: ck.err(r)
+
+print (r)
+```          
+
+## Preparing ReQuEST workflow to expose characteristics specific to a given tournament
+
+
+
+## Validating results by external reviewers
+
+
+
+## Recording validated results to ck-request-validated-results
+
+
+## Visualizing results on scoreboard for different optimization categories
+
+
+## Archiving stable version in a permanent repository with ACM badges
 
 
 
