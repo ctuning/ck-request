@@ -226,7 +226,7 @@ $ ck detect platform.os --update_platform_init \
   --platform_init_uoa={one of above CK entries}
 ```
 
-You can find more details on this [wiki](https://github.com/ctuning/ck/wiki/Farms-of-CK-machines).
+You can find more details in this [wiki](https://github.com/ctuning/ck/wiki/Farms-of-CK-machines).
 
 ## Adding portable experimental workflow to build and run project
 
