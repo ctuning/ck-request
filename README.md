@@ -176,6 +176,58 @@ or other related repositories.
 Feel free to ask [the CK community](http://groups.google.com/group/collective-knowledge) 
 for help or further details about CK software and packages!
 
+## Detecting platform properties in a unified way
+
+We shared various modules in the CK to automate 
+and unify detection of various platform properties 
+needed for portable experimental workflows:
+
+```
+$ ck search module:platform*
+```
+
+You can detect all properties of your platform as following:
+
+```
+$ ck detect platform
+```
+
+You can detect properties of different target platforms 
+including Android devices as following:
+```
+$ ck ls platform.os | sort
+$ ck detect platform --target_os={one of above CK entries}
+```
+
+You can also share information about your platform 
+to be reused by the community as following:
+```
+$ ck detect platform --share
+```
+
+You can see already shared platform descriptions 
+participated in collaborative CK experiments [here](https://cKnowledge.org/repo).
+
+When you run CK for the very first time, you may be asked 
+to select to most close CK platform description 
+shared by CK users. 
+
+CK workflows will then use various platform-specific scripts 
+from the selected entry (for example *platform.init:generic-linux* 
+such as monitoring or setting up CPU and GPU frequency:
+```
+$ ls `ck find platform.init:generic-linux`
+```
+
+You can later change it as following:
+```
+$ ck ls platform.init | sort
+$ ck detect platform.os --update_platform_init \
+  --platform_init_uoa={one of above CK entries}
+```
+
+You can find more details on this [wiki](https://github.com/ctuning/ck/wiki/Farms-of-CK-machines).
+
 ## Adding portable experimental workflow to build and run project
 
 It is now possible to assemble basic experimental workflow to build and run 
