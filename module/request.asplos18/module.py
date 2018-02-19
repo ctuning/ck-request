@@ -21,6 +21,7 @@ form_name='request_web_form'
 onchange='document.'+form_name+'.submit();'
 
 hextra='<center>\n'
+hextra+='<p>\n'
 hextra+=' Results from <a href="http://cknowledge.org/request-cfp-asplos2018.html">open ReQuEST @ ASPLOS\'18 tournament</a>\n'
 hextra+='</center>\n'
 hextra+='<p>\n'
