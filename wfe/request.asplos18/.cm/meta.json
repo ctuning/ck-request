@@ -5,14 +5,14 @@
       "module_uoas": [
         ""
       ], 
-      "url_extra": "action=index&module_uoa=wfe&native_action=show&native_module_uoa=request", 
-      "native_module_uoa":"request",
+      "url_extra": "action=index&module_uoa=wfe&native_action=show&native_module_uoa=request.asplos18", 
+      "native_module_uoa":"request.asplos18",
       "native_action":"show",
       "name": "Dashboard"
     }, 
     {
       "module_uoa": "experiment", 
-      "url_extra_browse":"ck_top_search_tag=request&ck_top_repo=local&aview=yes&no_limit=yes&skip_links=yes&skip_desc=yes",
+      "url_extra_browse":"ck_top_search_tag=request-asplos18&ck_top_repo=local&aview=yes&no_limit=yes&skip_links=yes&skip_desc=yes",
       "module_uoas": [
         "experiment", 
         "bc0409fb61f0aa82"
@@ -20,8 +20,8 @@
       "name": "Raw experiments"
     }, 
     {
-      "name": "Get ReQuEST framework", 
-      "url": "https://github.com/ctuning/ck-request"
+      "name": "ReQuEST tournaments", 
+      "url": "http://cKnowledge.org/request.html"
     }
   ],
   "extra_html_after_menu":"",
