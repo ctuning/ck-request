@@ -1147,7 +1147,7 @@ def prepare_common_meta(i):
     gpgpu_name2=gpgpu_name
     if gpgpu_vendor!='': gpgpu_name2=gpgpu_vendor+' '+gpgpu_name
 
-    fgpgpu_misc=features.get('gpgpu_misc',{})
+    fgpgpu_misc=features.get('gpgpu',{}).get('gpgpu_misc',{})
     opencl=fgpgpu_misc.get('opencl c version','')
 
     # Assembling meta for platform
