@@ -1076,6 +1076,7 @@ def prepare_common_meta(i):
 
     pi=i['platform_dict']
     rd=i['request_dict']
+    deps=i.get('deps',{})
 
     # Prepare tags
     tags=[
@@ -1170,6 +1171,15 @@ def prepare_common_meta(i):
                  'gpgpu_vendor':gpgpu_vendor,
                  'opencl':opencl
                 })
+
+    # Process dependencies
+    r=ck.access({'action':'deps_summary',
+                 'module_uoa':cfg['module_deps']['env'],
+                 'deps':deps})
+    if r['return']>0: return r
+    deps_summary=r['deps_summary']
+
+    meta['deps_summary']=deps_summary
 
     # Misc info
     rd={
