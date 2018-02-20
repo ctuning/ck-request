@@ -1045,6 +1045,7 @@ def prepare_common_meta(i):
     Input:  {
               platform_dict - output from platform detection
               request_dict  - info about ReQuEST submission
+              deps          - resolved deps to summarize deps (package, tags, version)
             }
 
     Output: {
@@ -1073,9 +1074,10 @@ def prepare_common_meta(i):
 
     stimestamp=timestamp.replace('-','').replace(':','').replace('T','')
 
-    pd=i['platform_dict']
+    pi=i['platform_dict']
     rd=i['request_dict']
 
+    # Prepare tags
     tags=[
       'request',
       'request-asplos18',
@@ -1083,16 +1085,96 @@ def prepare_common_meta(i):
       stimestamp
     ]
 
+    tags.append(rd['algorithm_species'])
+
+    # Prepare meta
     meta=copy.deepcopy(rd)
 
-    tags.append(meta['algorithm_species'])
+    meta['timestamp']=timestamp
+    meta['stimestamp']=stimestamp
 
+    meta['request_version']=1
+
+    # Check platform
+    hos=pi['host_os_uoa']
+    hos_uid=pi['host_os_uid']
+    hosd=pi['host_os_dict']
+
+    tos=pi['os_uoa']
+    tos_uid=pi['os_uid']
+    tosd=pi['os_dict']
+    tbits=tosd.get('bits','')
+
+    remote=tosd.get('remote','')
+
+    tdid=pi['device_id']
+
+    features=pi.get('features',{})
+
+    fplat=features.get('platform',{})
+    fos=features.get('os',{})
+    fcpu=features.get('cpu',{})
+
+    plat_name=fplat.get('name','')
+    plat_uid=features.get('platform_uid','')
+    os_name=fos.get('name','')
+    os_uid=features.get('os_uid','')
+    cpu_name=fcpu.get('name','')
+    cpu_abi=fcpu.get('cpu_abi','')
+    if cpu_name=='' and cpu_abi!='': cpu_name='unknown-'+cpu_abi
+    cpu_uid=features.get('cpu_uid','')
+    sn=fos.get('serial_number','')
+
+    # Check if CPU clusters (TBD: need to know which one is actually used!)
+    if cpu_name=='':
+       ufcpu=features.get('cpu_unique',[])
+       if len(ufcpu)>1:
+           for q in ufcpu:
+               if cpu_name!='': cpu_name+=' ; '
+               x=q.get('ck_cpu_name','')
+               if x!='': cpu_name+=x
+
+    # GPU
+    fgpu=features.get('gpu',{})
+    gpu_name=fgpu.get('name','')
+
+    fgpgpu=features.get('gpgpu',{}).get('gpgpu',{})
+    gpgpu_name=fgpgpu.get('name','')
+    gpgpu_vendor=fgpgpu.get('vendor','')
+    gpgpu_type=fgpgpu.get('type','')
+
+    gpgpu_name2=gpgpu_name
+    if gpgpu_vendor!='': gpgpu_name2=gpgpu_vendor+' '+gpgpu_name
+
+    fgpgpu_misc=features.get('gpgpu_misc',{})
+    opencl=fgpgpu_misc.get('opencl c version','')
+
+    # Assembling meta for platform
+    meta.update({
+                 'host_os_uid':hos_uid,
+                 'target_os_uid':tos_uid,
+                 'target_device_id':tdid,
+
+                 'cpu_name':cpu_name,
+                 'cpu_abi':cpu_abi,
+                 'cpu_uid':cpu_uid,
+
+                 'os_name':os_name,
+                 'os_uid':os_uid,
+
+                 'plat_name':plat_name,
+                 'plat_uid':plat_uid,
+
+                 'gpu_name':gpu_name,
+                 'gpgpu_name':gpgpu_name2,
+                 'gpgpu_vendor':gpgpu_vendor,
+                 'opencl':opencl
+                })
+
+    # Misc info
     rd={
          'subview_uoa':'f84ca49f79a1446a'  # ReQuEST default table view from ck-autotuning repo
                                            # ck-autotuning:experiment.view:request-default
        }
-
-
-
 
     return {'return':0, 'tags':tags, 'meta':meta, 'record_dict':rd}
