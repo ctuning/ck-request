@@ -1036,3 +1036,63 @@ def dashboard(i):
     i['cid']=''
 
     return ck.access(i)
+
+##############################################################################
+# prepare common meta for ReQuEST @ ASPLOS"18
+
+def prepare_common_meta(i):
+    """
+    Input:  {
+              platform_dict - output from platform detection
+              request_dict  - info about ReQuEST submission
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+
+              tags        - tags for experiment entry
+              meta        - meta for experiment entry
+              record_dict - dict to update records
+            }
+
+    """
+
+    from time import strftime, gmtime
+    import copy
+
+    # Get current timestamp
+    r=ck.get_current_date_time({})
+    if r['return']>0: return r
+    timestamp=r['iso_datetime']
+
+    #striped timestamp
+    j=timestamp.find('.')
+    if j>0: timestamp=timestamp[:j]
+
+    stimestamp=timestamp.replace('-','').replace(':','').replace('T','')
+
+    pd=i['platform_dict']
+    rd=i['request_dict']
+
+    tags=[
+      'request',
+      'request-asplos18',
+      timestamp,
+      stimestamp
+    ]
+
+    meta=copy.deepcopy(rd)
+
+    tags.append(meta['algorithm_species'])
+
+    rd={
+         'subview_uoa':'f84ca49f79a1446a'  # ReQuEST default table view from ck-autotuning repo
+                                           # ck-autotuning:experiment.view:request-default
+       }
+
+
+
+
+    return {'return':0, 'tags':tags, 'meta':meta, 'record_dict':rd}
