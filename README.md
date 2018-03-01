@@ -255,7 +255,7 @@ $ ck cp caffe-classification-cuda request-asplos18-my-workflow:program:request-a
   or
 $ ck cp caffe-classification-opencl request-asplos18-my-workflow:program:request-asplos18-my-program
   or
-$ ck cp  request-asplos18-my-workflow:program:request-asplos18-my-program
+$ ck cp request-asplos18-my-workflow:program:request-asplos18-my-program
 ```
 
 Then you can edit JSON meta of your new program entry to describe software dependencies
@@ -311,7 +311,17 @@ There are various ways to customize your pipeline but the most obvious
 is via environment variables specified via *--env.NAME=VALUE*
 as shown in [this use-case](https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl#make-a-sample-run).
 
-## Preparing ReQuEST workflow to expose characteristics specific to a given tournament
+## Adding dummy CK report to associate with reproducible experiments
+
+Now you can add a dummy CK report which will be used to link reproducible experiments, enable interactive graphs, etc:
+
+```
+$ ck add request-asplos18-my-workflow:report:
+```
+
+Remember assigned UID of this report - you will need to provide it in the next step when preparing unified ReQuEST workflow.
+
+## Preparing unified ReQuEST workflow to expose characteristics specific to a given tournament
 
 
 
