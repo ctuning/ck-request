@@ -142,6 +142,13 @@ $ ck show env
 $ ck show env --tags=compiler
 ```
 
+You can then select a given environment or a set of environments and use them similar to Python virtual env via CK:
+```
+$ ck virtual env:{above UID}
+ or
+$ ck virtual env:{above UID1},{above UID2},{above UID3}...
+```
+
 However, if a CK module for a given software doesn't exist, you need to add one yourself
 as briefly described in [this wiki page](https://github.com/ctuning/ck/wiki/Portable-workflows) 
 and then share it with the community via *ck-env* or your own repository.
@@ -172,6 +179,11 @@ or add similar ones to [*ck-env*](https://github.com/ctuning/ck-env/tree/master/
 [*ck-tensorflow*](https://github.com/ctuning/ck-tensorflow),
 [*ck-mxnet*](https://github.com/ctuning/ck-mxnet)
 or other related repositories.
+
+You can even tell CK to install packages inside CK env entries to make a proper virtual environment for all tools and their versions:
+```
+$ ck set kernel var.install_to_env=yes
+```
 
 Feel free to ask [the CK community](http://groups.google.com/group/collective-knowledge) 
 for help or further details about CK software and packages!
