@@ -1152,6 +1152,8 @@ def prepare_common_meta(i):
 
     # Assembling meta for platform
     meta.update({
+                 'scenario_module_uoa': work['self_module_uid'],
+
                  'host_os_uid':hos_uid,
                  'target_os_uid':tos_uid,
                  'target_device_id':tdid,

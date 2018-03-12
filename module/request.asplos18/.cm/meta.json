@@ -48,6 +48,15 @@
   }, 
   "priority": -219, 
   "program_tags": "co-design,ai,dnn,request", 
+  "replay_desc": {
+    "desc_key": "pipeline_desc", 
+    "module_uoa": "b0ac08fe1d3c2615"
+  }, 
+  "replay_keys": [
+    "##characteristics#run#execution_time#min", 
+    "##characteristics#run#execution_time#exp", 
+    "##characteristics#run#execution_time#max" 
+  ], 
   "tags": [
     "request", 
     "tournaments", 
