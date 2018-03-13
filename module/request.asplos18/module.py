@@ -495,7 +495,7 @@ def show(i):
         skip=False
 
         kk=tv.get('skip_if_key_in_input','')
-        if kk!='' and i.get(kk,'')!='':
+        if kk!='' and i.get(ckey+kk,'')!='':
            skip=True
 
         if not skip:
@@ -536,7 +536,7 @@ def show(i):
             skip=False
 
             kk=tv.get('skip_if_key_in_input','')
-            if kk!='' and i.get(kk,'')!='':
+            if kk!='' and i.get(ckey+kk,'')!='':
                skip=True
 
             if not skip:
