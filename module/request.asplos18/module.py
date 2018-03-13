@@ -27,19 +27,19 @@ hextra+='</center>\n'
 hextra+='<p>\n'
 
 selector=[
-          {'name':'Species', 'key':'species'},
-          {'name':'Type', 'key':'prog_type'},
-          {'name':'Test', 'key':'prog_uoa'},
-          {'name':'Dataset', 'key':'dataset_uoa'},
-          {'name':'Platform', 'key':'plat_name', 'new_line':'yes'},
-          {'name':'Time stamp', 'key':'timestamp'}
+          {'name':'Algorithm species', 'key':'algorithm_species', 'module_uoa':'1702c3e426ca54c5'},
+          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
+          {'name':'Farm', 'key':'farm', 'new_line':'yes'},
+          {'name':'Platform', 'key':'plat_name'},
+          {'name':'CPU name', 'key':'cpu_name', 'new_line':'yes'},
+          {'name':'GPGPU name', 'key':'gpgpu_name'},
+          {'name':'OS name', 'key':'os_name'}
          ]
 
 selector2=[
+           {'name':'Workload (program,model,library)', 'key':'##choices#data_uoa#min'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
-                              'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min'},
-           {'name':'Dataset file', 'key':'##choices#env#CK_DATASET_FILENAME#min', 'new_line':'yes'},
-           {'name':'Batch size', 'key':"##choices#env#CK_IN_SHAPE_N#min", 'type':'int'},
+                              'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'}
           ]
 
 selector3=[
@@ -59,16 +59,8 @@ k_view_all='all'
 hidden_keys=[k_hi_uid, k_hi_user, k_view_all]
 
 view_cache=[
-  "##choices#env#CK_ABS_DIFF_THRESHOLD#min",
-  "##choices#env#CK_DATASET_FILENAME#min",
-  "##choices#env#CK_IN_SHAPE_C#min",
-  "##choices#env#CK_IN_SHAPE_H#min",
-  "##choices#env#CK_IN_SHAPE_N#min",
-  "##choices#env#CK_IN_SHAPE_W#min",
-  "##choices#env#CK_POOL_KERNEL#min",
-  "##choices#env#CK_POOL_PAD_SCHEME#min",
-  "##choices#env#CK_POOL_STRIDE#min",
-  "##choices#env#CK_SEED#min",
+  "##choices#data_uoa#min",
+  "##choices#env#*#min",
   "##pipeline_state#fail_bool#min",
   "##pipeline_state#fail_reason#min",
   "##characteristics#compile#compilation_success_bool#min",
@@ -76,24 +68,22 @@ view_cache=[
   "##characteristics#run#output_check_failed_bool#min",
   "##characteristics#run#execution_time#min",
   "##characteristics#run#execution_time#max",
-  "##characteristics#run#run_time_state#time_test#min",
-  "##characteristics#run#run_time_state#time_test#max",
-  "##characteristics#run#run_time_state#time_setup#min",
-  "##characteristics#run#run_time_state#time_setup#max",
+  "##characteristics#run#prediction_time_avg_s#min",
+  "##characteristics#run#prediction_time_avg_s#max",
   "##features#gpgpu@0#gpgpu_misc#opencl c version#min"
 ]
 
 table_view=[
-  {"key":"##meta#prog_uoa", "name":"Test", "skip_if_key_in_input":"prog_uoa"},
-  {"key":"##meta#dataset_uoa", "name":"Dataset", "skip_if_key_in_input":"dataset_uoa"},
+  {"key":"##meta#algorithm_species", "name":"Algoirithm species", 'module_uoa':'1702c3e426ca54c5', "skip_if_key_in_input":"algorithm_species"},
+  {"key":"##choices#data_uoa#min", "name":"Workload (program,model,library)", "skip_if_key_in_input":"##choices#data_uoa#min"},
+  {"key":"##meta#farm", "name":"Farm", "skip_if_key_in_input":"farm"},
   {"key":"##meta#plat_name", "name":"Platform", "skip_if_key_in_input":"plat_name"},
-  {"key":"##meta#timestamp", "name":"Time stamp", "skip_if_key_in_input":"timestamp"},
+  {'key':'##meta#cpu_name', 'name':'CPU name', "skip_if_key_in_input":"cpu_name"},
+  {'key':'##meta#gpgpu_name', 'name':'GPGPU name', "skip_if_key_in_input":"gpgpu_name"},
+  {'key':'##meta#os_name', 'name':'OS name', "skip_if_key_in_input":"os_name"},
   {"key":"##meta#versions", "name":"Versions", "json_and_pre":"yes", "align":"left"},
   {"key":"##choices#env#", "name":"Environment", "starts_with":"yes", "align":"left"},
-  {"key":"##characteristics#run#execution_time#min", "name":"Total time (sec. min/max)", "check_extra_key":"max", "format":"%.2e"},
-  {"key":"##characteristics#run#run_time_state#time_setup#min", "name":"Setup time (sec. min/max)", "check_extra_key":"max", "format":"%.2e"},
-  {"key":"##characteristics#run#run_time_state#time_test#min", "name":"Test time (sec. min/max)", "check_extra_key":"max", "format":"%.2e"},
-  {"key":"##meta#user", "name":"User"},
+  {"key":"##characteristics#run#prediction_time_avg_s#min", "name":"Classification time per 1 image (sec. min/max)", "check_extra_key":"max", "format":"%.4f"},
   {"key":"##extra#html_replay_button", "name":"Replay"}
 ]
 
@@ -175,6 +165,12 @@ def show(i):
 
 #    h='<hr>\n'
     h='<center>\n'
+
+#    import json
+#    h+='<pre>\n'
+#    h+=json.dumps(i, indent=2)
+#    h+='</pre>'
+
     h+='\n\n<script language="JavaScript">function copyToClipboard (text) {window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);}</script>\n\n' 
 
     h+=hextra
