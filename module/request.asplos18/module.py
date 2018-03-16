@@ -37,7 +37,7 @@ selector=[
          ]
 
 selector2=[
-           {'name':'Workload (program,model,library)', 'key':'##choices#data_uoa#min'},
+           {'name':'Algorithm implementation (program,model,framework,library)', 'key':'##choices#data_uoa#min'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
                               'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'}
           ]
@@ -68,6 +68,8 @@ view_cache=[
   "##characteristics#run#output_check_failed_bool#min",
   "##characteristics#run#execution_time#min",
   "##characteristics#run#execution_time#max",
+  "##characteristics#run#accuracy_top1#min",
+  "##characteristics#run#accuracy_top5#min",
   "##characteristics#run#prediction_time_avg_s#min",
   "##characteristics#run#prediction_time_avg_s#max",
   "##features#gpgpu@0#gpgpu_misc#opencl c version#min"
@@ -384,9 +386,9 @@ def show(i):
     bgraph={'0':[]}
     igraph={'0':[]}
 
-    stable=sorted(table, key=lambda row: (
-        ck.safe_float(row.get('##characteristics#run#execution_time#min',None),0.0)
-        ))
+#    stable=sorted(table, key=lambda row: (
+#        ck.safe_float(row.get('##characteristics#run#execution_time#min',None),0.0)
+#        ))
 
     xtscale=i.get('plot_time_in','')
     tscale=1.0
@@ -394,27 +396,34 @@ def show(i):
        tscale=1000.0
 
     ix=0
-    for row in stable:
+    for row in table:
+        dim1=row.get('##characteristics#run#accuracy_top1#min',None)
+
+#        if dim1==None:
+#           continue
+
         ix+=1
         six=str(ix)
 
-        x=row.get('##characteristics#run#execution_time#min',None)
+        x=row.get('##characteristics#run#prediction_time_avg_s#min',None)
         if type(x)!=float: 
-           tmin=0.0
+           ymin=0.0
         else:
-           tmin=x*tscale
+           ymin=x*tscale
 
-        x=row.get('##characteristics#run#execution_time#max',None)
+        x=row.get('##characteristics#run#prediction_time_avg_s#max',None)
         if type(x)!=float: 
-           tmax=tmin
+           ymax=ymin
         else:
-           tmax=x*tscale
+           ymax=x*tscale
 
         tdelta=0.0
-        if tmin!=0.0 and tmax!=0.0:
-           tdelta=tmax-tmin
+        if ymin!=0.0 and ymax!=0.0:
+           tdelta=abs(ymax-ymin)
 
-        bgraph['0'].append([ix,tmin, tmin+tdelta])
+#        bgraph['0'].append([dim1,ymin, ymin])#+tdelta])
+
+        bgraph['0'].append([ymin, ymin+tdelta, dim1])
 
         raw_data_url=url0#+'wcid='+x+':'+duid
 
@@ -437,14 +446,14 @@ def show(i):
 
            "plot_type":"d3_2d_scatter",
 
-           "display_y_error_bar2":"yes",
+           "display_x_error_bar2":"yes",
 
            "title":"Powered by Collective Knowledge",
 
            "x_ticks_period":10,
 
-           "axis_x_desc":"Experiment",
-           "axis_y_desc":"Total kernel execution time ("+xtscale+")",
+#           "axis_x_desc":"Experiment",
+#           "axis_y_desc":"Total kernel execution time ("+xtscale+")",
 
            "plot_grid":"yes",
 
