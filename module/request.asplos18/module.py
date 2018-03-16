@@ -436,7 +436,7 @@ def show(i):
         six=str(ix)
 
         if kdim1=='experiment': 
-           dim1=six
+           dim1=ix
         else:
            v=row.get(kdim1min,None)
 
@@ -461,7 +461,7 @@ def show(i):
            point.append(dim1+delta)
 
         if kdim2=='experiment': 
-           dim2=six
+           dim2=ix
         else:
            v=row.get(kdim2min,None)
 
