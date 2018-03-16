@@ -43,20 +43,31 @@ selector2=[
           ]
 
 selector3=[
-           {'name':'Plot time in', 'key':'plot_time_in'}
+           {'name':'Plot dimension 1 (X)', 'key':'plot_dimension1'},
+           {'name':'Show variation', 'key':'plot_variation_dimension1',  'new_line_after':'yes'},
+           {'name':'Plot dimension 2 (Y)', 'key':'plot_dimension2'},
+           {'name':'Show variation', 'key':'plot_variation_dimension2',  'new_line_after':'yes'}
           ]
 
 wchoices3={
-            'plot_time_in':[
-              {'name':'sec', 'value':'sec'},
-              {'name':'ms', 'value':'ms'}
-            ]}
+            'plot_dimension1':[],
+            'plot_variation_dimension1':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}],
+            'plot_dimension2':[],
+            'plot_variation_dimension2':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}]
+          }
 
 k_hi_uid='highlight_behavior_uid'
 k_hi_user='highlight_by_user'
 k_view_all='all'
 
 hidden_keys=[k_hi_uid, k_hi_user, k_view_all]
+
+dimensions=[
+             {"key":"experiment", "name":"Experiment No"},
+             {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (sec.)"},
+             {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
+             {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
+           ]
 
 view_cache=[
   "##choices#data_uoa#min",
@@ -68,10 +79,6 @@ view_cache=[
   "##characteristics#run#output_check_failed_bool#min",
   "##characteristics#run#execution_time#min",
   "##characteristics#run#execution_time#max",
-  "##characteristics#run#accuracy_top1#min",
-  "##characteristics#run#accuracy_top5#min",
-  "##characteristics#run#prediction_time_avg_s#min",
-  "##characteristics#run#prediction_time_avg_s#max",
   "##features#gpgpu@0#gpgpu_misc#opencl c version#min"
 ]
 
@@ -163,6 +170,9 @@ def show(i):
 
     refresh_cache=i.get('refresh_cache','')
 
+    if 'refresh_cache_'+form_name in i: 
+       refresh_cache='yes'
+
     bd='<div style="background-color:#bfffbf;margin:5px;">'
 
 #    h='<hr>\n'
@@ -244,6 +254,14 @@ def show(i):
        h+='\n<i>Showing '+str(prune_first_level)+' of '+str(len_splst)+' entries ...</i><br>\n'
 
     # Prepare and cache results for the table
+    for dim in dimensions:
+        k=dim['key']
+        k1=k+'#min'
+        if k1 not in view_cache:
+           view_cache.append(k1)
+        k2=k+'#max'
+        view_cache.append(k2)
+
     r=ck.access({'action':'get_and_cache_results',
                  'module_uoa':cfg['module_deps']['experiment'],
                  'lst':splst,
@@ -364,21 +382,32 @@ def show(i):
        h+='\n<i>Showing '+str(prune_second_level)+' of '+str(ltable)+' entries ...</i><br>\n'
 
     # Prepare selector 3 (without pruning - about tables and graphs)
-    if len(selector3)>0:
-       r=ck.access({'action':'prepare_html_selector',
-                    'module_uoa':cfg['module_deps']['experiment'],
-                    'start_form':'no',
-                    'url1':url1,
-                    'form_name':form_name,
-                    'background_div':bd,
-                    'selector':selector3,
-                    'crowd_key':ckey,
-                    'crowd_on_change':conc,
-                    'wchoices':wchoices3,
-                    'original_input':i,
-                    'add_reset':'yes'})
-       if r['return']>0: return r
-       h+='\n'+r['html']+'\n'
+    arc='yes'
+    if ck.cfg.get('request_skip_refresh_cache_button','')=='yes': arc=''
+
+    # Prepare dimensions
+    for dim in dimensions:
+        k=dim['key']
+        n=dim['name']
+
+        wchoices3['plot_dimension1'].append({'name':n, 'value':k})
+        wchoices3['plot_dimension2'].append({'name':n, 'value':k})
+
+    r=ck.access({'action':'prepare_html_selector',
+                 'module_uoa':cfg['module_deps']['experiment'],
+                 'start_form':'no',
+                 'url1':url1,
+                 'form_name':form_name,
+                 'background_div':bd,
+                 'selector':selector3,
+                 'crowd_key':ckey,
+                 'crowd_on_change':conc,
+                 'wchoices':wchoices3,
+                 'original_input':i,
+                 'add_refresh_cache':arc,
+                 'add_reset':'yes'})
+    if r['return']>0: return r
+    h+='\n'+r['html']+'\n'
 
     h+='\n'+hx+'\n'
 
@@ -390,40 +419,73 @@ def show(i):
 #        ck.safe_float(row.get('##characteristics#run#execution_time#min',None),0.0)
 #        ))
 
-    xtscale=i.get('plot_time_in','')
-    tscale=1.0
-    if xtscale=='ms':
-       tscale=1000.0
-
     ix=0
+
+    kdim1=i.get('plot_dimension1','')
+    kvdim1=i.get('plot_variation_dimension1','')
+    kdim2=i.get('plot_dimension2','')
+    kvdim2=i.get('plot_variation_dimension2','')
+
+    kdim1min=kdim1+'#min'
+    kdim2min=kdim2+'#min'
+    kdim1max=kdim1+'#max'
+    kdim2max=kdim2+'#max'
+
     for row in table:
-        dim1=row.get('##characteristics#run#accuracy_top1#min',None)
-
-#        if dim1==None:
-#           continue
-
         ix+=1
         six=str(ix)
 
-        x=row.get('##characteristics#run#prediction_time_avg_s#min',None)
-        if type(x)!=float: 
-           ymin=0.0
+        if kdim1=='experiment': 
+           dim1=six
         else:
-           ymin=x*tscale
+           v=row.get(kdim1min,None)
 
-        x=row.get('##characteristics#run#prediction_time_avg_s#max',None)
-        if type(x)!=float: 
-           ymax=ymin
+           if type(v)!=float: 
+              dim1=0.0
+           else:
+              dim1=v
+
+        point=[dim1]
+
+        if kdim1!='experiment' and kvdim1=='yes':
+           v=row.get(kdim1max,None)
+           if type(v)!=float: 
+              dim1max=dim1
+           else:
+              dim1max=v
+
+           delta=0.0
+           if dim1!=0.0 and dim1max!=0.0:
+              delta=abs(dim1max-dim1)
+
+           point.append(dim1+delta)
+
+        if kdim2=='experiment': 
+           dim2=six
         else:
-           ymax=x*tscale
+           v=row.get(kdim2min,None)
 
-        tdelta=0.0
-        if ymin!=0.0 and ymax!=0.0:
-           tdelta=abs(ymax-ymin)
+           if type(v)!=float: 
+              dim2=0.0
+           else:
+              dim2=v
 
-#        bgraph['0'].append([dim1,ymin, ymin])#+tdelta])
+        point.append(dim2)
 
-        bgraph['0'].append([ymin, ymin+tdelta, dim1])
+        if kdim2!='experiment' and kvdim2=='yes':
+           v=row.get(kdim2max,None)
+           if type(v)!=float: 
+              dim2max=dim2
+           else:
+              dim2max=v
+
+           delta=0.0
+           if dim2!=0.0 and dim2max!=0.0:
+              delta=abs(dim2max-dim2)
+
+           point.append(dim2+delta)
+
+        bgraph['0'].append(point)
 
         raw_data_url=url0#+'wcid='+x+':'+duid
 
@@ -446,7 +508,8 @@ def show(i):
 
            "plot_type":"d3_2d_scatter",
 
-           "display_x_error_bar2":"yes",
+           "display_x_error_bar2":kvdim1,
+           "display_y_error_bar2":kvdim2,
 
            "title":"Powered by Collective Knowledge",
 
