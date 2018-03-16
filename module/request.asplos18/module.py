@@ -49,13 +49,6 @@ selector3=[
            {'name':'Show variation', 'key':'plot_variation_dimension2',  'new_line_after':'yes'}
           ]
 
-wchoices3={
-            'plot_dimension1':[],
-            'plot_variation_dimension1':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}],
-            'plot_dimension2':[],
-            'plot_variation_dimension2':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}]
-          }
-
 k_hi_uid='highlight_behavior_uid'
 k_hi_user='highlight_by_user'
 k_view_all='all'
@@ -66,7 +59,7 @@ dimensions=[
              {"key":"experiment", "name":"Experiment No"},
              {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (sec.)"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
-             {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
+             {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"}
            ]
 
 view_cache=[
@@ -151,6 +144,13 @@ def show(i):
 
     cmuoa=i.get('crowd_module_uoa','')
     ckey=i.get('crowd_key','')
+
+    wchoices3={
+            ckey+'plot_dimension1':[],
+            ckey+'plot_variation_dimension1':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}],
+            ckey+'plot_dimension2':[],
+            ckey+'plot_variation_dimension2':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}]
+          }
 
     if 'reset_'+form_name in i: reset=True
     else: reset=False
@@ -390,8 +390,8 @@ def show(i):
         k=dim['key']
         n=dim['name']
 
-        wchoices3['plot_dimension1'].append({'name':n, 'value':k})
-        wchoices3['plot_dimension2'].append({'name':n, 'value':k})
+        wchoices3[ckey+'plot_dimension1'].append({'name':n, 'value':k})
+        wchoices3[ckey+'plot_dimension2'].append({'name':n, 'value':k})
 
     r=ck.access({'action':'prepare_html_selector',
                  'module_uoa':cfg['module_deps']['experiment'],
@@ -421,10 +421,10 @@ def show(i):
 
     ix=0
 
-    kdim1=i.get('plot_dimension1','')
-    kvdim1=i.get('plot_variation_dimension1','')
-    kdim2=i.get('plot_dimension2','')
-    kvdim2=i.get('plot_variation_dimension2','')
+    kdim1=i.get(ckey+'plot_dimension1','')
+    kvdim1=i.get(ckey+'plot_variation_dimension1','')
+    kdim2=i.get(ckey+'plot_dimension2','')
+    kvdim2=i.get(ckey+'plot_variation_dimension2','')
 
     kdim1min=kdim1+'#min'
     kdim2min=kdim2+'#min'
