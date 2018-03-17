@@ -79,18 +79,18 @@ view_cache=[
 
 table_view=[
   {"key":"##meta#algorithm_species", "name":"Algoirithm species", 'module_uoa':'1702c3e426ca54c5', "skip_if_key_in_input":"algorithm_species"},
-  {"key":"##choices#data_uoa#min", "name":"Workload (program,model,library)", "skip_if_key_in_input":"##choices#data_uoa#min"},
+  {"key":"##choices#data_uoa#min", "name":"Workload (program,model,library)", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##meta#farm", "name":"Farm", "skip_if_key_in_input":"farm"},
   {"key":"##meta#plat_name", "name":"Platform", "skip_if_key_in_input":"plat_name"},
   {'key':'##meta#cpu_name', 'name':'CPU name', "skip_if_key_in_input":"cpu_name"},
   {'key':'##meta#gpgpu_name', 'name':'GPGPU name', "skip_if_key_in_input":"gpgpu_name"},
   {'key':'##meta#os_name', 'name':'OS name', "skip_if_key_in_input":"os_name"},
-  {"key":"##meta#versions", "name":"Versions", "json_and_pre":"yes", "align":"left"},
-  {"key":"##meta#deps_summary#compiler#full_name", "name":"Compiler"},
-  {"key":"##meta#deps_summary#library#full_name", "name":"Library"},
+  {"key":"##meta#versions", "name":"SW deps and versions", "json_and_pre":"yes", "align":"left"},
+  {"key":"##meta#deps_summary#compiler#full_name", "name":"Compiler", "skip_if_the_same_key_in_input":"yes"},
+  {"key":"##meta#deps_summary#library#full_name", "name":"Library", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##choices#env#", "name":"Environment", "starts_with":"yes", "align":"left"},
   {"key":"##characteristics#run#prediction_time_avg_s#min", "name":"Classification time per 1 image (sec. min/max)", "check_extra_key":"max", "format":"%.4f"},
-  {"key":"##extra#html_replay_button", "name":"Replay"}
+  {"key":"##extra#html_replay_button", "name":"Artifacts/DOI/replay"}
 ]
 
 prune_first_level=100
@@ -618,6 +618,9 @@ def show(i):
         if kk!='' and i.get(ckey+kk,'')!='':
            skip=True
 
+        if not skip and tv.get('skip_if_the_same_key_in_input','')=='yes' and i.get(ckey+k,'')!='':
+           skip=True
+
         if not skip:
            n=tv.get('name','')
            if n=='': n=k
@@ -657,6 +660,9 @@ def show(i):
 
             kk=tv.get('skip_if_key_in_input','')
             if kk!='' and i.get(ckey+kk,'')!='':
+               skip=True
+
+            if not skip and tv.get('skip_if_the_same_key_in_input','')=='yes' and i.get(ckey+k,'')!='':
                skip=True
 
             if not skip:
