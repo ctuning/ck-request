@@ -38,6 +38,8 @@ selector=[
 
 selector2=[
            {'name':'Algorithm implementation (program,model,framework,library)', 'key':'##choices#data_uoa#min'},
+           {'name':'Compiler', 'key':'##meta#deps_summary#compiler#full_name','new_line':'yes'},
+           {'name':'Library', 'key':'##meta#deps_summary#library#full_name'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
                               'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'}
           ]
@@ -56,8 +58,8 @@ k_view_all='all'
 hidden_keys=[k_hi_uid, k_hi_user, k_view_all]
 
 dimensions=[
-             {"key":"experiment", "name":"Experiment No"},
-             {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (sec.)"},
+             {"key":"experiment", "name":"Experiment number"},
+             {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (min, sec.)"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
              {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"}
            ]
@@ -84,6 +86,8 @@ table_view=[
   {'key':'##meta#gpgpu_name', 'name':'GPGPU name', "skip_if_key_in_input":"gpgpu_name"},
   {'key':'##meta#os_name', 'name':'OS name', "skip_if_key_in_input":"os_name"},
   {"key":"##meta#versions", "name":"Versions", "json_and_pre":"yes", "align":"left"},
+  {"key":"##meta#deps_summary#compiler#full_name", "name":"Compiler"},
+  {"key":"##meta#deps_summary#library#full_name", "name":"Library"},
   {"key":"##choices#env#", "name":"Environment", "starts_with":"yes", "align":"left"},
   {"key":"##characteristics#run#prediction_time_avg_s#min", "name":"Classification time per 1 image (sec. min/max)", "check_extra_key":"max", "format":"%.4f"},
   {"key":"##extra#html_replay_button", "name":"Replay"}
@@ -136,6 +140,7 @@ def show(i):
     import os
     import copy
     import time
+    import json
 
     # Preparing various parameters to render HTML dashboard
     st=''
@@ -238,16 +243,55 @@ def show(i):
     olst=r['lst'] # original list (if all_choices)
     plst=r['pruned_lst']
 
+    # Compose extra meta (such as deps, versions, etc)
+    for q in plst:
+        meta=q['meta']['meta']
+        ds=meta.get('deps_summary',{})
+
+        xds={}
+
+        ver=json.dumps(ds, indent=2, sort_keys=True)
+        ver1=''
+
+        for k in sorted(ds):
+            x=ds[k]
+            y=str(x.get('data_name',''))
+
+            y1=str(x.get('version',''))
+            if y1!='': y+=' '+y1
+
+            y1=str(x.get('git_revision',''))
+            if y1!='': y+=' ('+y1+')'
+
+            x['full_name']=y
+
+            ver1+='<b>'+k+'</b>: '+str(y)+'<br>\n'
+
+#        dver=meta.get('engine_meta',{}).get(cpu_abi,{})
+#        ver+='main: '+str(dver.get('program_version',''))+'\n'
+#        dps=dver.get('deps_versions',{})
+#        for dx in dps:
+#            ver+=dx+': '+str(dps[dx].get('version',''))+'\n'
+
+        ver=ver.replace("\'","'").replace("'","\\'").replace('\"','"').replace('"',"\\'").replace('\n','\\n')
+        if ver!='':
+            ver='<center><input type="button" class="ck_small_button" onClick="alert(\''+ver+'\');" value="View json"></center>\n'
+
+        ver+='<br>'+ver1
+
+        meta['versions']=ver
+
     # Sort list ***********************************************************************************
     dt=time.time()
-    splst=sorted(plst, key=lambda x: (
-        x.get('meta',{}).get('meta',{}).get('prog_uoa',''), 
-        x.get('meta',{}).get('meta',{}).get('dataset_uoa',''), 
-        x.get('meta',{}).get('meta',{}).get('plat_name',''), 
-        x.get('meta',{}).get('meta',{}).get('timestamp','')
-        ))
-
-    if debug: h+='\n<p>Debug time (sorting table): '+str(time.time()-dt)+' sec.<p>\n'
+    splst=plst
+#        sorted(plst, key=lambda x: (
+#        x.get('meta',{}).get('meta',{}).get('prog_uoa',''), 
+#        x.get('meta',{}).get('meta',{}).get('dataset_uoa',''), 
+#        x.get('meta',{}).get('meta',{}).get('plat_name',''), 
+#        x.get('meta',{}).get('meta',{}).get('timestamp','')
+#        ))
+#
+#    if debug: h+='\n<p>Debug time (sorting table): '+str(time.time()-dt)+' sec.<p>\n'
 
     # Prune list **********************************************************************************
     len_splst=len(splst)
@@ -304,6 +348,7 @@ def show(i):
         duoa=row.get('##data_uid','')
         dpoint=row.get('##point_uid','')
 
+        # Replay
         x=''
         if duoa!='' and dpoint!='':
            x='ck replay experiment:'+duoa+' --point='+str(dpoint)
