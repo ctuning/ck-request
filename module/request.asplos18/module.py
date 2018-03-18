@@ -11,24 +11,24 @@ cfg={}  # Will be updated by CK (meta description of this module)
 work={} # Will be updated by CK (temporal data)
 ck=None # Will be updated by CK (initialized CK kernel) 
 
+repo_with_validated_results='ck-request-asplos18-results'
+
 # Local settings
 line='================================================================'
-
-experiment_tags='request-asplos18'
-experiment_repos=['local','ck-request','ck-request-asplos18-results']
 
 form_name='request_web_form'
 onchange='document.'+form_name+'.submit();'
 
 hextra='<center>\n'
 hextra+='<p>\n'
-hextra+=' Results from <a href="http://cknowledge.org/request-cfp-asplos2018.html">open ReQuEST @ ASPLOS\'18 tournament</a>\n'
+hextra+=' Scoreboard with results from <a href="http://cknowledge.org/request-cfp-asplos2018.html">open ReQuEST @ ASPLOS\'18 tournament</a> (prototype)\n'
 hextra+='</center>\n'
 hextra+='<p>\n'
 
 selector=[
           {'name':'Algorithm species', 'key':'algorithm_species', 'module_uoa':'1702c3e426ca54c5'},
-          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
+#          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
+          {'name':'Results', 'key':'results', 'skip_update':'yes'},
           {'name':'Farm', 'key':'farm', 'new_line':'yes'},
           {'name':'Platform', 'key':'plat_name'},
           {'name':'CPU name', 'key':'cpu_name', 'new_line':'yes'},
@@ -224,6 +224,18 @@ def show(i):
 
     h+='\n\n'
 
+    # Check repos
+    experiment_tags='request-asplos18'
+    experiment_repos=['ck-request', repo_with_validated_results]
+
+    x=i.get(ckey+'results','')
+    if x=='all':
+       experiment_repos=[]
+    elif x=='local':
+       experiment_repos.append('local')
+    elif x!='':
+       experiment_repos.append(x)
+
     # Prepare first level of selection with pruning ***********************************************
     r=ck.access({'action':'prepare_selector',
                  'module_uoa':cfg['module_deps']['experiment'],
@@ -380,8 +392,8 @@ def show(i):
 
     hx=''
     if ltable==0:
-        h+='<b>No results found!</b>'
-        return {'return':0, 'html':h, 'style':st}
+       hx='\n<b>No results found!</b>'
+#        return {'return':0, 'html':h, 'style':st}
 
     elif ltable>prune_second_level and view_all!='yes':
        table=table[:prune_second_level]
@@ -399,6 +411,19 @@ def show(i):
 
     choices1=r['choices']
     wchoices1=r['wchoices']
+
+    # Check results from papers
+    x=[
+       {"name":"only validated","value":""},
+#       {"name":"all","value":"all"},
+       {"name":"local","value":"local"},
+       {"name":"for ReQuEST@ASPLOS'18 workflow \"mobilenets-armcl-opencl\"","value":"ck-request-asplos18-results-mobilenets-armcl-opencl"},
+       {"name":"for ReQuEST@ASPLOS'18 worklfow \"caffe-intel\"","value":"ck-request-asplos18-results-caffe-intel"},
+       {"name":"for ReQuEST@ASPLOS'18 workflow \"mobilenets-tvm-arm\"","value":"ck-request-asplos18-results-mobilenets-tvm-arm"},
+       {"name":"for ReQuEST@ASPLOS'18 workflow \"iot-farm\"","value":"ck-request-asplos18-results-iot-farm"},
+       {"name":"for ReQuEST@ASPLOS'18 workflow \"resnet-tvm-fpga\"","value":"ck-request-asplos18-results-resnet-tvm-fpga"}
+      ]
+    wchoices1['results']=x
 
     # Prepare selector 1  (based on choices from selector 2)
     r=ck.access({'action':'prepare_html_selector',
@@ -460,8 +485,8 @@ def show(i):
     h+='\n'+hx+'\n'
 
     # Prepare graph *********************************************************************************************************
-    bgraph={'0':[]}
-    igraph={'0':[]}
+    bgraph={'0':[], '1':[]}
+    igraph={'0':[], '1':[]}
 
 #    stable=sorted(table, key=lambda row: (
 #        ck.safe_float(row.get('##characteristics#run#execution_time#min',None),0.0)
@@ -533,15 +558,22 @@ def show(i):
 
            point.append(dim2+delta)
 
-        bgraph['0'].append(point)
-
         raw_data_url=url0#+'wcid='+x+':'+duid
 
+        ind='0'
+        ruoa=row.get('##repo_uoa','')
+
+        if ruoa==repo_with_validated_results: ind='1'
+
+        bgraph[ind].append(point)
+        igraph[ind].append({'size':4, 'features':row, 'anchor':'id'+six})
+
+#Old
 #        igraph['0'].append({'size':sizem, 'color':xcol, 'features':row, 'url':'', 'url_ext':raw_data_url})
-        igraph['0'].append({'size':4, 'features':row, 'anchor':'id'+six}) #, 'url':'', 'url_ext':''})
+#        igraph['0'].append({'size':4, 'features':row, 'anchor':'id'+six}) #, 'url':'', 'url_ext':''})
 
 
-    if len(bgraph['0'])>0:
+    if len(bgraph['0'])>0 or len(bgraph['1'])>0:
        dt=time.time()
        ii={'action':'plot',
            'module_uoa':cfg['module_deps']['graph'],
@@ -569,6 +601,8 @@ def show(i):
            "plot_grid":"yes",
 
            "d3_div":"ck_interactive",
+
+           "point_style":{"1":{"color":"#dc3912", "connect_lines":"no"}},
 
            "image_width":"900",
            "image_height":"400",
