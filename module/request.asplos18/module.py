@@ -423,7 +423,7 @@ def show(i):
        {"name":"for ReQuEST@ASPLOS'18 workflow \"iot-farm\"","value":"ck-request-asplos18-results-iot-farm"},
        {"name":"for ReQuEST@ASPLOS'18 workflow \"resnet-tvm-fpga\"","value":"ck-request-asplos18-results-resnet-tvm-fpga"}
       ]
-    wchoices1['results']=x
+    wchoices1[ckey+'results']=x
 
     # Prepare selector 1  (based on choices from selector 2)
     r=ck.access({'action':'prepare_html_selector',
