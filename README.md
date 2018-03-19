@@ -339,7 +339,23 @@ Remember assigned UID of this report - you will need to provide it in the next s
 
 ## Validating results by external reviewers
 
+You can also pack all experimental results to share with colleagues as following:
+```
+$ ck zip local:experiment:*
+```
 
+CK will create a "ckr-local.zip" file with CK entries containing raw experimental results.
+
+You can unzip it to the local (or other) repository on another machine via CK as following:
+```
+$ ck unzip repo:local --zip=ckr-local.zip
+```
+
+You can then replay a given experiment on another machine as following:
+```
+$ ck search experiment:* --tags=request-asplos18
+$ ck replay experiment:{above names}
+```
 
 ## Recording validated results to ck-request-validated-results
 
