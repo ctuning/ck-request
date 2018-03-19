@@ -362,6 +362,10 @@ $ ck replay experiment:{above names}
 
 ## Visualizing results on scoreboard for different optimization categories
 
+You can run a local ReQuEST dashboard/scoreboard as following:
+```
+$ ck dashboard request.apslos18
+```
 
 ## Archiving stable version in a permanent repository with ACM badges
 
