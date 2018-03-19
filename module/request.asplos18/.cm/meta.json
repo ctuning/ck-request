@@ -29,6 +29,7 @@
   }, 
   "license": "See CK LICENSE.txt for licensing details", 
   "module_deps": {
+    "artifact":"417c3b437caa4594",
     "choice": "e4564d6f984400d7", 
     "env": "9b9b3208ac44b891", 
     "experiment": "bc0409fb61f0aa82", 

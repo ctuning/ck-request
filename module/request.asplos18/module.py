@@ -28,16 +28,21 @@ hextra+='<p>\n'
 selector=[
           {'name':'Algorithm species', 'key':'algorithm_species', 'module_uoa':'1702c3e426ca54c5'},
 #          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
-          {'name':'Results', 'key':'results', 'skip_update':'yes'},
+          {'name':'Model species', 'key':'model_species', 'module_uoa':'38e7de41acb41d3b'},
+          {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
+          {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
+          {'name':'Results', 'key':'results', 'skip_update':'yes', 'new_line':'yes'},
           {'name':'Farm', 'key':'farm', 'new_line':'yes'},
+          {'name':'Platform species', 'key':'platform_species'},
           {'name':'Platform', 'key':'plat_name'},
-          {'name':'CPU name', 'key':'cpu_name', 'new_line':'yes'},
-          {'name':'GPGPU name', 'key':'gpgpu_name'},
-          {'name':'OS name', 'key':'os_name'}
+          {'name':'OS name', 'key':'os_name', 'new_line':'yes'},
+          {'name':'CPU name', 'key':'cpu_name'},
+          {'name':'GPGPU name', 'key':'gpgpu_name'}
          ]
 
 selector2=[
            {'name':'Algorithm implementation (program,model,framework,library)', 'key':'##choices#data_uoa#min'},
+           {'name':'Model design', 'key':'##meta#deps_summary#weights#full_name'},
            {'name':'Compiler', 'key':'##meta#deps_summary#compiler#full_name','new_line':'yes'},
            {'name':'Library', 'key':'##meta#deps_summary#library#full_name'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
@@ -61,9 +66,18 @@ dimensions=[
              {"key":"experiment", "name":"Experiment number"},
              {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (min, sec.)"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
-             {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"}
+             {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
+             {"key":"##features#model_size", "name":"Model size (B)"},
+             {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)"},
+             {"key":"##meta#platform_price", "name":"Platform price ($)"},
+             {"key":"##meta#usage_cost", "name":"Usage cost ($)"},
+             {"key":"##meta#platform_species", "name":"Platform species"},
+             {"key":"##meta#model_species", "name":"Model species"},
+             {"key":"##meta#dataset_species", "name":"Dataset species"},
+
            ]
 
+# Only from points (not from entry meta!)
 view_cache=[
   "##choices#data_uoa#min",
   "##choices#env#*#min",
@@ -78,20 +92,33 @@ view_cache=[
 ]
 
 table_view=[
-  {"key":"##meta#algorithm_species", "name":"Algoirithm species", 'module_uoa':'1702c3e426ca54c5', "skip_if_key_in_input":"algorithm_species"},
+  {"key":"##meta#algorithm_species", "name":"Algorithm species", 'module_uoa':'1702c3e426ca54c5', "skip_if_key_in_input":"algorithm_species"},
   {"key":"##choices#data_uoa#min", "name":"Workload (program,model,library)", "skip_if_the_same_key_in_input":"yes"},
+  {"key":"##meta#model_species", "name":"Model species", 'module_uoa':'38e7de41acb41d3b', "skip_if_key_in_input":"model_species"},
+  {"key":"##meta#dataset_species", "name":"Dataset species", "skip_if_key_in_input":"dataset_species"},
+  {"key":"##meta#dataset_size", "name":"Dataset size", "skip_if_key_in_input":"dataset_size", "type":"int"},
   {"key":"##meta#farm", "name":"Farm", "skip_if_key_in_input":"farm"},
-  {"key":"##meta#plat_name", "name":"Platform", "skip_if_key_in_input":"plat_name"},
+  {"key":"##meta#platform_species", "name":"Platform species", "skip_if_key_in_input":"platform_species"},
+  {"key":"##meta#plat_name", "name":"Platform name", "skip_if_key_in_input":"plat_name"},
   {'key':'##meta#cpu_name', 'name':'CPU name', "skip_if_key_in_input":"cpu_name"},
   {'key':'##meta#gpgpu_name', 'name':'GPGPU name', "skip_if_key_in_input":"gpgpu_name"},
   {'key':'##meta#os_name', 'name':'OS name', "skip_if_key_in_input":"os_name"},
   {"key":"##meta#versions", "name":"SW deps and versions", "json_and_pre":"yes", "align":"left"},
+  {"key":"##meta#deps_summary#weights#full_name", "name":"Model design", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##meta#deps_summary#compiler#full_name", "name":"Compiler", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##meta#deps_summary#library#full_name", "name":"Library", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##choices#env#", "name":"Environment", "starts_with":"yes", "align":"left"},
   {"key":"##characteristics#run#prediction_time_avg_s#min", "name":"Classification time per 1 image (sec. min/max)", "check_extra_key":"max", "format":"%.4f"},
-  {"key":"##extra#html_replay_button", "name":"Artifacts/DOI/replay"}
+  {"key":"##extra#accuracy_sum", "name":"Accuracy (Top1&nbsp;/&nbsp;Top5)"},
+  {"key":"##features#model_size#min", "name":"Model size (B)"},
+  {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "check_extra_key":"max", "format":"%.3f"},
+  {"key":"##meta#platform_price_str", "name":"Platform price ($)"},
+  {"key":"##meta#usage_cost", "name":"Usage cost ($)"},
+  {"key":"##extra#html_reproducibility", "name":"Reproducibility"}
 ]
+
+artifacts={}
+artifacts_cache={}
 
 prune_first_level=100
 prune_second_level=400
@@ -257,6 +284,8 @@ def show(i):
 
     # Compose extra meta (such as deps, versions, etc)
     for q in plst:
+        duid=q['data_uid']
+
         meta=q['meta']['meta']
         ds=meta.get('deps_summary',{})
 
@@ -292,6 +321,30 @@ def show(i):
         ver+='<br>'+ver1
 
         meta['versions']=ver
+
+        x=meta.get('platform_price','')
+        if x!='':
+           x=str(x)
+           y=meta.get('platform_price_date','')
+           if y!='':
+              x+=' <i>('+y+')</i>'
+           meta['platform_price_str']=x
+
+        # Artifact info
+        auoa=meta.get('artifact','')
+        if auoa!='' and artifacts.get(duid,'')=='':
+           x=artifacts_cache.get(auoa,'')
+
+           if x=='':
+              r=ck.access({'action':'load',
+                           'module_uoa':cfg['module_deps']['artifact'],
+                           'data_uoa':auoa})
+              if r['return']==0:
+                 dx=r['dict']
+                 x='found\n'
+
+              x+='<br>\n'
+           artifacts[duid]=x   
 
     # Sort list ***********************************************************************************
     dt=time.time()
@@ -367,7 +420,25 @@ def show(i):
            y=ck.cfg.get('add_extra_to_replay','')
            if y!='':x+=' '+y
 
-        row['##extra#html_replay_button']='<input type="button" class="ck_small_button" onClick="copyToClipboard(\''+x+'\');" value="Copy to clipboard">\n'
+        xh='<input type="button" class="ck_small_button" onClick="copyToClipboard(\''+x+'\');" value="CK replay">\n'
+
+        xh=artifacts.get(duoa,'')+xh
+
+        row['##extra#html_reproducibility']=xh
+
+        # Accuracy sum (Top1/Top5)
+        x=''
+
+        x1=row.get('##characteristics#run#accuracy_top1#min','')
+        x2=row.get('##characteristics#run#accuracy_top5#min','')
+
+        if x1!='':
+           x='%.3f' % x1
+        if x2!='':
+           x+='&nbsp;/&nbsp;'
+           x+='%.3f' % x2
+
+        row['##extra#accuracy_sum']=x
 
     # Prune first list based on second selection*****************************************************************************
     if all_choices:
@@ -513,7 +584,7 @@ def show(i):
         else:
            v=row.get(kdim1min,None)
 
-           if type(v)!=float: 
+           if type(v)!=float and type(v)!=int: 
               dim1=0.0
            else:
               dim1=v
@@ -522,7 +593,7 @@ def show(i):
 
         if kdim1!='experiment' and kvdim1=='yes':
            v=row.get(kdim1max,None)
-           if type(v)!=float: 
+           if type(v)!=float and type(v)!=int: 
               dim1max=dim1
            else:
               dim1max=v
@@ -538,7 +609,7 @@ def show(i):
         else:
            v=row.get(kdim2min,None)
 
-           if type(v)!=float: 
+           if type(v)!=float and type(v)!=int: 
               dim2=0.0
            else:
               dim2=v
@@ -547,7 +618,7 @@ def show(i):
 
         if kdim2!='experiment' and kvdim2=='yes':
            v=row.get(kdim2max,None)
-           if type(v)!=float: 
+           if type(v)!=float and type(v)!=int: 
               dim2max=dim2
            else:
               dim2max=v
