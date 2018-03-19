@@ -484,7 +484,14 @@ def show(i):
            y=ck.cfg.get('add_extra_to_replay','')
            if y!='':x+=' '+y
 
-        xh='<input type="button" class="ck_small_button" onClick="copyToClipboard(\''+x+'\');" value="CK replay">\n'
+        xh='<p><input type="button" class="ck_small_button" onClick="copyToClipboard(\''+x+'\');" value="CK replay">\n'
+
+        # Move to validated
+        x=''
+        if duoa!='' and dpoint!='':
+           x='ck validate request.asplos18 --experiment='+duoa+' --point='+str(dpoint)
+
+        xh+='<p><input type="button" class="ck_small_button" onClick="copyToClipboard(\''+x+'\');" value="Validate">\n'
 
         xh=artifacts.get(duoa,'')+xh
 
@@ -1481,3 +1488,69 @@ def prepare_common_meta(i):
        }
 
     return {'return':0, 'tags':tags, 'meta':meta, 'record_dict':rd}
+
+##############################################################################
+# move validated experiment to an official repo
+
+def validate(i):
+    """
+    Input:  {
+              (experiment) - experiment UOA
+              (point)      - point to move
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    import os
+    import shutil
+
+    experiment=i.get('experiment','')
+
+    if experiment=='':
+       return {'return':1, 'error':'experiment is not defined'}
+
+    # Find experiment
+    r=ck.access({'action':'load',
+                 'module_uoa':cfg['module_deps']['experiment'],
+                 'data_uoa':experiment})
+    if r['return']>0: return r
+
+    duid=r['data_uid']
+    duoa=r['data_uoa']
+
+    d=r['dict']
+    p=r['path']
+
+    # Check if entry is already there 
+    r=ck.access({'action':'add',
+                 'module_uoa':cfg['module_deps']['experiment'],
+                 'repo_uoa':repo_with_validated_results,
+                 'dict':d,
+                 'common_func':'yes',
+                 'sort_keys':'yes'})
+    if r['return']>0: return r             
+
+    nduid=r['data_uid']
+    np=r['path']
+
+    # Check point
+    point=i.get('point','')
+
+    if point!='':
+       p1=os.listdir(p)
+       for d in p1:
+           if d.startswith('ckp-'+point+'.'):
+              pf1=os.path.join(p,d)
+              pf2=os.path.join(np,d)
+
+              shutil.copyfile(pf1,pf2)
+
+    ck.out('Copied to '+np)
+
+    return {'return':0}
