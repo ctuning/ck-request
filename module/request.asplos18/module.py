@@ -114,7 +114,7 @@ table_view=[
   {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "check_extra_key":"max", "format":"%.3f"},
   {"key":"##meta#platform_price_str", "name":"Platform price ($)"},
   {"key":"##meta#usage_cost", "name":"Usage cost ($)"},
-  {"key":"##extra#html_reproducibility", "name":"Reproducibility"}
+  {"key":"##extra#html_reproducibility", "name":"Reproducibility", "align":"left"}
 ]
 
 artifacts={}
@@ -341,9 +341,73 @@ def show(i):
                            'data_uoa':auoa})
               if r['return']==0:
                  dx=r['dict']
-                 x='found\n'
 
-              x+='<br>\n'
+                 # Check repos
+                 repos=dx.get('repos',[])
+                 if len(repos)>0:
+                    x='<b>Repositories</b><br>\n'
+                    x+='<div style="margin:7px;">\n'
+                    for a in repos:
+                        n=a['name']
+                        u=a['url']
+                        x+='<a href="'+u+'">'+n+'</a><br>\n'
+                    x+='</div>\n'
+
+                 # Check interactive report
+                 ir=dx.get('interactive_report','')
+                 if ir!='':
+                    u=url0+'wcid='+cfg['module_deps']['report']+':'+ir
+
+                    x+='<p><b>Interactive</b><br>\n'
+                    x+='<div style="margin:7px;">\n'
+                    x+='<a href="'+u+'" target="_blank">Article</a>\n'
+                    x+='</div>\n'
+
+                 # Check DOIs
+                 dois=dx.get('dois',[])
+                 if len(dois)>0:
+                    x+='<p><b>DOIs</b><br>\n'
+                    x+='<div style="margin:7px;">\n'
+                    for a in dois:
+                        n=a['name']
+                        u=a['url']
+                        x+='<a href="'+u+'">'+n+'</a><br>\n'
+                    x+='</div>\n'
+
+                 # Check ACM badges
+                 y=''
+                 acm=dx.get('acm_badges',{})
+
+                 if acm.get('available','')=='yes':
+                    y='available'
+
+                 if acm.get('reusable','')=='yes':
+                    if y!='':y+=', '
+                    y+='reusable'
+                 elif acm.get('functional','')=='yes':
+                    if y!='':y+=', '
+                    y='functional'
+
+                 if acm.get('replicated','')=='yes':
+                    if y!='':y+=', '
+                    y+='replicated'
+                 elif acm.get('replicated','')=='yes':
+                    if y!='':y+=', '
+                    y+='reproduced'
+
+                 if y!='':
+                    x+='<p><b>ACM badges</b><br>\n'
+                    x+='<div style="margin:7px;">\n'
+                    x+=y+'<br>\n'
+                    x+='</div>\n'
+
+                 # Check extra HTML
+                 y=dx.get('html','')
+                 if y!='':
+                    x+='<p>'+y+'<br>\n'
+
+              x+='<p>\n'
+
            artifacts[duid]=x   
 
     # Sort list ***********************************************************************************
