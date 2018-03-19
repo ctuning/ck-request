@@ -26,12 +26,12 @@ hextra+='</center>\n'
 hextra+='<p>\n'
 
 selector=[
+          {'name':'Results', 'key':'results', 'skip_update':'yes', 'new_line_after':'yes'},
           {'name':'Algorithm species', 'key':'algorithm_species', 'module_uoa':'1702c3e426ca54c5'},
 #          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
           {'name':'Model species', 'key':'model_species', 'module_uoa':'38e7de41acb41d3b'},
           {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
           {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
-          {'name':'Results', 'key':'results', 'skip_update':'yes', 'new_line':'yes'},
           {'name':'Farm', 'key':'farm', 'new_line':'yes'},
           {'name':'Platform species', 'key':'platform_species'},
           {'name':'Platform', 'key':'plat_name'},
