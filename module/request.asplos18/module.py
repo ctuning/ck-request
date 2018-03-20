@@ -21,7 +21,8 @@ onchange='document.'+form_name+'.submit();'
 
 hextra='<center>\n'
 hextra+='<p>\n'
-hextra+=' Scoreboard with results from <a href="http://cknowledge.org/request-cfp-asplos2018.html">open ReQuEST @ ASPLOS\'18 tournament</a> (prototype)\n'
+hextra+=' Scoreboard prototype for <a href="http://cknowledge.org/request-cfp-asplos2018.html">ReQuEST@ASPLOS\'18 tournament</a>\n'
+hextra+=' (your <a href="https://github.com/ctuning/ck-request/issues">feedback</a>)\n'
 hextra+='</center>\n'
 hextra+='<p>\n'
 
@@ -30,6 +31,7 @@ selector=[
           {'name':'Algorithm species', 'key':'algorithm_species', 'module_uoa':'1702c3e426ca54c5'},
 #          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
           {'name':'Model species', 'key':'model_species', 'module_uoa':'38e7de41acb41d3b'},
+          {'name':'Precision', 'key':'model_precision'},
           {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
           {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
           {'name':'Farm', 'key':'farm', 'new_line':'yes'},
@@ -46,7 +48,10 @@ selector2=[
            {'name':'Compiler', 'key':'##meta#deps_summary#compiler#full_name','new_line':'yes'},
            {'name':'Library', 'key':'##meta#deps_summary#library#full_name'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
-                              'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'}
+                              'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'},
+           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','new_line':'yes'},
+           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min'}
+
           ]
 
 selector3=[
@@ -73,8 +78,10 @@ dimensions=[
              {"key":"##meta#usage_cost", "name":"Usage cost ($)"},
              {"key":"##meta#platform_species", "name":"Platform species"},
              {"key":"##meta#model_species", "name":"Model species"},
+             {"key":"##meta#model_precision", "name":"Model precision"},
              {"key":"##meta#dataset_species", "name":"Dataset species"},
-
+             {"key":"##features#cpu_freq", "name":"CPU freq (MHz)"},
+             {"key":"##features#gpu_freq", "name":"GPU freq (MHz)"}
            ]
 
 # Only from points (not from entry meta!)
@@ -88,6 +95,8 @@ view_cache=[
   "##characteristics#run#output_check_failed_bool#min",
   "##characteristics#run#execution_time#min",
   "##characteristics#run#execution_time#max",
+  "##features#cpu_freq#min",
+  "##features#gpu_freq#min",
   "##features#gpgpu@0#gpgpu_misc#opencl c version#min"
 ]
 
@@ -95,13 +104,16 @@ table_view=[
   {"key":"##meta#algorithm_species", "name":"Algorithm species", 'module_uoa':'1702c3e426ca54c5', "skip_if_key_in_input":"algorithm_species"},
   {"key":"##choices#data_uoa#min", "name":"Workload (program,model,library)", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##meta#model_species", "name":"Model species", 'module_uoa':'38e7de41acb41d3b', "skip_if_key_in_input":"model_species"},
+  {"key":"##meta#model_precision", "name":"Precision", "skip_if_key_in_input":"model_precision"},
   {"key":"##meta#dataset_species", "name":"Dataset species", "skip_if_key_in_input":"dataset_species"},
   {"key":"##meta#dataset_size", "name":"Dataset size", "skip_if_key_in_input":"dataset_size", "type":"int"},
   {"key":"##meta#farm", "name":"Farm", "skip_if_key_in_input":"farm"},
   {"key":"##meta#platform_species", "name":"Platform species", "skip_if_key_in_input":"platform_species"},
   {"key":"##meta#plat_name", "name":"Platform name", "skip_if_key_in_input":"plat_name"},
   {'key':'##meta#cpu_name', 'name':'CPU name', "skip_if_key_in_input":"cpu_name"},
+  {"key":"##features#cpu_freq#min", "name":"CPU freq (MHz)", "skip_if_the_same_key_in_input":"yes"},
   {'key':'##meta#gpgpu_name', 'name':'GPGPU name', "skip_if_key_in_input":"gpgpu_name"},
+  {"key":"##features#gpu_freq#min", "name":"GPU freq (MHz)", "skip_if_the_same_key_in_input":"yes"},
   {'key':'##meta#os_name', 'name':'OS name', "skip_if_key_in_input":"os_name"},
   {"key":"##meta#versions", "name":"SW deps and versions", "json_and_pre":"yes", "align":"left"},
   {"key":"##meta#deps_summary#weights#full_name", "name":"Model design", "skip_if_the_same_key_in_input":"yes"},
@@ -641,6 +653,16 @@ def show(i):
     kdim2=i.get(ckey+'plot_dimension2','')
     kvdim2=i.get(ckey+'plot_variation_dimension2','')
 
+    # Find X/Y names
+    ndim1=''
+    ndim2=''
+    for k in dimensions:
+        kk=k['key']
+        kn=k['name']
+
+        if kk==kdim1: ndim1=kn
+        if kk==kdim2: ndim2=kn
+
     kdim1min=kdim1+'#min'
     kdim2min=kdim2+'#min'
     kdim1max=kdim1+'#max'
@@ -737,8 +759,8 @@ def show(i):
 
            "x_ticks_period":10,
 
-#           "axis_x_desc":"Experiment",
-#           "axis_y_desc":"Total kernel execution time ("+xtscale+")",
+           "axis_x_desc": ndim1,
+           "axis_y_desc": ndim2,
 
            "plot_grid":"yes",
 
