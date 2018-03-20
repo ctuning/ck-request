@@ -27,7 +27,7 @@ hextra+='</center>\n'
 hextra+='<p>\n'
 
 selector=[
-          {'name':'Results', 'key':'results', 'skip_update':'yes', 'new_line_after':'yes'},
+          {'name':'Results', 'key':'results', 'skip_update':'yes', 'new_line_after':'yes', 'skip_from_reset':'yes'}, # need to skip from reset to be able to get values from other repos
           {'name':'Algorithm species', 'key':'algorithm_species', 'module_uoa':'1702c3e426ca54c5'},
 #          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
           {'name':'Model species', 'key':'model_species', 'module_uoa':'38e7de41acb41d3b'},
@@ -35,11 +35,11 @@ selector=[
           {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
           {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
           {'name':'Farm', 'key':'farm', 'new_line':'yes'},
-          {'name':'Platform species', 'key':'platform_species'},
+          {'name':'Platform species', 'key':'platform_species', 'skip_empty':'yes'},
           {'name':'Platform', 'key':'plat_name'},
           {'name':'OS name', 'key':'os_name', 'new_line':'yes'},
           {'name':'CPU name', 'key':'cpu_name'},
-          {'name':'GPGPU name', 'key':'gpgpu_name'}
+          {'name':'GPGPU name', 'key':'gpgpu_name', 'skip_empty':'yes'}
          ]
 
 selector2=[
@@ -49,8 +49,8 @@ selector2=[
            {'name':'Library', 'key':'##meta#deps_summary#library#full_name'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
                               'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'},
-           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','new_line':'yes'},
-           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min'}
+           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','skip_empty':'yes', 'new_line':'yes'},
+           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min','skip_empty':'yes'}
 
           ]
 
@@ -600,8 +600,9 @@ def show(i):
     min_view=False
 
     if ltable==0:
-        h+='<b>No results found!</b>'
-        return {'return':0, 'html':h, 'style':st}
+       h+=''
+#        h+='<b>No results found!</b>'
+#        return {'return':0, 'html':h, 'style':st}
 
     elif ltable>prune_second_level and view_all!='yes':
        table=table[:prune_second_level]
@@ -637,6 +638,9 @@ def show(i):
     h+='\n'+r['html']+'\n'
 
     h+='\n'+hx+'\n'
+
+    if ltable==0:
+        return {'return':0, 'html':h, 'style':st}
 
     # Prepare graph *********************************************************************************************************
     bgraph={'0':[], '1':[]}
