@@ -1463,7 +1463,12 @@ def prepare_common_meta(i):
     fgpu=features.get('gpu',{})
     gpu_name=fgpu.get('name','')
 
-    fgpgpu=features.get('gpgpu',{}).get('gpgpu',{})
+    gpgpu0=features.get('gpgpu',{})
+    if type(gpgpu0)==list:
+       if len(gpgpu0)>0:
+          gpgpu0=gpgpu0[0]
+    fgpgpu=gpgpu0.get('gpgpu',{})
+
     gpgpu_name=fgpgpu.get('name','')
     gpgpu_vendor=fgpgpu.get('vendor','')
     gpgpu_type=fgpgpu.get('type','')
@@ -1471,7 +1476,7 @@ def prepare_common_meta(i):
     gpgpu_name2=gpgpu_name
     if gpgpu_vendor!='': gpgpu_name2=gpgpu_vendor+' '+gpgpu_name
 
-    fgpgpu_misc=features.get('gpgpu',{}).get('gpgpu_misc',{})
+    fgpgpu_misc=gpgpu0.get('gpgpu_misc',{})
     opencl=fgpgpu_misc.get('opencl c version','')
 
     # Assembling meta for platform
