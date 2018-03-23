@@ -1,0 +1,42 @@
+{
+  "affiliations": {
+    "1": {
+      "name": "University of Washington, USA"
+    },
+    "2": {
+      "name": "dividiti, UK"
+    },
+    "3": {
+      "name": "cTuning foundation, France"
+    }
+  },
+  "authors": [
+    {
+      "affiliation": "1",
+      "name": "Thierry Moreau"
+    },
+    {
+      "affiliation": "2",
+      "name": "Anton Lokhmotov"
+    },
+    {
+      "affiliation": "3",
+      "name": "Grigori Fursin"
+    }
+  ],
+  "live": "yes",
+  "publish_iso_date": "2018-04-27",
+  "skip_discussion_link": "yes",
+  "tags": [
+    "ck-paper",
+    "request",
+    "pareto-efficient ML-systems tournaments"
+  ],
+  "template": "interactive-ck-article.html",
+  "title": "ReQuEST at ASPLOS'18 results",
+  "top": "no",
+  "type": {
+    "name": "tech.report"
+  },
+  "when": "April 2018"
+}

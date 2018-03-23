@@ -12,6 +12,9 @@
       },
       {
         "repo_uoa": "ck-dissemination-modules"
+      },
+      {
+        "repo_uoa": "ck-docker"
       }
     ]
   }

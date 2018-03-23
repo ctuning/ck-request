@@ -1,0 +1,18 @@
+Co-designing efficient machine learning based systems across
+the whole hardware/software stack to trade off speed, accuracy, energy
+and costs is becoming extremely complex and time consuming.
+Researchers often struggle to evaluate and compare different
+published works across rapidly evolving software
+frameworks, heterogeneous hardware platforms, compilers,
+libraries, algorithms, data sets, models, and environments.
+
+We present our community effort to develop an open co-design tournament 
+platform with an online public scoreboard.
+It will gradually incorporate best research practices 
+while providing a common way for multidisciplinary researchers
+to optimize and compare the quality vs. efficiency Pareto
+optimality of various workloads on diverse and complete
+hardware/software systems.
+As a long-term goal, we want to build a public repository 
+of the most efficient algorithms and systems
+which can be easily customized, reused and built upon.

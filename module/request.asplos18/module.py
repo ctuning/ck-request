@@ -35,7 +35,7 @@ selector=[
           {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
           {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
           {'name':'Farm', 'key':'farm', 'new_line':'yes'},
-          {'name':'Platform species', 'key':'platform_species', 'skip_empty':'yes'},
+          {'name':'Platform species', 'key':'platform_species'},
           {'name':'Platform', 'key':'plat_name'},
           {'name':'OS name', 'key':'os_name', 'new_line':'yes'},
           {'name':'CPU name', 'key':'cpu_name'},
@@ -44,14 +44,14 @@ selector=[
 
 selector2=[
            {'name':'Algorithm implementation (program,model,framework,library)', 'key':'##choices#data_uoa#min'},
-           {'name':'Model design', 'key':'##meta#deps_summary#weights#full_name'},
-           {'name':'Compiler', 'key':'##meta#deps_summary#compiler#full_name','new_line':'yes'},
-           {'name':'Library', 'key':'##meta#deps_summary#library#full_name'},
+           {'name':'Model design', 'key':'##meta#model_design_name'},
+           {'name':'Compiler', 'key':'##meta#compiler_name','new_line':'yes'},
+           {'name':'Library', 'key':'##meta#library_name'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
                               'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'},
-           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','skip_empty':'yes', 'new_line':'yes'},
-           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min','skip_empty':'yes'}
-
+           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','type':'int', 'skip_empty':'yes', 'new_line':'yes'},
+           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min','type':'int', 'skip_empty':'yes'},
+           {'name':'Freq (MHz)', 'key':'##features#freq#min','type':'int'}
           ]
 
 selector3=[
@@ -68,20 +68,23 @@ k_view_all='all'
 hidden_keys=[k_hi_uid, k_hi_user, k_view_all]
 
 dimensions=[
-             {"key":"experiment", "name":"Experiment number"},
+             {"key":"experiment", "name":"Experiment number", "skip_from_cache":"yes"},
              {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (min, sec.)"},
+             {"key":"images_per_second", "name":"Images per second (max)", "skip_from_cache":"yes", "from_meta":"yes"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
              {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
              {"key":"##features#model_size", "name":"Model size (B)"},
-             {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)"},
-             {"key":"##meta#platform_price", "name":"Platform price ($)"},
-             {"key":"##meta#usage_cost", "name":"Usage cost ($)"},
-             {"key":"##meta#platform_species", "name":"Platform species"},
-             {"key":"##meta#model_species", "name":"Model species"},
-             {"key":"##meta#model_precision", "name":"Model precision"},
-             {"key":"##meta#dataset_species", "name":"Dataset species"},
-             {"key":"##features#cpu_freq", "name":"CPU freq (MHz)"},
-             {"key":"##features#gpu_freq", "name":"GPU freq (MHz)"}
+             {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "from_meta":"yes"},
+             {"key":"##meta#platform_price", "name":"Platform price ($)", "from_meta":"yes"},
+             {"key":"##meta#usage_cost", "name":"Usage cost ($)", "from_meta":"yes"},
+             {"key":"##meta#platform_species", "name":"Platform species", "from_meta":"yes"},
+             {"key":"##meta#model_species", "name":"Model species", "from_meta":"yes", 'module_uoa':'38e7de41acb41d3b'},
+             {"key":"##meta#model_precision", "name":"Model precision", "from_meta":"yes"},
+             {"key":"##meta#dataset_species", "name":"Dataset species", "from_meta":"yes"},
+             {"key":"##features#freq", "name":"Device frequency (MHz)"},
+             {"key":"##features#cpu_freq", "name":"CPU frequency (MHz)"},
+             {"key":"##features#gpu_freq", "name":"GPU frequency (MHz)"},
+             {"key":"##features#batch_size", "name":"Batch size"}
            ]
 
 # Only from points (not from entry meta!)
@@ -97,6 +100,8 @@ view_cache=[
   "##characteristics#run#execution_time#max",
   "##features#cpu_freq#min",
   "##features#gpu_freq#min",
+  "##features#freq#min",
+  "##features#batch_size#min",
   "##features#gpgpu@0#gpgpu_misc#opencl c version#min"
 ]
 
@@ -116,16 +121,18 @@ table_view=[
   {"key":"##features#gpu_freq#min", "name":"GPU freq (MHz)", "skip_if_the_same_key_in_input":"yes"},
   {'key':'##meta#os_name', 'name':'OS name', "skip_if_key_in_input":"os_name"},
   {"key":"##meta#versions", "name":"SW deps and versions", "json_and_pre":"yes", "align":"left"},
-  {"key":"##meta#deps_summary#weights#full_name", "name":"Model design", "skip_if_the_same_key_in_input":"yes"},
-  {"key":"##meta#deps_summary#compiler#full_name", "name":"Compiler", "skip_if_the_same_key_in_input":"yes"},
-  {"key":"##meta#deps_summary#library#full_name", "name":"Library", "skip_if_the_same_key_in_input":"yes"},
+  {"key":"##meta#model_design_name", "name":"Model design", "skip_if_the_same_key_in_input":"yes"},
+  {"key":"##meta#compiler_name", "name":"Compiler", "skip_if_the_same_key_in_input":"yes"},
+  {"key":"##meta#library_name", "name":"Library", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##choices#env#", "name":"Environment", "starts_with":"yes", "align":"left"},
   {"key":"##characteristics#run#prediction_time_avg_s#min", "name":"Classification time per 1 image (sec. min/max)", "check_extra_key":"max", "format":"%.4f"},
   {"key":"##extra#accuracy_sum", "name":"Accuracy (Top1&nbsp;/&nbsp;Top5)"},
+  {"key":"##features#batch_size#min", "name":"Batch size"},
   {"key":"##features#model_size#min", "name":"Model size (B)"},
+  {"key":"##features#memory_usage#min", "name":"Memory usage (B)"},
   {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "check_extra_key":"max", "format":"%.3f"},
   {"key":"##meta#platform_price_str", "name":"Platform price ($)"},
-  {"key":"##meta#usage_cost", "name":"Usage cost ($)"},
+  {"key":"##meta#usage_cost", "name":"Usage cost per image ($)"},
   {"key":"##extra#html_reproducibility", "name":"Reproducibility", "align":"left"}
 ]
 
@@ -225,11 +232,6 @@ def show(i):
 #    h='<hr>\n'
     h='<center>\n'
 
-#    import json
-#    h+='<pre>\n'
-#    h+=json.dumps(i, indent=2)
-#    h+='</pre>'
-
     h+='\n\n<script language="JavaScript">function copyToClipboard (text) {window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);}</script>\n\n' 
 
     h+=hextra
@@ -308,14 +310,11 @@ def show(i):
 
         for k in sorted(ds):
             x=ds[k]
-            y=str(x.get('data_name',''))
 
-            y1=str(x.get('version',''))
-            if y1!='': y+=' '+y1
+            r=make_deps_full_name({'deps':x})
+            if r['return']>0: return r
 
-            y1=str(x.get('git_revision',''))
-            if y1!='': y+=' ('+y1+')'
-
+            y=r['full_name']
             x['full_name']=y
 
             ver1+='<b>'+k+'</b>: '+str(y)+'<br>\n'
@@ -444,11 +443,17 @@ def show(i):
     # Prepare and cache results for the table
     for dim in dimensions:
         k=dim['key']
-        k1=k+'#min'
-        if k1 not in view_cache:
-           view_cache.append(k1)
-        k2=k+'#max'
-        view_cache.append(k2)
+
+        if dim.get('skip_from_cache','')!='yes':
+           if dim.get('from_meta','')=='yes':
+              if k not in view_cache:
+                 view_cache.append(k)
+           else:
+              k1=k+'#min'
+              if k1 not in view_cache:
+                 view_cache.append(k1)
+              k2=k+'#max'
+              view_cache.append(k2)
 
     r=ck.access({'action':'get_and_cache_results',
                  'module_uoa':cfg['module_deps']['experiment'],
@@ -522,6 +527,12 @@ def show(i):
            x+='%.3f' % x2
 
         row['##extra#accuracy_sum']=x
+
+        # Images per second
+        t=row.get('##characteristics#run#prediction_time_avg_s#min','')
+        if t!=None and t!='':
+           ips=1/t
+           row['images_per_second']=ips
 
     # Prune first list based on second selection*****************************************************************************
     if all_choices:
@@ -660,17 +671,42 @@ def show(i):
     # Find X/Y names
     ndim1=''
     ndim2=''
+    dim1_from_meta=False
+    dim2_from_meta=False
+    dim1_module=''
+    dim2_module=''
+
     for k in dimensions:
         kk=k['key']
         kn=k['name']
 
-        if kk==kdim1: ndim1=kn
-        if kk==kdim2: ndim2=kn
+        if kk==kdim1: 
+           ndim1=kn
+           if k.get('from_meta','')=='yes':
+              dim1_from_meta=True
+           dim1_module=k.get('module_uoa','')
+        if kk==kdim2: 
+           ndim2=kn
+           if k.get('from_meta','')=='yes':
+              dim2_from_meta=True
+           dim2_module=k.get('module_uoa','')
 
-    kdim1min=kdim1+'#min'
-    kdim2min=kdim2+'#min'
-    kdim1max=kdim1+'#max'
-    kdim2max=kdim2+'#max'
+    kdim1min=kdim1
+    kdim2min=kdim2
+    kdim1max=kdim1
+    kdim2max=kdim2
+
+    # Labels if not int and not float
+    ldim1={}
+    ldim2={}
+
+    if not dim1_from_meta:
+       kdim1min+='#min'
+       kdim1max+='#max'
+
+    if not dim2_from_meta:
+       kdim2min+='#min'
+       kdim2max+='#max'
 
     for row in table:
         ix+=1
@@ -680,20 +716,17 @@ def show(i):
            dim1=ix
         else:
            v=row.get(kdim1min,None)
-
-           if type(v)!=float and type(v)!=int: 
-              dim1=0.0
-           else:
-              dim1=v
+           if v==None: continue
+           v=check_label(v, ldim1)
+           dim1=v
 
         point=[dim1]
 
         if kdim1!='experiment' and kvdim1=='yes':
            v=row.get(kdim1max,None)
-           if type(v)!=float and type(v)!=int: 
-              dim1max=dim1
-           else:
-              dim1max=v
+           if v==None: continue
+           v=check_label(v, ldim1)
+           dim1max=v
 
            delta=0.0
            if dim1!=0.0 and dim1max!=0.0:
@@ -705,20 +738,17 @@ def show(i):
            dim2=ix
         else:
            v=row.get(kdim2min,None)
-
-           if type(v)!=float and type(v)!=int: 
-              dim2=0.0
-           else:
-              dim2=v
+           if v==None: continue
+           v=check_label(v, ldim2)
+           dim2=v
 
         point.append(dim2)
 
         if kdim2!='experiment' and kvdim2=='yes':
            v=row.get(kdim2max,None)
-           if type(v)!=float and type(v)!=int: 
-              dim2max=dim2
-           else:
-              dim2max=v
+           if v==None: continue
+           v=check_label(v, ldim2)
+           dim2max=v
 
            delta=0.0
            if dim2!=0.0 and dim2max!=0.0:
@@ -739,7 +769,6 @@ def show(i):
 #Old
 #        igraph['0'].append({'size':sizem, 'color':xcol, 'features':row, 'url':'', 'url_ext':raw_data_url})
 #        igraph['0'].append({'size':4, 'features':row, 'anchor':'id'+six}) #, 'url':'', 'url_ext':''})
-
 
     if len(bgraph['0'])>0 or len(bgraph['1'])>0:
        dt=time.time()
@@ -790,6 +819,16 @@ def show(i):
              h+=' </div>\n'
              h+='</div>\n'
              h+='</center>\n'
+             h+='<br>\n'
+
+             if len(ldim1)>0:
+                r=html_labels({'labels':ldim1, 'axis':'X', 'module_uoa':dim1_module})
+                if r['return']>0: return r
+                h+=r['html']
+             if len(ldim2)>0:
+                r=html_labels({'labels':ldim2, 'axis':'Y', 'module_uoa':dim2_module})
+                if r['return']>0: return r
+                h+=r['html']
              h+='<br>\n'
 
     # In the future, we may want to use Django + numpy here
@@ -879,9 +918,6 @@ def show(i):
                   for kx in v:
                       v1+=kx+'='+str(v[kx])+'<br>'
                   v=v1
-
-#                  import json
-#                  v='<pre>'+json.dumps(v, indent=2, sort_keys=True)+'</pre>'
 
                if tv.get('starts_with','')=='yes':
                   v=''
@@ -1580,3 +1616,92 @@ def validate(i):
     ck.out('Copied to '+np)
 
     return {'return':0}
+
+##############################################################################
+# make full name for dependency
+
+def make_deps_full_name(i):
+    """
+    Input:  {
+              deps - dict with deps
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+
+              full_name    - full name of deps
+            }
+
+    """
+
+    x=i['deps']
+
+    y=str(x.get('data_name',''))
+
+    y1=str(x.get('version',''))
+    if y1!='': y+=' '+y1
+
+    y1=str(x.get('git_revision',''))
+    if y1!='': y+=' ('+y1+')'
+
+    return {'return':0, 'full_name':y}
+
+##############################################################################
+# check label in value
+
+def check_label(v, ldim):
+
+    if type(v)!=float and type(v)!=int: 
+       v=str(v)
+
+       label=0
+       found=False
+       for k in ldim:
+           if k==v:
+              v=ldim[k]
+              found=True
+              break
+           else:
+              if ldim[k]>label: 
+                 label=ldim[k]
+
+       if not found:
+          ldim[v]=label+1
+          v=label+1
+
+    return v
+
+##############################################################################
+# check label in value
+
+def html_labels(i):
+
+    ldim=i['labels']
+    axis=i['axis']
+
+    muoa=i.get('module_uoa','')
+
+    h='<small><b>Labels '+axis+': </b>\n'
+    for j in range(1,10000):
+        l=None
+        for k in ldim:
+            v=ldim[k]
+            if v==j:
+               l=k
+               break
+
+        if l==None:
+           break
+
+        if muoa!='':
+           r=ck.access({'action':'load', 'module_uoa':muoa, 'data_uoa':l})
+           if r['return']==0:
+              l=r['data_name']
+
+        h+=str(j)+') '+l+'; '
+
+    h+='<br>\n'
+
+    return {'return':0, 'html':h}

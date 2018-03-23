@@ -7,6 +7,9 @@
       "desc": "view a given point",
       "for_web": "yes"
     },
+    "make_deps_full_name": {
+      "desc": "make full name for dependency"
+    },
     "prepare_common_meta": {
       "desc": "prepare common meta for ReQuEST @ ASPLOS'18"
     },
