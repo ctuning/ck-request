@@ -203,7 +203,7 @@ def show(i):
             ckey+'plot_variation_dimension2':[{'name':'no', 'value':'no'}, {'name':'yes', 'value':'yes'}]
           }
 
-    if i.get(ckey+'plot_dimension1','')=='': i[ckey+'plot_dimension1']=dimensions[2]['key']
+    if i.get(ckey+'plot_dimension1','')=='': i[ckey+'plot_dimension1']=dimensions[1]['key']
     if i.get(ckey+'plot_dimension2','')=='': i[ckey+'plot_dimension2']=dimensions[3]['key']
 
     if 'reset_'+form_name in i: reset=True
