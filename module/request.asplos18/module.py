@@ -716,7 +716,7 @@ def show(i):
            dim1=ix
         else:
            v=row.get(kdim1min,None)
-           if v==None: continue
+           if v==None or v=='': continue
            v=check_label(v, ldim1)
            dim1=v
 
@@ -724,7 +724,7 @@ def show(i):
 
         if kdim1!='experiment' and kvdim1=='yes':
            v=row.get(kdim1max,None)
-           if v==None: continue
+           if v==None or v=='': continue
            v=check_label(v, ldim1)
            dim1max=v
 
@@ -738,7 +738,7 @@ def show(i):
            dim2=ix
         else:
            v=row.get(kdim2min,None)
-           if v==None: continue
+           if v==None or v=='': continue
            v=check_label(v, ldim2)
            dim2=v
 
@@ -746,7 +746,7 @@ def show(i):
 
         if kdim2!='experiment' and kvdim2=='yes':
            v=row.get(kdim2max,None)
-           if v==None: continue
+           if v==None or v=='': continue
            v=check_label(v, ldim2)
            dim2max=v
 
@@ -1688,7 +1688,8 @@ def html_labels(i):
 
     muoa=i.get('module_uoa','')
 
-    h='<small><b>Labels '+axis+': </b>\n'
+    h=''
+    h1='<small><b>Labels '+axis+': </b>\n'
     for j in range(1,10000):
         l=None
         for k in ldim:
@@ -1705,8 +1706,10 @@ def html_labels(i):
            if r['return']==0:
               l=r['data_name']
 
-        h+=str(j)+') '+l+'; '
+        if l!='' and l!=None:
+           h+=str(j)+') '+l+'; '
 
-    h+='<br>\n'
+    if h!='':
+       h=h1+h+'<br>\n'
 
     return {'return':0, 'html':h}
