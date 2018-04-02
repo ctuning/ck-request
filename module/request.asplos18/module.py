@@ -347,11 +347,13 @@ def show(i):
            x=artifacts_cache.get(auoa,'')
 
            if x=='':
+              amuoa=cfg['module_deps']['artifact']
               r=ck.access({'action':'load',
-                           'module_uoa':cfg['module_deps']['artifact'],
+                           'module_uoa':amuoa,
                            'data_uoa':auoa})
               if r['return']==0:
                  dx=r['dict']
+                 ap=r['path']
 
                  # Check repos
                  repos=dx.get('repos',[])
@@ -369,9 +371,9 @@ def show(i):
                  if ir!='':
                     u=url0+'wcid='+cfg['module_deps']['report']+':'+ir
 
-                    x+='<p><b>Interactive</b><br>\n'
+                    x+='<p><b>Report</b><br>\n'
                     x+='<div style="margin:7px;">\n'
-                    x+='<a href="'+u+'" target="_blank">Article</a>\n'
+                    x+='<a href="'+u+'" target="_blank">Interactive</a>\n'
                     x+='</div>\n'
 
                  # Check DOIs
@@ -410,6 +412,19 @@ def show(i):
                     x+='<p><b>ACM badges</b><br>\n'
                     x+='<div style="margin:7px;">\n'
                     x+=y+'<br>\n'
+                    x+='</div>\n'
+
+                 # Check review
+                 apf='review.html'
+                 apr=os.path.join(ap,apf)
+                 if os.path.isfile(apr):
+                    u=url0+'action=pull&common_action=yes&cid='+amuoa+':'+auoa+'&filename='+apf
+
+                    x+='<p><b>Review</b><br>\n'
+                    x+='<div style="margin:7px;">\n'
+                    x+=' See <a href="'+u+'" target="_blank">notes</a>\n'
+                    x+='</div>\n'
+
                     x+='</div>\n'
 
                  # Check extra HTML
