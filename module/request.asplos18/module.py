@@ -49,7 +49,8 @@ selector2=[
            {'name':'Library', 'key':'##meta#library_name'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
                               'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'},
-           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','type':'int', 'skip_empty':'yes', 'new_line':'yes'},
+           {'name':'Batch size', 'key':'##features#batch_size#min','type':'int', 'skip_empty':'yes', 'new_line':'yes'},
+           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','type':'int', 'skip_empty':'yes'},
            {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min','type':'int', 'skip_empty':'yes'},
            {'name':'Freq (MHz)', 'key':'##features#freq#min','type':'int'}
           ]
@@ -70,7 +71,8 @@ hidden_keys=[k_hi_uid, k_hi_user, k_view_all]
 dimensions=[
              {"key":"experiment", "name":"Experiment number", "skip_from_cache":"yes"},
              {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (min, sec.)"},
-             {"key":"images_per_second", "name":"Images per second (max)", "skip_from_cache":"yes", "from_meta":"yes"},
+             {"key":"##characteristics#run#inference_latency", "name":"Inference latency for 1 image (min, sec.)"},
+             {"key":"##characteristics#run#inference_throughput", "name":"Inference throughput (max, images per sec.)", "reverse":"yes"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
              {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
              {"key":"##features#model_size", "name":"Model size (B)"},
@@ -126,6 +128,8 @@ table_view=[
   {"key":"##meta#library_name", "name":"Library", "skip_if_the_same_key_in_input":"yes"},
   {"key":"##choices#env#", "name":"Environment", "starts_with":"yes", "align":"left"},
   {"key":"##characteristics#run#prediction_time_avg_s#min", "name":"Classification time per 1 image (sec. min/max)", "check_extra_key":"max", "format":"%.4f"},
+  {"key":"##characteristics#run#inference_latency#min", "name":"Inference latency for 1 image (min, sec.)", "check_extra_key":"max", "format":"%.4f"},
+  {"key":"##characteristics#run#inference_throughput#max", "name":"Inference throughput (max, images per sec.)", "check_extra_key":"min", "format":"%.1f"},
   {"key":"##extra#accuracy_sum", "name":"Accuracy (Top1&nbsp;/&nbsp;Top5)"},
   {"key":"##features#batch_size#min", "name":"Batch size"},
   {"key":"##features#model_size#min", "name":"Model size (B)"},
@@ -204,7 +208,7 @@ def show(i):
           }
 
     if i.get(ckey+'plot_dimension1','')=='': i[ckey+'plot_dimension1']=dimensions[1]['key']
-    if i.get(ckey+'plot_dimension2','')=='': i[ckey+'plot_dimension2']=dimensions[3]['key']
+    if i.get(ckey+'plot_dimension2','')=='': i[ckey+'plot_dimension2']=dimensions[4]['key']
 
     if 'reset_'+form_name in i: reset=True
     else: reset=False
@@ -690,6 +694,8 @@ def show(i):
     dim2_from_meta=False
     dim1_module=''
     dim2_module=''
+    dim1_reverse=''
+    dim2_reverse=''
 
     for k in dimensions:
         kk=k['key']
@@ -700,11 +706,14 @@ def show(i):
            if k.get('from_meta','')=='yes':
               dim1_from_meta=True
            dim1_module=k.get('module_uoa','')
+           dim1_reverse=k.get('reverse','')
+
         if kk==kdim2: 
            ndim2=kn
            if k.get('from_meta','')=='yes':
               dim2_from_meta=True
            dim2_module=k.get('module_uoa','')
+           dim2_reverse=k.get('reverse','')
 
     kdim1min=kdim1
     kdim2min=kdim2
@@ -716,12 +725,20 @@ def show(i):
     ldim2={}
 
     if not dim1_from_meta:
-       kdim1min+='#min'
-       kdim1max+='#max'
+       if dim1_reverse!='yes':
+          kdim1min+='#min'
+          kdim1max+='#max'
+       else:
+          kdim1min+='#max'
+          kdim1max+='#min'
 
     if not dim2_from_meta:
-       kdim2min+='#min'
-       kdim2max+='#max'
+       if dim2_reverse!='yes':
+          kdim2min+='#min'
+          kdim2max+='#max'
+       else:
+          kdim2min+='#max'
+          kdim2max+='#min'
 
     for row in table:
         ix+=1
@@ -747,7 +764,12 @@ def show(i):
            if dim1!=0.0 and dim1max!=0.0:
               delta=abs(dim1max-dim1)
 
-           point.append(dim1+delta)
+           if dim1_reverse!='yes':
+              dm=dim1+delta
+           else:
+              dm=dim1-delta
+
+           point.append(dm)
 
         if kdim2=='experiment': 
            dim2=ix
@@ -769,7 +791,12 @@ def show(i):
            if dim2!=0.0 and dim2max!=0.0:
               delta=abs(dim2max-dim2)
 
-           point.append(dim2+delta)
+           if dim2_reverse!='yes':
+              dm=dim2+delta
+           else:
+              dm=dim2-delta
+
+           point.append(dm)
 
         raw_data_url=url0#+'wcid='+x+':'+duid
 
@@ -1610,11 +1637,13 @@ def validate(i):
     p=r['path']
 
     # Check if entry is already there 
-    r=ck.access({'action':'add',
+    r=ck.access({'action':'update',
                  'module_uoa':cfg['module_deps']['experiment'],
                  'repo_uoa':repo_with_validated_results,
+                 'data_uoa':'validated-'+duoa,
                  'dict':d,
                  'common_func':'yes',
+                 'substitute':'yes',
                  'sort_keys':'yes'})
     if r['return']>0: return r             
 
