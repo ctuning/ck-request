@@ -78,7 +78,7 @@ dimensions=[
              {"key":"##features#model_size", "name":"Model size (B)"},
              {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "from_meta":"yes"},
              {"key":"##meta#platform_price", "name":"Platform price ($)", "from_meta":"yes"},
-             {"key":"##meta#usage_cost", "name":"Usage cost ($)", "from_meta":"yes"},
+             {"key":"##characteristics#run#usage_cost", "name":"Usage cost ($)"},
              {"key":"##meta#platform_species", "name":"Platform species", "from_meta":"yes"},
              {"key":"##meta#model_species", "name":"Model species", "from_meta":"yes", 'module_uoa':'38e7de41acb41d3b'},
              {"key":"##meta#model_precision", "name":"Model precision", "from_meta":"yes"},
@@ -136,7 +136,7 @@ table_view=[
   {"key":"##features#memory_usage#min", "name":"Memory usage (B)"},
   {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "check_extra_key":"max", "format":"%.3f"},
   {"key":"##meta#platform_price_str", "name":"Platform price ($)"},
-  {"key":"##meta#usage_cost", "name":"Usage cost per image ($)"},
+  {"key":"##characteristics#run#usage_cost#min", "name":"Usage cost per image ($)", "type":"float", "format":"%.2e"},
   {"key":"##extra#html_reproducibility", "name":"Reproducibility", "align":"left"}
 ]
 
@@ -961,7 +961,7 @@ def show(i):
                v=q.get(k,'')
 
                format=tv.get('format','')
-               if format!='' and v!='' and v!=None:
+               if format!='' and v!='' and v!=None and v!="None":
                   v=format % float(v)
 
                if tv.get('json_and_pre','')=='yes' and v!='' and type(v)==dict:
