@@ -34,25 +34,25 @@ selector=[
           {'name':'Precision', 'key':'model_precision'},
           {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
           {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
-          {'name':'Farm', 'key':'farm', 'new_line':'yes'},
+          {'name':'Cloud/farm', 'key':'farm', 'new_line':'yes', 'keep_empty':'yes'},
           {'name':'Platform species', 'key':'platform_species'},
           {'name':'Platform', 'key':'plat_name'},
           {'name':'OS name', 'key':'os_name', 'new_line':'yes'},
-          {'name':'CPU name', 'key':'cpu_name'},
-          {'name':'GPGPU name', 'key':'gpgpu_name', 'skip_empty':'yes'}
+          {'name':'CPU name', 'key':'cpu_name', 'keep_empty':'yes'},
+          {'name':'GPGPU name', 'key':'gpgpu_name', 'keep_empty':'yes'}
          ]
 
 selector2=[
            {'name':'Algorithm implementation (program,model,framework,library)', 'key':'##choices#data_uoa#min'},
            {'name':'Model design', 'key':'##meta#model_design_name'},
-           {'name':'Compiler', 'key':'##meta#compiler_name','new_line':'yes'},
-           {'name':'Library', 'key':'##meta#library_name'},
-           {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 'skip_empty':'yes', 
-                              'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes'},
-           {'name':'Batch size', 'key':'##features#batch_size#min','type':'int', 'skip_empty':'yes', 'new_line':'yes'},
-           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','type':'int', 'skip_empty':'yes'},
-           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min','type':'int', 'skip_empty':'yes'},
-           {'name':'Freq (MHz)', 'key':'##features#freq#min','type':'int'}
+           {'name':'Compiler', 'key':'##meta#compiler_name','new_line':'yes', 'keep_empty':'yes'},
+           {'name':'Library', 'key':'##meta#library_name', 'keep_empty':'yes'},
+           {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 
+                              'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes', 'keep_empty':'yes'},
+           {'name':'Batch size', 'key':'##features#batch_size#min','type':'int', 'new_line':'yes'},
+           {'name':'CPU freq (MHz)', 'key':'##features#cpu_freq#min','type':'int', 'keep_empty':'yes'},
+           {'name':'GPU freq (MHz)', 'key':'##features#gpu_freq#min','type':'int', 'keep_empty':'yes'},
+           {'name':'Freq (MHz)', 'key':'##features#freq#min','type':'int', 'keep_empty':'yes'}
           ]
 
 selector3=[
@@ -301,10 +301,15 @@ def show(i):
     plst=r['pruned_lst']
 
     # Compose extra meta (such as deps, versions, etc)
+    plst1=[]
     for q in plst:
         duid=q['data_uid']
 
         meta=q['meta']['meta']
+
+        if meta.get('processed','')!='yes':
+           continue
+
         ds=meta.get('deps_summary',{})
 
         xds={}
@@ -439,6 +444,10 @@ def show(i):
               x+='<p>\n'
 
            artifacts[duid]=x   
+
+        plst1.append(q)
+
+    plst=plst1
 
     # Sort list ***********************************************************************************
     dt=time.time()
