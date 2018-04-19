@@ -729,6 +729,8 @@ def show(i):
     kdim1max=kdim1
     kdim2max=kdim2
 
+    max1=0
+
     # Labels if not int and not float
     ldim1={}
     ldim2={}
@@ -760,6 +762,8 @@ def show(i):
            if v==None or v=='': continue
            v=check_label(v, ldim1)
            dim1=v
+
+        if dim1>max1: max1=dim1
 
         point=[dim1]
 
@@ -829,7 +833,7 @@ def show(i):
            "table":bgraph,
            "table_info":igraph,
 
-           "xmin":0,
+           "xmin":-(float(max1)/20),
            "ymin":0,
 
            "ignore_point_if_none":"yes",
