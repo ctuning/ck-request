@@ -43,10 +43,10 @@ selector=[
          ]
 
 selector2=[
-           {'name':'Algorithm implementation (program,model,framework,library)', 'key':'##choices#data_uoa#min'},
+           {'name':'Algorithm implementation (CK program)', 'key':'##choices#data_uoa#min'},
            {'name':'Model design', 'key':'##meta#model_design_name'},
            {'name':'Compiler', 'key':'##meta#compiler_name','new_line':'yes', 'keep_empty':'yes'},
-           {'name':'Library', 'key':'##meta#library_name', 'keep_empty':'yes'},
+           {'name':'Library/framework', 'key':'##meta#library_name', 'keep_empty':'yes'},
            {'name':'OpenCL driver', 'key':'##features#gpgpu@0#gpgpu_misc#opencl c version#min', 
                               'extra_key':'##features#gpgpu@0#gpgpu_misc#opencl_c_version#min', 'new_line':'yes', 'keep_empty':'yes'},
            {'name':'Batch size', 'key':'##features#batch_size#min','type':'int', 'new_line':'yes'},
