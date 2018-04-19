@@ -854,7 +854,8 @@ def show(i):
 
            "d3_div":"ck_interactive",
 
-           "point_style":{"1":{"color":"#dc3912", "connect_lines":"no"}},
+           "point_style":{"1":{"color":"#0198E1", "connect_lines":"no"},
+                          "0":{"color":"#dc3912", "connect_lines":"no"}},
 
            "image_width":"900",
            "image_height":"400",
