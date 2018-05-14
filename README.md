@@ -22,13 +22,54 @@ stack for AI, deep learning and other emerging workloads.
 * Collective Knowledge Framework: see [minimal installation guidelines](https://github.com/ctuning/ck#minimal-installation)
 
 <!-------------------------------------------------------------------------------------->
-# Installation
 
-Note that *#* means *sudo* on Linux and can be skipped on Windows.
+# Minimal CK installation
+
+The minimal installation requires:
+
+* Python 2.7 or 3.3+ (limitation is mainly due to unitests)
+* Git command line client.
+
+### Linux/MacOS
+
+You can install CK in your local user space as following:
+
+```
+$ git clone http://github.com/ctuning/ck
+$ export PATH=$PWD/ck/bin:$PATH
+$ export PYTHONPATH=$PWD/ck:$PYTHONPATH
+```
+
+You can also install CK via PIP with sudo to avoid setting up environment variables yourself:
+
+```
+$ sudo pip install ck
+```
+
+### Windows
+
+First you need to download and install a few dependencies from the following sites:
+
+* Git: https://git-for-windows.github.io
+* Minimal Python: https://www.python.org/downloads/windows
+
+You can then install CK as following:
+```
+ $ pip install ck
+```
+
+or
 
 
 ```
-# pip install ck
+ $ git clone https://github.com/ctuning/ck.git ck-master
+ $ set PATH={CURRENT PATH}\ck-master\bin;%PATH%
+ $ set PYTHONPATH={CURRENT PATH}\ck-master;%PYTHONPATH%
+```
+
+# CK ReQuEST workflow installation
+
+```
 $ ck pull repo:ck-request
 ```
 
