@@ -32,7 +32,7 @@ The minimal installation requires:
 
 ### Linux/MacOS
 
-You can install CK in your local user space as following:
+You can install CK in your local user space as follows:
 
 ```
 $ git clone http://github.com/ctuning/ck
@@ -53,7 +53,7 @@ First you need to download and install a few dependencies from the following sit
 * Git: https://git-for-windows.github.io
 * Minimal Python: https://www.python.org/downloads/windows
 
-You can then install CK as following:
+You can then install CK as follows:
 ```
  $ pip install ck
 ```
@@ -114,7 +114,7 @@ i.e. https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl .
 You can see other public CK repositories prepared for ASPLOS'18 tournament here:
 https://github.com/ctuning/ck-request-asplos18-results .
 
-We then pull it via CK to create a local copy as following:
+We then pull it via CK to create a local copy as follows:
 
 ```
  $ ck pull repo --url=https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl
@@ -124,7 +124,7 @@ while adding *.ckr.json* file there. This file describes
 CK repository including unique ID and dependencies on other repositories
 (in case you would like to reuse already existing modules and artifacts). 
 
-You can find this file on Linux as following:
+You can find this file on Linux as follows:
 ```
  $ cat `ck find repo:request-asplos18-my-workflow`/.ckr.json
 ```
@@ -173,7 +173,7 @@ Most of these modules are available in the [ck-env](https://github.com/ctuning/c
 Basically, they allow one to automatically detect all installed versions of required software on a given machine,
 prepare their environments in such a way that they can co-exist, and register all versions in the CK.
 
-For example, you can detect GCC and LLVM on your machine as following:
+For example, you can detect GCC and LLVM on your machine as follows:
 ```
 $ ck detect soft:compiler.gcc
 $ ck detect soft --tags=compiler,llvm
@@ -239,21 +239,21 @@ needed for portable experimental workflows:
 $ ck search module:platform*
 ```
 
-You can detect all properties of your platform as following:
+You can detect all properties of your platform as follows:
 
 ```
 $ ck detect platform
 ```
 
 You can detect properties of different target platforms 
-including Android devices as following:
+including Android devices as follows:
 ```
 $ ck ls platform.os | sort
 $ ck detect platform --target_os={one of above CK entries}
 ```
 
 You can also share information about your platform 
-to be reused by the community as following:
+to be reused by the community as follows:
 ```
 $ ck detect platform --share
 ```
@@ -272,7 +272,7 @@ such as monitoring or setting up CPU and GPU frequency:
 $ ls `ck find platform.init:generic-linux`
 ```
 
-You can later change it as following:
+You can later change it as follows:
 ```
 $ ck ls platform.init | sort
 $ ck detect platform.os --update_platform_init \
@@ -297,7 +297,7 @@ $ ck add request-asplos18-my-workflow:program:request-asplos18-my-program
 
 or you can find CK entry with the most close program shared by the community,
 copy it to your repository and then customize its JSON meta and scripts.
-For example, you can reuse Caffe-based image classification program as following:
+For example, you can reuse Caffe-based image classification program as follows:
 
 ```
 $ ck pull repo --url=https://github.com/dividiti/ck-caffe
@@ -338,7 +338,7 @@ This, in turn, helps the community to crowdsource bug detection across different
 environments using CK (crowd-fuzzing) as described in this [tech. report](https://arxiv.org/abs/1801.08024).
 
 It is then possible to run *program* pipeline while collecting various statistics 
-in a unified way as following:
+in a unified way as follows:
 ```
 $ ck pipeline program --help
 $ ck pipeline program:request-asplos18-my-program
@@ -347,7 +347,7 @@ $ ck benchmark program:request-asplos18-my-program
 
 ```
 
-You can obtain output characteristics from another CK module or your own Python script as following:
+You can obtain output characteristics from another CK module or your own Python script as follows:
 ```
 import ck.kernel as ck
 
@@ -380,19 +380,19 @@ Remember assigned UID of this report - you will need to provide it in the next s
 
 ## Validating results by external reviewers
 
-You can also pack all experimental results to share with colleagues as following:
+You can also pack all experimental results to share with colleagues as follows:
 ```
 $ ck zip local:experiment:*
 ```
 
 CK will create a "ckr-local.zip" file with CK entries containing raw experimental results.
 
-You can unzip it to the local (or other) repository on another machine via CK as following:
+You can unzip it to the local (or other) repository on another machine via CK as follows:
 ```
 $ ck unzip repo:local --zip=ckr-local.zip
 ```
 
-You can then replay a given experiment on another machine as following:
+You can then replay a given experiment on another machine as follows:
 ```
 $ ck search experiment:* --tags=request-asplos18
 $ ck replay experiment:{above names}
@@ -403,7 +403,7 @@ $ ck replay experiment:{above names}
 
 ## Visualizing results on scoreboard for different optimization categories
 
-You can run a local ReQuEST dashboard/scoreboard as following:
+You can run a local ReQuEST dashboard/scoreboard as follows:
 ```
 $ ck dashboard request.apslos18
 ```
