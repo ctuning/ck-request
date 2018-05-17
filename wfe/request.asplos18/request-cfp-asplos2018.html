@@ -16,8 +16,14 @@
   to share complete algorithm implementations (code and data) as <a href="https://github.com/ctuning/ck/wiki/Portable-workflows">portable</a>, 
   customizable and reusable <a href="https://github.com/ctuning/ck">Collective Knowledge workflows</a>.
 
-  This helps other researchers and end-users to quickly validate such results, reuse workflows and even run them 
-  on different platforms with different or new models, data sets, libraries, compilers and tools.
+  This helps other researchers and end-users to quickly validate such results, reuse workflows and 
+  optimize/autotune algorithms across different platforms, models, data sets, libraries, compilers and tools.
+
+  We will also use our practical experience reproducing experimental 
+  results from ReQuEST submissions to help set up artifact evaluation 
+  at the upcoming <a href="http://sysml.cc">SysML 2019</a>,
+  and to suggest new algorithms for the inclusion 
+  to the <a href="http://mlperf.org">MLPerf benchmark</a>.
 
   See <a href="https://github.com/ctuning/ck-request-asplos18-results">GitHub with shared workflows</a> 
   and the latest reproducible results at the <a href="http://cKnowledge.org/request-results">live ReQuEST scoreboard</a>.
@@ -703,17 +709,21 @@ SuperComputing ("artifact evaluation"):
  <b>Step 1: Collaborate on converting your workflows to CK</b>
 
  <div style="padding:5px;">
-  If your submission is not in the CK format, we will help you convert it to the CK format
-  while reusing various artifacts already shared by the community
- (see <a href="https://github.com/ctuning/ck/wiki/Shared-repos#user-content-shared-workflows">CK AI repositories</a>,
-  <a href="https://github.com/ctuning/ck/wiki/Shared-modules">CK modules (wrappers)</a>,
+  If your submission is not in the <a href="https://github.com/ctuning/ck">CK format</a>, 
+  we will help you to add a portable CK workflow for your algorithm
+  while reusing available CK packages and modules shared by the community
+ (see <a href="https://github.com/ctuning/ck/wiki">CK Getting Started Guides</a>,
+  <a href="https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl">CK ReQuEST workflow example to explore MobileNets on ARM GPUs</a>,
+  <a href="https://github.com/ctuning/ck/wiki/Shared-packages">shared CK packages</a>
   <a href="https://github.com/ctuning/ck/wiki/Shared-soft-descriptions">CK software detection plugins</a>,
-  <a href="https://github.com/ctuning/ck/wiki/Shared-packages">portable CK packages</a>).
+  <a href="https://github.com/ctuning/ck/wiki/Shared-modules">reusable CK modules (unified scripts and tool wrappers)</a>
+  and <a href="https://github.com/ctuning/ck/wiki/Shared-repos#user-content-shared-workflows">CK repositories with AI/ML workflows</a>).
 
   You may choose how to communicate with us during this step: either privately via HotCRP,
   semi-privately via a <a href="https://request-workshop.slack.com">dedicated Slack channel with all authors and reviewers</a>,
   or, <a href="http://adapt-workshop.org/motivation2016.html">preferably</a>,
-  publicly via the <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>
+  publicly via <a href="https://collective-knowledge.slack.com">CK slack channel</a> 
+  or the <a href="https://groups.google.com/forum/#!forum/collective-knowledge">CK mailing list</a>
   (thus making the community immediately aware of your artifact).
  </div>
 
@@ -784,7 +794,7 @@ SuperComputing ("artifact evaluation"):
  <p>
  <div style="padding:5px;">
   
-  We will announce the winning SW/HW/model configurations at the end of
+  We will announce accepted SW/HW/model configurations at the end of
   February, and invite the authors to present their work at the 1st ReQuEST
   workshop co-located with <a href="https://www.asplos2018.org">ASPLOS 2018</a>
   (ACM conference on Architectural Support for Programming Languages and
@@ -838,12 +848,22 @@ SuperComputing ("artifact evaluation"):
 <!---------------------------------------------------------------------------------------->
 <a id="industrial_board"><h3>Advisory/industrial board</h3>
 
- <p> After the workshop, we will prepare a public report for the
- ReQuEST Advisory/Industrial Board.  The board members will provide their
- feedback on the results, collaborate on a common methodology for reproducible
- evaluation and optimization, suggest realistic workloads, help provide access
- to rare hardware platforms to the Artifact Evaluation Committee for future
- tournaments, and provide prizes for distinguished entries.
+ <p> 
+ After the workshop, we will prepare a public report 
+ for the ReQuEST Advisory/Industrial Board.
+
+ The board members will provide their feedback on the results,
+ collaborate on a common methodology for reproducible
+ evaluation and optimization, suggest realistic workloads,
+ help provide access to rare hardware platforms to the
+ Artifact Evaluation Committee for future tournaments, and
+ provide prizes for distinguished entries.
+
+ We will use our practical experience reproducing experimental 
+ results from ReQuEST submissions to help set up artifact evaluation 
+ at the upcoming <a href="http://sysml.cc">SysML 2019</a>,
+ and to suggest new algorithms for the inclusion 
+ to the <a href="http://mlperf.org">MLPerf benchmark</a>.
 
 <!---------------------------------------------------------------------------------------->
 <!-- 
