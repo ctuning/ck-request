@@ -1771,3 +1771,9 @@ def html_labels(i):
        h=h1+h+'<br>\n'
 
     return {'return':0, 'html':h}
+
+##############################################################################
+# start scoreboard
+
+def scoreboard(i):
+    return dashboard(i)

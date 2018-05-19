@@ -16,6 +16,9 @@
     "replay": {
       "desc": "replay experiment (TBD)"
     },
+    "scoreboard": {
+      "desc": "start scoreboard"
+    },
     "show": {
       "desc": "show all results"
     },
