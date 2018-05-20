@@ -32,7 +32,7 @@ selector=[
 #          {'name':'Competition', 'key':'scenario_module_uoa', 'module_uoa':'032630d041b4fd8a'},
           {'name':'Model species', 'key':'model_species', 'module_uoa':'38e7de41acb41d3b'},
           {'name':'Precision', 'key':'model_precision'},
-          {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes'},
+          {'name':'Dataset species', 'key':'dataset_species', 'new_line':'yes', 'keep_empty':'yes'},
           {'name':'Dataset size', 'key':'dataset_size', 'type':'int'},
           {'name':'Cloud/farm', 'key':'farm', 'new_line':'yes', 'keep_empty':'yes'},
           {'name':'Platform species', 'key':'platform_species'},
@@ -272,6 +272,9 @@ def show(i):
     # Check repos
     experiment_tags='request-asplos18'
     experiment_repos=['ck-request', repo_with_validated_results]
+
+    # only selected repo (to simplify analysis)
+#    experiment_repos=[]
 
     x=i.get(ckey+'results','')
     if x=='all':
