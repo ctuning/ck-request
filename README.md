@@ -9,10 +9,11 @@ See [ReQuEST website](http://cKnowledge.org/request)
 and [arXiv report](https://arxiv.org/pdf/1801.06378.pdf) 
 for more details about our open and reproducible tournaments
 on Pareto-efficient co-design of the whole software and hardware
-stack for AI, deep learning and other emerging workloads.
+stack for AI, deep learning and other emerging workloads
+(speed, throughput, accuracy, energy, costs, etc).
 
 <!-------------------------------------------------------------------------------------->
-# Validated results from tournaments in the [CK format](https://github.com/ctuning/ck)
+# Validated workflows and results from tournaments in the [CK format](https://github.com/ctuning/ck)
 
 * [ASPLOS'18: multi-objective SW/HW optimization and co-design of image classification](https://github.com/ctuning/ck-request-asplos18-results)
 
