@@ -1431,6 +1431,8 @@ def dashboard(i):
               (wfe_port)    - External web server port
 
               (extra_url)   - extra URL
+
+              (results)     - repo with experiments to visualize (will be added as &results=... to extra_url)
             }
 
     Output: {
@@ -1453,6 +1455,11 @@ def dashboard(i):
     i['browser']='yes'
     i['template']='request.asplos18'
     i['cid']=''
+
+    if i.get('results','')!='':
+       x=i.get('extra_url','')
+       x+='&results='+i['results']
+       i['extra_url']=x
 
     return ck.access(i)
 
