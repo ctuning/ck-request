@@ -1,11 +1,82 @@
 {
-  "short_name":"ReQuEST-ASPLOS'18",
-  "url":"http://cknowledge.org/request-cfp-asplos2018.html",
   "ck_artifacts": [
-     {"repo_uoa":"ck-request-asplos18-caffe-intel", "data_uoa":"e7cc77d72f13441e"},
-     {"repo_uoa":"ck-request-asplos18-mobilenets-tvm-arm", "data_uoa":"8b220a7f172a47d4"},
-     {"repo_uoa":"ck-request-asplos18-iot-farm", "data_uoa":"640fb4c4b9ba9822"},
-     {"repo_uoa":"ck-request-asplos18-resnet-tvm-fpga", "data_uoa":"9375838469ad4029"},
-     {"repo_uoa":"ck-request-asplos18-mobilenets-armcl-opencl", "repo_url":"https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl", "data_uoa":"08da9685582866a0"}
-  ]
+    {
+      "data_uoa": "e7cc77d72f13441e",
+      "repo_uoa": "ck-request-asplos18-caffe-intel"
+    },
+    {
+      "data_uoa": "8b220a7f172a47d4",
+      "repo_uoa": "ck-request-asplos18-mobilenets-tvm-arm"
+    },
+    {
+      "data_uoa": "640fb4c4b9ba9822",
+      "repo_uoa": "ck-request-asplos18-iot-farm"
+    },
+    {
+      "data_uoa": "9375838469ad4029",
+      "repo_uoa": "ck-request-asplos18-resnet-tvm-fpga"
+    },
+    {
+      "data_uoa": "08da9685582866a0",
+      "repo_uoa": "ck-request-asplos18-mobilenets-armcl-opencl",
+      "repo_url": "https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl"
+    }
+  ],
+  "name": "1st ACM Reproducible Quality-Efficient Systems Tournament on Co-designing Pareto-efficient Deep Learning at ASPLOS'18 (ReQuEST)",
+  "organizers": [
+    {
+      "affiliation": "University of Washington, USA",
+      "extra": "",
+      "name": "28e912bcdd4134a8"
+    },
+    {
+      "affiliation": "University of Toronto, Canada",
+      "extra": "",
+      "name": "9a173d33018c2905"
+    },
+    {
+      "affiliation": "EPFL, Switzerland",
+      "extra": "",
+      "name": "a672a64201a515ba"
+    },
+    {
+      "affiliation": "cTuning foundation, France",
+      "extra": "artifact evaluation and automation; common co-design framework",
+      "name": "1374a4f3b828a050"
+    },
+    {
+      "affiliation": "dividiti, UK",
+      "extra": "industrial relations",
+      "name": "1105e8d1cd4148e9"
+    },
+    {
+      "affiliation": "University of Washington, USA",
+      "extra": "workshop organization",
+      "name": "45486390d2262917"
+    },
+    {
+      "affiliation": "Cornell University, USA",
+      "extra": "",
+      "name": "85a6872bd0465db0"
+    },
+    {
+      "affiliation": "University of Cambridge, UK",
+      "extra": "",
+      "name": "b76396be4777b8b0"
+    }
+  ],
+  "short_name": "ReQuEST-ASPLOS'18",
+  "host_conference":"Conference\nASPLOS'18 Architectural Support for Programming Languages and Operating Systems\nWilliamsburg, VA, USA — March 24 - 28, 2018\nACM New York, NY, USA ©2018",
+  "host_conference_url":"https://dl.acm.org/citation.cfm?id=3173162",
+  "source_materials":["PDF Front matter (Title page, Organizers, Advisory board, Introduction, TOC)"],
+  "acm_appears_in":[
+    {"name":"Performance", "url":"https://dl.acm.org/collection.cfm?id=KA10"},
+    {"name":"Hardware Design", "url":"https://dl.acm.org/collection.cfm?id=KA5"},
+    {"name":"Software", "url":"https://dl.acm.org/collection.cfm?id=KA8"},
+    {"name":"Artificial Intelligence", "url":"https://dl.acm.org/collection.cfm?id=KA1"},
+    {"name":"Applications", "url":"https://dl.acm.org/collection.cfm?id=KA2"},
+    {"name":"Digital content", "url":"https://dl.acm.org/collection.cfm?id=KA3"},
+    {"name":"Education", "url":"https://dl.acm.org/collection.cfm?id=KA4"}
+  ],
+  "url": "http://cknowledge.org/request-cfp-asplos2018.html"
 }
