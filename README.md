@@ -412,6 +412,42 @@ $ ck dashboard request.apslos18
 ## Archiving stable version in a permanent repository with ACM badges
 
 
+## Automatically preparing ACM proceedings (on Linux, MacOS or Windows)
+
+Install Latex with deps
+
+```
+$ sudo apt-get install texlive-full
+$ sudo apt-get install texlive-generic-extra
+$ sudo apt-get install texlive-science
+```
+
+Temporally set new directory with CK repositories to avoid polluting your own installation,
+and pull all related repositories:
+
+```
+$ export CK_REPOS=$PWD/CK_REQUEST_REPOS
+
+$ ck pull repo:ck-request-asplos18-results
+
+$ ck pull repo:ck-request-asplos18-results-caffe-intel
+$ ck pull repo:ck-request-asplos18-results-iot-farm
+$ ck pull repo:ck-request-asplos18-results-mobilenets-armcl-opencl
+$ ck pull repo:ck-request-asplos18-results-mobilenets-tvm-arm
+$ ck pull repo:ck-request-asplos18-results-resnet-tvm-fpga
+
+```
+
+Generate proceedings and ACM meta (paper, CK workflow snapshot, CK results snapshot and zip of the original repository):
+
+```
+$ ck generate proceedings.acm:request.asplos18
+```
+
+You can check meta information used to generate proceedings as follows:
+```
+$ ck load proceedings.acm:request.asplos18 --min
+```
 
 # Questions and comments
 
