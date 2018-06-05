@@ -13,11 +13,39 @@ stack for AI, deep learning and other emerging workloads
 (speed, throughput, accuracy, energy, costs, etc).
 
 <!-------------------------------------------------------------------------------------->
-# Validated workflows and results from tournaments in the [CK format](https://github.com/ctuning/ck)
+# Validated workflows, artifacts and results from tournaments in the [CK format](https://github.com/ctuning/ck)
 
 * [ASPLOS'18: multi-objective SW/HW optimization and co-design of image classification](https://github.com/ctuning/ck-request-asplos18-results)
 
 <!-------------------------------------------------------------------------------------->
+# Preparing submissions for evaluation
+
+
+
+Since the long-term ReQuEST goal is to develop a common experimental framework
+while encouraging the community to share artifacts (code and data) as reusable, 
+portable and customizable components, we convert all submissions 
+to the open [Collective Knowledge format (CK)](http://cKnowledge.org).
+
+We suggest you to check at least 
+a few [getting started guides](https://github.com/ctuning/ck/wiki) 
+to understand CK concepts. 
+CK helps users add and share unified Python wrappers 
+([CK modules](https://github.com/ctuning/ck/wiki/Shared-modules)) 
+with a common JSON API and meta information for groups of similar objects. 
+Rather than writing their own ad-hoc scripts, researchers can then 
+reuse and extend such shared modules or share new objects with the same API.
+CK also includes a [cross-platform package manager](https://github.com/ctuning/ck/wiki/Portable-workflows) 
+which can detect and set up required tools or install missing ones while allowing
+easy co-existence of multiple versions.
+Finally, CK allows to assemble portable experimental workflows
+from shared components, unify collection of statistics, 
+reproduce results and even [crowdsource experiments](http://cKnowledge.org/repo) 
+across devices and data sets provided by volunteers.
+
+We will use the following public ReQuEST@ASPLOS'18 submission to explain conversion to the CK format: 
+https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl .
+
 # Prerequisites
 
 * Collective Knowledge Framework: see [minimal installation guidelines](https://github.com/ctuning/ck#minimal-installation)
@@ -73,33 +101,6 @@ or
 ```
 $ ck pull repo:ck-request
 ```
-
-<!-------------------------------------------------------------------------------------->
-# Preparing submission for evaluation
-
-Since the long-term ReQuEST goal is to develop a common experimental framework
-as well as to encourage the community to share artifacts as reusable, 
-portable and customizable components, we convert all submissions 
-to the open [Collective Knowledge format (CK)](http://cKnowledge.org).
-
-We suggest you to check at least 
-a few [getting started guides](https://github.com/ctuning/ck/wiki) 
-to understand CK concepts. 
-CK helps users add and share unified Python wrappers 
-([CK modules](https://github.com/ctuning/ck/wiki/Shared-modules)) 
-with a common JSON API and meta information for groups of similar objects. 
-Rather than writing their own ad-hoc scripts, researchers can then 
-reuse and extend such shared modules or share new objects with the same API.
-CK also includes a [cross-platform package manager](https://github.com/ctuning/ck/wiki/Portable-workflows) 
-which can detect and set up required tools or install missing ones while allowing
-easy co-existence of multiple versions.
-Finally, CK allows to assemble portable experimental workflows
-from shared components, unify collection of statistics, 
-reproduce results and even [crowdsource experiments](http://cKnowledge.org/repo) 
-across devices and data sets provided by volunteers.
-
-We will use the following public ReQuEST@ASPLOS'18 submission to explain conversion to the CK format: 
-https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl .
 
 <!-------------------------------------------------------------------------------------->
 ## Creating dummy CK repository
@@ -414,6 +415,12 @@ $ ck dashboard request.apslos18
 
 ## Automatically preparing ACM proceedings (on Linux, MacOS or Windows)
 
+Install minimal dependencies:
+```
+$ sudo apt-get install python python-pip git
+$ sudo pip install ck
+``` 
+
 Install Latex with deps
 
 ```
@@ -422,14 +429,16 @@ $ sudo apt-get install texlive-generic-extra
 $ sudo apt-get install texlive-science
 ```
 
-Temporally set new directory with CK repositories to avoid polluting your own installation,
-and pull all related repositories:
+Temporally set new directory with CK repositories to avoid polluting your own CK installation:
 
 ```
 $ export CK_REPOS=$PWD/CK_REQUEST_REPOS
+```
 
+Pull all ReQuEST repositories with CK workflows, papers and artifacts:
+
+```
 $ ck pull repo:ck-request-asplos18-results
-
 $ ck pull repo:ck-request-asplos18-results-caffe-intel
 $ ck pull repo:ck-request-asplos18-results-iot-farm
 $ ck pull repo:ck-request-asplos18-results-mobilenets-armcl-opencl
@@ -449,8 +458,20 @@ You can check meta information used to generate proceedings as follows:
 $ ck load proceedings.acm:request.asplos18 --min
 ```
 
+You can now see the proceedings of the 1st ReQuEST tournament at ASPLOS'18 in the ACM DL: https://doi.org/10.1145/3229762
+
+# Next steps
+
+After a successful proof-of-concept of our approach during the 1st ReQuEST tournament at ACM ASPLOS'18,
+we now work with the community, our advisory board and ACM 
+to continue improving CK framework and documentation, adding more tutorials, 
+standardizing API and meta descriptions, unifying co-design methodology
+and automating [Artifact Evaluation](http://cTuning.org/ae) 
+at existing conferences and journals.
+
 # Questions and comments
 
 Feel free to contact [ReQuEST organizers](http://cKnowledge.org/request), 
-send your questions and comments to the [CK mailing list](http://groups.google.com/group/collective-knowledge)
+communicate with the community via [CK mailing list](http://groups.google.com/group/collective-knowledge),
+discuss [Artifact Evaluation](http://groups.google.com/group/artifact-evaluation), 
 or join our [LinkedIn group on reproducible R&D](https://www.linkedin.com/groups?home=&gid=7433414&trk=my_groups-tile-grp).
