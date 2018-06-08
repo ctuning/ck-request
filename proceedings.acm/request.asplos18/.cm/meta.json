@@ -1,106 +1,429 @@
 {
+  "abstract_file": "abstract.txt", 
   "acm_appears_in": [
     {
-      "name": "Performance",
+      "name": "Performance", 
       "url": "https://dl.acm.org/collection.cfm?id=KA10"
-    },
+    }, 
     {
-      "name": "Hardware Design",
+      "name": "Hardware Design", 
       "url": "https://dl.acm.org/collection.cfm?id=KA5"
-    },
+    }, 
     {
-      "name": "Software",
+      "name": "Software", 
       "url": "https://dl.acm.org/collection.cfm?id=KA8"
-    },
+    }, 
     {
-      "name": "Artificial Intelligence",
+      "name": "Artificial Intelligence", 
       "url": "https://dl.acm.org/collection.cfm?id=KA1"
-    },
+    }, 
     {
-      "name": "Applications",
+      "name": "Applications", 
       "url": "https://dl.acm.org/collection.cfm?id=KA2"
-    },
+    }, 
     {
-      "name": "Digital content",
+      "name": "Digital content", 
       "url": "https://dl.acm.org/collection.cfm?id=KA3"
-    },
+    }, 
     {
-      "name": "Education",
+      "name": "Education", 
       "url": "https://dl.acm.org/collection.cfm?id=KA4"
     }
-  ],
+  ], 
+  "advisory_board": [
+    {
+      "affiliation": "Xilinx, USA", 
+      "first_name": "Michaela", 
+      "last_name": "Blott", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "General Motors, USA", 
+      "first_name": "Unmesh", 
+      "last_name": "Bordoloi", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Microsoft, USA", 
+      "first_name": "Ofer", 
+      "last_name": "Dekel", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "CERN openlab, Switzerland", 
+      "first_name": "Maria", 
+      "last_name": "Girone", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Association for Computing Machinery, USA", 
+      "first_name": "Wayne", 
+      "last_name": "Graves", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "NVIDIA, USA", 
+      "first_name": "Vinod", 
+      "last_name": "Grover", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "IBM, USA", 
+      "first_name": "Sumit", 
+      "last_name": "Gupta", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Alan Turing Institute, UK", 
+      "first_name": "James", 
+      "last_name": "Hetherington", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "NVIDIA, USA", 
+      "first_name": "Steve", 
+      "last_name": "Keckler", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Intel, USA", 
+      "first_name": "Wei", 
+      "last_name": "Li", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "ARM, UK", 
+      "first_name": "Colin", 
+      "last_name": "Osborne", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Microsoft, USA", 
+      "first_name": "Andrew", 
+      "last_name": "Putnam", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Magna, Canada", 
+      "first_name": "Boris", 
+      "last_name": "Shulkin", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "AMD, USA", 
+      "first_name": "Greg", 
+      "last_name": "Stoner", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Chan Zuckerberg Initiative, USA", 
+      "first_name": "Alex", 
+      "last_name": "Wade", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Huawei, USA", 
+      "first_name": "Peng", 
+      "last_name": "Wu", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }, 
+    {
+      "affiliation": "Google, USA", 
+      "first_name": "Cliff", 
+      "last_name": "Young", 
+      "name": "", 
+      "role": "ADVISORY BOARD MEMBER"
+    }
+  ], 
   "ck_artifacts": [
     {
-      "data_uoa": "e7cc77d72f13441e",
+      "data_uoa": "e7cc77d72f13441e", 
       "repo_uoa": "ck-request-asplos18-caffe-intel"
-    },
+    }, 
     {
-      "data_uoa": "8b220a7f172a47d4",
+      "data_uoa": "8b220a7f172a47d4", 
       "repo_uoa": "ck-request-asplos18-mobilenets-tvm-arm"
-    },
+    }, 
     {
-      "data_uoa": "640fb4c4b9ba9822",
+      "data_uoa": "640fb4c4b9ba9822", 
       "repo_uoa": "ck-request-asplos18-iot-farm"
-    },
+    }, 
     {
-      "data_uoa": "9375838469ad4029",
+      "data_uoa": "9375838469ad4029", 
       "repo_uoa": "ck-request-asplos18-resnet-tvm-fpga"
-    },
+    }, 
     {
-      "data_uoa": "08da9685582866a0",
-      "repo_uoa": "ck-request-asplos18-mobilenets-armcl-opencl",
+      "data_uoa": "08da9685582866a0", 
+      "repo_uoa": "ck-request-asplos18-mobilenets-armcl-opencl", 
       "repo_url": "https://github.com/dividiti/ck-request-asplos18-mobilenets-armcl-opencl"
     }
-  ],
-  "doi": "https://doi.org/10.1145/3229762",
-  "host_conference": "Conference\nASPLOS'18 Architectural Support for Programming Languages and Operating Systems\nWilliamsburg, VA, USA — March 24 - 28, 2018\nACM New York, NY, USA ©2018",
-  "host_conference_url": "https://dl.acm.org/citation.cfm?id=3173162",
-  "name": "1st ACM Reproducible Quality-Efficient Systems Tournament on Co-designing Pareto-efficient Deep Learning at ASPLOS'18 (ReQuEST)",
+  ], 
+  "conference_number": "2018", 
+  "doi": "https://doi.org/10.1145/3229762", 
+  "event_city": "Williamsburg", 
+  "event_country": "USA", 
+  "event_end_date": "04/24/2018", 
+  "event_start_date": "04/24/2018", 
+  "event_state": "VA", 
+  "event_url": "http://cknowledge.org/request-cfp-asplos2018.html", 
+  "front_matter": {
+    "fm_file": "frontmatter.pdf", 
+    "fm_text": "Front matter (Title page, Organizers, Advisory Board, Introduction, TOC, Results)"
+  }, 
+  "host_conference": "Conference\nASPLOS'18 Architectural Support for Programming Languages and Operating Systems\nWilliamsburg, VA, USA — March 24 - 28, 2018\nACM New York, NY, USA ©2018", 
+  "host_conference_url": "https://dl.acm.org/citation.cfm?id=3173162", 
+  "isbn": "", 
+  "isbn13": "", 
+  "name": "1st ACM Reproducible Quality-Efficient Systems Tournament on Co-designing Pareto-efficient Deep Learning at ASPLOS'18 (ReQuEST)", 
   "organizers": [
     {
-      "affiliation": "University of Washington, USA",
-      "extra": "",
-      "name": "28e912bcdd4134a8"
-    },
+      "affiliation": "University of Washington, USA", 
+      "extra": "", 
+      "first_name": "Luis", 
+      "last_name": "Ceze", 
+      "name": "28e912bcdd4134a8", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "University of Toronto, Canada",
-      "extra": "",
-      "name": "9a173d33018c2905"
-    },
+      "affiliation": "University of Toronto, Canada", 
+      "extra": "", 
+      "first_name": "Natalie Enright", 
+      "last_name": "Jerger", 
+      "name": "9a173d33018c2905", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "EPFL, Switzerland",
-      "extra": "",
-      "name": "a672a64201a515ba"
-    },
+      "affiliation": "EPFL, Switzerland", 
+      "extra": "", 
+      "first_name": "Babak", 
+      "last_name": "Falsafi", 
+      "name": "a672a64201a515ba", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "cTuning foundation, France",
-      "extra": "artifact evaluation and automation; common co-design framework",
-      "name": "1374a4f3b828a050"
-    },
+      "affiliation": "cTuning foundation, France", 
+      "extra": "artifact evaluation and automation; common co-design framework", 
+      "first_name": "Grigori", 
+      "last_name": "Fursin", 
+      "name": "1374a4f3b828a050", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "dividiti, UK",
-      "extra": "industrial relations",
-      "name": "1105e8d1cd4148e9"
-    },
+      "affiliation": "dividiti, UK", 
+      "extra": "industrial relations", 
+      "first_name": "Anton", 
+      "last_name": "Lokhmotov", 
+      "name": "1105e8d1cd4148e9", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "University of Washington, USA",
-      "extra": "workshop organization",
-      "name": "45486390d2262917"
-    },
+      "affiliation": "University of Washington, USA", 
+      "extra": "workshop organization", 
+      "first_name": "Thierry", 
+      "last_name": "Moreau", 
+      "name": "45486390d2262917", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "Cornell University, USA",
-      "extra": "",
-      "name": "85a6872bd0465db0"
-    },
+      "affiliation": "Cornell University, USA", 
+      "extra": "", 
+      "first_name": "Adrian", 
+      "last_name": "Sampson", 
+      "name": "85a6872bd0465db0", 
+      "role": "ORGANIZER"
+    }, 
     {
-      "affiliation": "University of Cambridge, UK",
-      "extra": "",
-      "name": "b76396be4777b8b0"
+      "affiliation": "University of Cambridge, UK", 
+      "extra": "", 
+      "first_name": "Phillip Stanley", 
+      "last_name": "Marbell", 
+      "name": "b76396be4777b8b0", 
+      "role": "ORGANIZER"
     }
-  ],
-  "short_name": "ReQuEST-ASPLOS'18",
+  ], 
+  "proc_acronym": "ReQuEST-ASPLOS 2018", 
+  "proc_ccs2012": [
+    {
+      "concept": [
+        {
+          "concept_id": "10010520.10010521"
+        }, 
+        {
+          "concept_desc": "Computer systems organization~Architectures"
+        }, 
+        {
+          "concept_significance": "500"
+        }
+      ]
+    }, 
+    {
+      "concept": [
+        {
+          "concept_id": "10011007.10010940.10011003.10011002"
+        }, 
+        {
+          "concept_desc": "Software and its engineering~Software performance"
+        }, 
+        {
+          "concept_significance": "500"
+        }
+      ]
+    }
+  ], 
+  "proc_class": "workshop/tournament", 
+  "proc_cms_conf_id": "", 
+  "proc_content": [
+    {
+      "section": [
+        {
+          "section_id": ""
+        }, 
+        {
+          "sort_key": "10"
+        }, 
+        {
+          "section_seq_no": "1"
+        }, 
+        {
+          "section_type": "SESSION"
+        }, 
+        {
+          "section_title": "Keynote"
+        }, 
+        {
+          "section_page_from": ""
+        }, 
+        {
+          "article_rec": [
+            {
+              "sort_key": "20"
+            }, 
+            {
+              "display_label": "p"
+            }, 
+            {
+              "article_publication_date": "06/12/2018"
+            }, 
+            {
+              "seq_no": "1"
+            }, 
+            {
+              "title": ""
+            }, 
+            {
+              "abstract": [
+                {
+                  "par": "Reducing power consumption has been one of the most important goals since the creation of electronic systems. Energy efficiency is increasingly important as battery-powered systems (such as smartphones, drones, and body cameras) are widely used. It is desirable using the on-board computers to recognize objects in the images captured by these cameras. The Low-Power Image Recognition Challenge (LPIRC) is an annual competition started in 2015, aiming to discover the best technology in both image recognition and energy conservation. In this talk, we will explains the rules of the competition and the rationale, summarizes the teams' scores, and describes the lessons learned in the past years. We will also discuss possible improvements of future challenges and collaboration opportunities with other events and competitions like ReQuEST."
+                }
+              ]
+            }, 
+            {
+              "authors": [
+                {
+                  "au": [
+                    {
+                      "seq_no": "1"
+                    }, 
+                    {
+                      "first_name": "Yiran"
+                    }, 
+                    {
+                      "last_name": " Chen"
+                    }, 
+                    {
+                      "affiliation": "Duke University, USA"
+                    }, 
+                    {
+                      "role": "author"
+                    }, 
+                    {
+                      "bio": "Yiran Chen received B.S and M.S. from Tsinghua University and Ph.D. from Purdue University in 2005. After five years in industry, he joined University of Pittsburgh in 2010 as Assistant Professor and then promoted to Associate Professor with tenure in 2014, held Bicentennial Alumni Faculty Fellow. He now is a tenured Associate Professor of the Department of Electrical and Computer Engineering at Duke University and serving as the co-director of Duke Center for Evolutionary Intelligence (CEI), focusing on the research of new memory and storage systems, machine learning and neuromorphic computing, and mobile computing systems. Dr. Chen has published one book and more than 300 technical publications and has been granted 93 US patents. He is the associate editor of IEEE TNNLS, IEEE D&T, IEEE ESL, ACM JETC, and ACM TCPS, and served on the technical and organization committees of more than 40 international conferences. He received 6 best paper awards and 12 best paper nominations from international conferences. He is the recipient of NSF CAREER award and ACM SIGDA outstanding new faculty award. He is the Fellow of IEEE."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ], 
+  "proc_copyright_year": "2018", 
+  "proc_desc": "Proceedings of the 1st", 
+  "proc_doi_number": "10.1145/3229762", 
+  "proc_id": "", 
+  "proc_pages": "", 
+  "proc_publication_date": "06/12/2018", 
+  "proc_publisher": [
+    {
+      "publisher_id": "PUB27"
+    }, 
+    {
+      "publisher_code": "ACMNY"
+    }, 
+    {
+      "publisher_name": "ACM"
+    }, 
+    {
+      "publisher_address": "2 Penn Plaza, Suite 701"
+    }, 
+    {
+      "publisher_city": "New York"
+    }, 
+    {
+      "publisher_state": "NY"
+    }, 
+    {
+      "publisher_country": "USA"
+    }, 
+    {
+      "publisher_zip_code": "10121-0701"
+    }, 
+    {
+      "publisher_contact": "212 869-7440"
+    }, 
+    {
+      "publisher_phone": ""
+    }
+  ], 
+  "proc_sponsor_rec": [
+    {
+      "sponsor": [
+        {
+          "sponsor_id": ""
+        }, 
+        {
+          "sponsor_name": "ACM Special Interest Group on Computer Architecture"
+        }, 
+        {
+          "sponsor_abbr": "SIGARCH"
+        }
+      ]
+    }
+  ], 
+  "proc_title": "Reproducible Quality-Efficient Systems Tournament on Co-designing Pareto-efficient Deep Learning", 
+  "proceedings_submitted_by": "the cTuning foundation (cTuning.org)", 
+  "series_id": "", 
+  "series_title": "Reproducible Quality-Efficient Systems Tournament", 
+  "short_name": "ReQuEST-ASPLOS'18", 
   "source_materials": [
-    "PDF Front matter (Title page, Organizers, Advisory board, Introduction, TOC)"
-  ],
+    "PDF Front matter (Title page, Organizers, Advisory board, Introduction, TOC, Results)"
+  ], 
   "url": "http://cknowledge.org/request-cfp-asplos2018.html"
 }
