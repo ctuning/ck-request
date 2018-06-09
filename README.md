@@ -429,6 +429,11 @@ $ sudo apt-get install texlive-generic-extra
 $ sudo apt-get install texlive-science
 ```
 
+Install Python XML support (for ACM DL DTD):
+```
+$ sudo pip install lxml
+```
+
 Temporally set new directory with CK repositories to avoid polluting your own CK installation:
 
 ```
