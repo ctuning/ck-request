@@ -183,8 +183,9 @@
   "event_state": "VA", 
   "event_url": "http://cknowledge.org/request-cfp-asplos2018.html", 
   "front_matter": {
-    "fm_file": "frontmatter.pdf", 
-    "fm_text": "Front matter (Title page, Organizers, Advisory Board, Introduction, TOC, Results)"
+    "fm_file": "front-matter.pdf", 
+    "fm_text": "Front matter (Title page, Organizers, Advisory Board, Introduction, TOC, Results)",
+    "data_uoa":"6085715184c83598"
   }, 
   "host_conference": "Conference\nASPLOS'18 Architectural Support for Programming Languages and Operating Systems\nWilliamsburg, VA, USA — March 24 - 28, 2018\nACM New York, NY, USA ©2018", 
   "host_conference_url": "https://dl.acm.org/citation.cfm?id=3173162", 
@@ -284,6 +285,19 @@
           "concept_significance": "500"
         }
       ]
+    },
+    {
+      "concept": [
+        {
+          "concept_id": "10011007.10011006.10011072"
+        }, 
+        {
+          "concept_desc": "Software and its engineering~Software libraries and repositories"
+        }, 
+        {
+          "concept_significance": "500"
+        }
+      ]
     }
   ], 
   "proc_class": "workshop/tournament", 
@@ -344,7 +358,7 @@
                       "first_name": "Yiran"
                     }, 
                     {
-                      "last_name": " Chen"
+                      "last_name": "Chen"
                     }, 
                     {
                       "affiliation": "Duke University, USA"
@@ -364,6 +378,32 @@
       ]
     }
   ], 
+  "proc_content2": {
+     "section_type": "PANEL",
+     "section_title": "Open panel and discussion on tackling complexity, reproducibility and tech transfer challenges in a rapidly evolving AI/ML/systems research",
+     "abstract":"",
+     "authors": [
+       {
+        "first_name":"Hillery",
+        "last_name":"Hunter",
+        "affiliation":"IBM, USA",
+        "bio":""},
+       {
+        "first_name":"Yiran",
+        "last_name":"Chen",
+        "affiliation":"Duke University, USA",
+        "bio":""},
+       {
+        "first_name":"Charles",
+        "last_name":"Qi",
+        "affiliation":"Cadence, USA",
+        "bio":""},
+       {
+        "first_name":"Tianqi",
+        "last_name":"Chen",
+        "affiliation":"University of Washington, USA",
+        "bio":""}]
+  },
   "proc_copyright_year": "2018", 
   "proc_desc": "Proceedings of the 1st", 
   "proc_doi_number": "10.1145/3229762", 
