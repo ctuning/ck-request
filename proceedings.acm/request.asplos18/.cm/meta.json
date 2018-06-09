@@ -183,9 +183,9 @@
   "event_state": "VA", 
   "event_url": "http://cknowledge.org/request-cfp-asplos2018.html", 
   "front_matter": {
+    "data_uoa": "6085715184c83598", 
     "fm_file": "front-matter.pdf", 
-    "fm_text": "Front matter (Title page, Organizers, Advisory Board, Introduction, TOC, Results)",
-    "data_uoa":"6085715184c83598"
+    "fm_text": "Front matter (Title page, Organizers, Advisory Board, Introduction, TOC, Results)"
   }, 
   "host_conference": "Conference\nASPLOS'18 Architectural Support for Programming Languages and Operating Systems\nWilliamsburg, VA, USA — March 24 - 28, 2018\nACM New York, NY, USA ©2018", 
   "host_conference_url": "https://dl.acm.org/citation.cfm?id=3173162", 
@@ -285,7 +285,7 @@
           "concept_significance": "500"
         }
       ]
-    },
+    }, 
     {
       "concept": [
         {
@@ -378,32 +378,184 @@
       ]
     }
   ], 
-  "proc_content2": {
-     "section_type": "PANEL",
-     "section_title": "Open panel and discussion on tackling complexity, reproducibility and tech transfer challenges in a rapidly evolving AI/ML/systems research",
-     "abstract":"",
-     "authors": [
-       {
-        "first_name":"Hillery",
-        "last_name":"Hunter",
-        "affiliation":"IBM, USA",
-        "bio":""},
-       {
-        "first_name":"Yiran",
-        "last_name":"Chen",
-        "affiliation":"Duke University, USA",
-        "bio":""},
-       {
-        "first_name":"Charles",
-        "last_name":"Qi",
-        "affiliation":"Cadence, USA",
-        "bio":""},
-       {
-        "first_name":"Tianqi",
-        "last_name":"Chen",
-        "affiliation":"University of Washington, USA",
-        "bio":""}]
-  },
+  "proc_content2": [
+    {
+      "section_type": "PANEL"
+    }, 
+    {
+      "section_title": "Open panel and discussion on tackling complexity, reproducibility and tech transfer challenges in a rapidly evolving AI/ML/systems research"
+    }, 
+    {
+      "section_page_from": ""
+    }, 
+    {
+      "section_abstract": [
+        {
+          "par": "Discussion is centered around the following questions:"
+        }, 
+        {
+          "par": "* How do we facilitate tech transfer between academia and industry in a quickly evolving research landscape?"
+        }, 
+        {
+          "par": "* How do we incentivize companies and academic researchers to release more artifacts and open source projects as portable, customizable and reusable components which can be collaboratively optimized by the community across diverse models, data sets and platforms from the cloud to edge?"
+        }, 
+        {
+          "par": "* How do we ensure reproducible evaluation and fair comparison of diverse AI/ML frameworks, libraries, techniques and tools?"
+        }, 
+        {
+          "par": "* What other workloads (AI, ML, quantum) and exciting research challenges should ReQuEST attempt to solve in its future iterations with the help of the multi-disciplinary community: reducing training time and costs, comparing specialized hardware (TPU/FPGA/DSP), distributing learning across edge devices, ..."
+        }
+      ]
+    }, 
+    {
+      "chair_editor": [
+        {
+          "ch_ed": [
+            {
+              "seq_no": "1"
+            }, 
+            {
+              "first_name": "Grigori"
+            }, 
+            {
+              "last_name": "Fursin"
+            }, 
+            {
+              "affiliation": "cTuning foundation, France; dividiti, UK"
+            }, 
+            {
+              "role": "MODERATOR"
+            }, 
+            {
+              "email_address": "grigori@dividiti.com"
+            }
+          ]
+        }, 
+        {
+          "ch_ed": [
+            {
+              "seq_no": "2"
+            }, 
+            {
+              "first_name": "Thierry"
+            }, 
+            {
+              "last_name": "Moreau"
+            }, 
+            {
+              "affiliation": "University of Washington, USA"
+            }, 
+            {
+              "role": "MODERATOR"
+            }, 
+            {
+              "email_address": "moreau@cs.washington.edu"
+            }
+          ]
+        }, 
+        {
+          "ch_ed": [
+            {
+              "seq_no": "3"
+            }, 
+            {
+              "first_name": "Hillery"
+            }, 
+            {
+              "last_name": "Hunter"
+            }, 
+            {
+              "affiliation": "IBM, USA"
+            }, 
+            {
+              "role": "PANELIST"
+            }, 
+            {
+              "bio": "Hillery Hunter is an IBM Fellow and Director of the Accelerated Cognitive Infrastructure group at IBM's T.J. Watson Research Center in Yorktown Heights, NY. She is interested in cross-disciplinary technology topics, spanning silicon to system architecture to achieve new solutions to traditional problems. Her team pursues hardware-software co-optimization to take the wait time out of machine and deep learning problems. Her prior work was in the areas of DRAM main memory systems and embedded DRAM, and she gained development experience serving as IBM's server and mainframe DDR3-generation end-to-end memory power lead. In 2010, she was selected by the National Academy of Engineering for its Frontiers in Engineering Symposium, a recognition as one of the top young engineers in America. Dr. Hunter received the Ph.D. degree in Electrical Engineering from the University of Illinois, Urbana-Champaign and is a member of the IBM Academy of Technology. Hillery was appointed as an IBM Fellow in 2017."
+            }, 
+            {
+              "email_address": ""
+            }
+          ]
+        }, 
+        {
+          "ch_ed": [
+            {
+              "seq_no": "4"
+            }, 
+            {
+              "first_name": "Yiran"
+            }, 
+            {
+              "last_name": "Chen"
+            }, 
+            {
+              "affiliation": "Duke University, USA"
+            }, 
+            {
+              "role": "PANELIST"
+            }, 
+            {
+              "bio": "Yiran Chen received B.S and M.S. from Tsinghua University and Ph.D. from Purdue University in 2005. After five years in industry, he joined University of Pittsburgh in 2010 as Assistant Professor and then promoted to Associate Professor with tenure in 2014, held Bicentennial Alumni Faculty Fellow. He now is a tenured Associate Professor of the Department of Electrical and Computer Engineering at Duke University and serving as the co-director of Duke Center for Evolutionary Intelligence (CEI), focusing on the research of new memory and storage systems, machine learning and neuromorphic computing, and mobile computing systems. Dr. Chen has published one book and more than 300 technical publications and has been granted 93 US patents. He is the associate editor of IEEE TNNLS, IEEE D&T, IEEE ESL, ACM JETC, and ACM TCPS, and served on the technical and organization committees of more than 40 international conferences. He received 6 best paper awards and 12 best paper nominations from international conferences. He is the recipient of NSF CAREER award and ACM SIGDA outstanding new faculty award. He is the Fellow of IEEE."
+            }, 
+            {
+              "email_address": ""
+            }
+          ]
+        }, 
+        {
+          "ch_ed": [
+            {
+              "seq_no": "5"
+            }, 
+            {
+              "first_name": "Charles"
+            }, 
+            {
+              "last_name": "Qi"
+            }, 
+            {
+              "affiliation": "Cadence, USA"
+            }, 
+            {
+              "role": "PANELIST"
+            }, 
+            {
+              "bio": "Charles Qi is a system solutions architect in Cadence's IPG System and Software team, responsible for providing vision system solutions based on the Cadence(R) Tensilica Vision DSP technology and a broad range of interface IP portfolio. At system level, his primary focus is image sensing, computer vision and deep learning hardware and software for high-performance automotive vision ADAS SoC. Currently he is also an active internal architecture team member for high performance neural network acceleration hardware IPs. Prior to joining Cadence, Charles held various technical positions in Intel, Broadcom and several high-tech startups."
+            }, 
+            {
+              "email_address": ""
+            }
+          ]
+        }, 
+        {
+          "ch_ed": [
+            {
+              "seq_no": "6"
+            }, 
+            {
+              "first_name": "Tianqi"
+            }, 
+            {
+              "last_name": "Chen"
+            }, 
+            {
+              "affiliation": "University of Washington, USA"
+            }, 
+            {
+              "role": "PANELIST"
+            }, 
+            {
+              "bio": "Tianqi Chen is a PhD student in University of Washington, and recipient of a Google PhD Fellowship in Machine Learning. Tianqi is creator of popular machine learning systems, such as XGBoost, ApacheMXNet and the TVM stack. XGBoost has been adopted by many industries such as Uber, Airbnb, Tencent, while ApacheMXNet has seen wide adoption by Intel, NVIDIA, AWS, and Wolfram among others. He will share his experience about creating and managing production quality AI frameworks originating from academic research."
+            }, 
+            {
+              "email_address": ""
+            }
+          ]
+        }
+      ]
+    }
+  ], 
   "proc_copyright_year": "2018", 
   "proc_desc": "Proceedings of the 1st", 
   "proc_doi_number": "10.1145/3229762", 
