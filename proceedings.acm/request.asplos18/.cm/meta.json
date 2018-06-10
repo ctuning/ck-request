@@ -151,6 +151,37 @@
       "role": "ADVISORY BOARD MEMBER"
     }
   ], 
+  "artifact_instructions": [
+    {
+      "general_inst": [
+        {
+          "software_dependencies": "See   Artifact Appendix in the original paper, "
+        }, 
+        {
+          "hardware_dependencies": ""
+        }, 
+        {
+          "installation": ""
+        }
+      ]
+    }, 
+    {
+      "experimental_inst": [
+        {
+          "installation": ""
+        }, 
+        {
+          "parameterization": ""
+        }, 
+        {
+          "worksflow": ""
+        }, 
+        {
+          "evaluation": ""
+        }
+      ]
+    }
+  ], 
   "ck_artifacts": [
     {
       "data_uoa": "e7cc77d72f13441e", 
@@ -191,6 +222,17 @@
   "host_conference_url": "https://dl.acm.org/citation.cfm?id=3173162", 
   "isbn": "", 
   "isbn13": "", 
+  "linked_ck_article": [
+    {
+      "article_doi": "10.3850/9783981537079_1018"
+    }, 
+    {
+      "title": "Collective Knowledge: Towards R&D sustainability"
+    }, 
+    {
+      "description": ""
+    }
+  ], 
   "name": "1st ACM Reproducible Quality-Efficient Systems Tournament on Co-designing Pareto-efficient Deep Learning at ASPLOS'18 (ReQuEST)", 
   "organizers": [
     {
