@@ -1,18 +1,33 @@
-Co-designing efficient machine learning based systems across
-the whole hardware/software stack to trade off speed, accuracy, energy
-and costs is becoming extremely complex and time consuming.
-Researchers often struggle to evaluate and compare different
-published works across rapidly evolving software
-frameworks, heterogeneous hardware platforms, compilers,
-libraries, algorithms, data sets, models, and environments.
+Artificial Intelligence (AI), Machine Learning (ML) and other
+emerging workloads demand efficient computer systems from the
+cloud to the edge. Systems designers, however, face numerous
+challenges from tackling the ever-growing space of design and
+optimization choices (including algorithms, models, software
+frameworks, libraries, hardware platforms, optimization
+techniques) to balancing off multiple objectives (including
+accuracy, speed, throughput, power, size, price). Furthermore,
+the lack of a common experimental framework and methodology
+makes it even more challenging to keep up with and build upon
+the latest research advances.
 
-We present our community effort to develop an open co-design tournament 
-platform with an online public scoreboard.
-It will gradually incorporate best research practices 
-while providing a common way for multidisciplinary researchers
-to optimize and compare the quality vs. efficiency Pareto
-optimality of various workloads on diverse and complete
-hardware/software systems.
-As a long-term goal, we want to build a public repository 
-of the most efficient algorithms and systems
-which can be easily customized, reused and built upon.
+The Reproducibly Quality-Efficient Systems Tournaments
+(ReQuEST) initiative is a community effort to develop
+a rigorous methodology, open platform and online scoreboard
+for co-designing the efficient and reliable software/hardware
+stack for emerging workloads. ReQuEST invites
+a multidisciplinary community to collaborate on benchmarking
+and optimizing workloads across diverse platforms, models,
+data sets, libraries and tools, while gradually adopting best
+practice. The community effectively creates a “marketplace”
+for trading Pareto-efficient implementations (code and data)
+as portable, customizable and reusable Collective Knowledge
+workflows and packages. We envision that such
+a community-driven and decentralized marketplace will help
+accelerate adoption and technology transfer of novel AI/ML
+techniques similar to the open-source movement.
+
+Please see the front matter for the 1st ReQuEST tournament
+on Co-designing Pareto-efficient Deep Learning Inference
+at ASPLOS'18 to learn more about the shared workflows and
+validated results, as well as about our next steps for the
+ReQuEST initiative.
