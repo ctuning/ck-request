@@ -1,2 +1,34 @@
-See ReQuEST front matter to know more about this tournament, workshop, reproduced results, shared workflows and the next steps.
-
+Artificial Intelligence (AI), Machine Learning (ML) and other emerging workloads 
+demand efficient computer systems from the cloud to the edge. 
+Systems designers, however, face numerous challenges from tackling 
+the ever-growing space of design and optimization choices 
+(including algorithms, models, software frameworks, libraries, 
+hardware platforms, optimization techniques) to balancing off 
+multiple objectives (including accuracy, speed, throughput, power, size, price). 
+Furthermore, the lack of a common experimental framework and methodology 
+makes it even more challenging to keep up with and build upon the latest research advances.
+<par>
+The Reproducibly Quality-Efficient Systems Tournaments 
+(<a href="http://cknowledge.org/request">ReQuEST</a>) 
+initiative is a community effort to develop 
+a rigorous methodology, open platform 
+and <a href="http://cKnowledge.org/repo">online scoreboard</a>
+for co-designing the efficient and reliable software/hardware 
+stack for emerging workloads. ReQuEST invites a multidisciplinary 
+community to collaborate on benchmarking and optimizing workloads 
+across diverse platforms, models, data sets, libraries and tools, 
+while gradually adopting best practice. The community effectively creates 
+a "marketplace" for trading Pareto-efficient implementations (code and data) 
+as portable, customizable and reusable 
+<a href="https://github.com/ctuning/ck">Collective Knowledge</a> 
+<a href="https://github.com/ctuning/ck/wiki#user-content-reusable-ck-components">workflows</a> 
+and <a href="http://cknowledge.org/shared-packages.html">packages</a>. 
+We envision that such a community-driven and decentralized marketplace
+will help accelerate adoption and technology transfer of novel AI/ML 
+techniques similar to the open-source movement.
+<par>
+Please see the front matter for the 1st ReQuEST tournament 
+on Co-designing Pareto-efficient Deep Learning Inference 
+at ASPLOS'18 to learn more about the shared workflows 
+and validated results, as well as about our next steps 
+for the ReQuEST initiative.
