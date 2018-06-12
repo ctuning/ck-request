@@ -86,11 +86,10 @@ Since collapsing all metrics into one to select a single
 winner often results in over-engineered solutions, we have
 opted instead to select multiple implementations from
 a Pareto-frontier, based on their uniqueness or simply
-to obtain a reference implementation. The authors of such
+to obtain a reference implementation. The authors of
 selected solutions were given an opportunity to share their
 insights at the associated \href{http://cknowledge.org/request-cfp-asplos2018.html}{ReQuEST workshop} 
-co-located with the 23rd ACM ASPLOS conference at the end of March 2018
-in Williamsburg, VA, USA.
+co-located with the 23rd ACM ASPLOS conference.
 
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/ck-request-concept-cropped.pdf}
@@ -134,13 +133,12 @@ collaborating on them via dedicated
 \href{https://github.com/ctuning/ck-request-asplos18-results}{ReQuEST'18 GitHub projects}. 
 First, the workflows can be automatically \href{https://github.com/ctuning/ck/wiki/Portable-workflows}{adapted}
 to new platforms and environments by either detecting already
-installed dependencies (e.g. libraries) or rebuilding
+installed dependencies (e.g.\ libraries) or rebuilding
 dependencies via an integrated \href{http://cKnowledge.org/shared-packages.html}{package manager} supporting
 Linux, Windows, MacOS and Android. Second, the workflows can
 be customized by swapping in new models, data sets,
 frameworks, libraries, and so on. Third, the workflows can be
-extended to expose new design and optimization choices (e.g.
-quantization), as well as evaluation metrics (e.g. power
+extended to expose new design and optimization choices (e.g.\ quantization), as well as evaluation metrics (e.g. power
 or memory consumption). Finally, the workflows can be used for
 collaborative autotuning ("\href{http://cKnowledge.org/rpi-crowd-tuning}{crowd-tuning}") 
 to explore huge optimization spaces using devices such as 
@@ -158,14 +156,14 @@ up this approach and suggest how to overcome them:
 
 Fair competitive benchmarking between different platforms,
 frameworks and models is hard work. It requires carefully
-considering model equivalence (e.g. performing the same mix of
-operations), input equivalence (e.g. preprocessing the inputs
-in the same way), output equivalence (e.g. validating the
+considering model equivalence (e.g.\ performing the same mix of
+operations), input equivalence (e.g.\  preprocessing the inputs
+in the same way), output equivalence (e.g.\ validating the
 outputs for each input, not just calculating the usual
 aggregate accuracy score), etc. Formalizing the benchmarking
 requirements and encapsulating them in shared CK components
-(e.g. using a framework-independent model representation such
-as \href{https://onnx.ai/}{ONNX}) and workflows (e.g. for input conversion and output
+(e.g.\ using a framework-independent model representation such
+as \href{https://onnx.ai/}{ONNX}) and workflows (e.g.\ for input conversion and output
 validation), should help standardize and automate the
 benchmarking process.
 
@@ -191,14 +189,14 @@ lead to creating a "marketplace" for Pareto-efficient
 implementations (code and data) shared as portable,
 customizable and reusable CK components.
 
-\begin{center}\includegraphics{ck-assets/artifacts_automated_dl.jpg}\end{center}
+%\begin{center}\includegraphics{ck-assets/artifacts_automated_dl.jpg}\end{center}
 
  \item
 
 Artifact evaluation may require access to expensive
-computational resources (e.g. cloud instances with 72-core
+computational resources (e.g.\ cloud instances with 72-core
 servers), proprietary tools (e.g. Intel compilers), and
-auxiliary hardware (e.g. power meters). Raising the profile
+auxiliary hardware (e.g.\ power meters). Raising the profile
 of AE by widely recognizing its benefits and impact should
 help us obtain access, licensees and sponsorship from the
 industry and funding agencies.
@@ -216,7 +214,7 @@ AE can be "staged" with a quick check that the artifacts are
 evaluation using the ReQuEST methodology. In fact, ReQuEST can
 grow into a non-profit service to conferences and journals.
 Sponsorship should help attract experienced full-time
-evaluators, as well as part-time volunteers to work
+evaluators, as well as part-time volunteers, to work
 on unifying and evaluating artifacts and workflows.
 
 \end{packed_itemize}
@@ -237,7 +235,7 @@ Our future plans include:
 \item improving and documenting the experimental framework and scoreboard;
 \item generating reproducible and interactive reports (see examples \href{http://cknowledge.org/repo/web.php?wcid=report:request-overview}{1} and \href{http://cKnowledge.org/rpi-crowd-tuning}{2});
 \item adding new shared components such as workloads, data sets, tools and platforms;
-\item automating AE "at the source" by integrating CK workflows with e.g. \href{https://hotcrp.com/}{HotCRP};
+\item automating AE "at the source" by integrating CK workflows with e.g.\ \href{https://hotcrp.com/}{HotCRP};
 \item standardizing APIs and meta-descriptions of shared components to make them "marketplace-ready";
 \item running new ReQuEST competitions for other workloads!
 
@@ -265,7 +263,7 @@ help accelerate adoption and technology transfer of novel
 AI/ML techniques similar to the open-source movement.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Acknowledgments}
+\section*{Acknowledgments}
 
 We thank the ReQuEST Advisory Board for their enthusiastic
 support of our vision; the ReQuEST authors for being very
@@ -310,7 +308,7 @@ contributions.
  \item James Hetherington, Alan Turing Institute
  \item Steve Keckler, NVIDIA
  \item Wei Li, Intel
- \item Colin Osborne, ARM
+ \item Colin Osborne, Arm
  \item Andrew Putnam, Microsoft
  \item Boris Shulkin, Magna
  \item Greg Stoner, AMD
@@ -330,7 +328,7 @@ contributions.
 \hline
   \textbf{Highly Efficient 8-bit Low Precision Inference of Convolutional Neural Networks with IntelCaffe}\newline\newline{Jiong Gong, Haihao Shen, Guoming Zhang, Xiaoli Liu, Shane Li, Ge Jin, Niharika Maheshwari, Evarist Fomenko, Eden Segal}\newline\newline [~\href{https://doi.org/10.1145/3229762.3229763}{Paper DOI}~] [~\href{https://doi.org/10.1145/3229769}{Artifact DOI}~] [~\href{https://github.com/intel/caffe}{Original artifact}~] [~\href{https://github.com/ctuning/ck-request-asplos18-caffe-intel}{CK workflow}~] [~\href{https://github.com/ctuning/ck-request-asplos18-results-caffe-intel}{CK results}~]\newline &  \begin{center}\includegraphics{ck-assets/artifacts_available_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/artifacts_evaluated_reusable_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/results_replicated_dl.jpg}\end{center} \\
 \hline
-  \textbf{Optimizing Deep Learning Workloads on ARM GPU with TVM}\newline\newline{Lianmin Zheng, Tianqi Chen}\newline\newline [~\href{https://doi.org/10.1145/3229762.3229764}{Paper DOI}~] [~\href{https://doi.org/10.1145/3229770}{Artifact DOI}~] [~\href{https://github.com/merrymercy/tvm-mali}{Original artifact}~] [~\href{https://github.com/ctuning/ck-request-asplos18-mobilenets-tvm-arm}{CK workflow}~] [~\href{https://github.com/ctuning/ck-request-asplos18-results-mobilenets-tvm-arm}{CK results}~]\newline &  \begin{center}\includegraphics{ck-assets/artifacts_available_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/artifacts_evaluated_reusable_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/results_replicated_dl.jpg}\end{center} \\
+  \textbf{Optimizing Deep Learning Workloads on Arm GPU with TVM}\newline\newline{Lianmin Zheng, Tianqi Chen}\newline\newline [~\href{https://doi.org/10.1145/3229762.3229764}{Paper DOI}~] [~\href{https://doi.org/10.1145/3229770}{Artifact DOI}~] [~\href{https://github.com/merrymercy/tvm-mali}{Original artifact}~] [~\href{https://github.com/ctuning/ck-request-asplos18-mobilenets-tvm-arm}{CK workflow}~] [~\href{https://github.com/ctuning/ck-request-asplos18-results-mobilenets-tvm-arm}{CK results}~]\newline &  \begin{center}\includegraphics{ck-assets/artifacts_available_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/artifacts_evaluated_reusable_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/results_replicated_dl.jpg}\end{center} \\
 \hline
   \textbf{Real-Time Image Recognition Using Collaborative IoT Devices}\newline\newline{Ramyad Hadidi, Jiashen Cao, Matthew Woodward, Michael S. Ryoo, Hyesoon Kim}\newline\newline [~\href{https://doi.org/10.1145/3229762.3229765}{Paper DOI}~] [~\href{https://doi.org/10.1145/3229771}{Artifact DOI}~] [~\href{https://github.com/parallel-ml/asplos2018-workshop}{Original artifact}~] [~\href{https://github.com/ctuning/ck-request-asplos18-iot-farm}{CK workflow}~] [~\href{https://github.com/ctuning/ck-request-asplos18-results-iot-farm}{CK results}~]\newline &  \begin{center}\includegraphics{ck-assets/artifacts_available_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/artifacts_evaluated_reusable_dl.jpg}\end{center} &  ~ &  \begin{center}\includegraphics{ck-assets/results_replicated_dl.jpg}\end{center} \\
 \hline
