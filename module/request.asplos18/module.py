@@ -22,6 +22,8 @@ onchange='document.'+form_name+'.submit();'
 hextra='<center>\n'
 hextra+='<p>\n'
 hextra+=' Beta scoreboard for <a href="http://cknowledge.org/request-cfp-asplos2018.html">ReQuEST@ASPLOS\'18 AI/SW/HW co-design competition</a>\n'
+hextra+=' (see <a href="https://doi.org/10.1145/3229762">ACM proceedings</a> and <a href="https://portalparts.acm.org/3230000/3229762/fm/frontmatter.pdf">results report</a>).\n'
+
 #hextra+=' (your <a href="https://github.com/ctuning/ck-request/issues">feedback</a>)\n'
 hextra+='</center>\n'
 hextra+='<p>\n'
