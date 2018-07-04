@@ -71,13 +71,13 @@ k_view_all='all'
 hidden_keys=[k_hi_uid, k_hi_user, k_view_all]
 
 dimensions=[
-             {"key":"experiment", "name":"Experiment number", "skip_from_cache":"yes"},
+             {"key":"experiment", "name":"Experiment number", "skip_from_cache":"yes", "view_key":"__number"},
              {"key":"##characteristics#run#prediction_time_avg_s", "name":"Prediction time per 1 image (min, sec.)"},
              {"key":"##characteristics#run#inference_latency", "name":"Inference latency for 1 image (min, sec.)"},
              {"key":"##characteristics#run#inference_throughput", "name":"Inference throughput (max, images per sec.)", "reverse":"yes"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
              {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
-             {"key":"##features#model_size", "name":"Model size (B)"},
+             {"key":"##features#model_size", "name":"Model size (B)", "view_key":"##features#model_size#min"},
              {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "from_meta":"yes"},
              {"key":"##meta#platform_price", "name":"Platform price ($)", "from_meta":"yes"},
              {"key":"##characteristics#run#usage_cost", "name":"Usage cost ($)"},
@@ -138,6 +138,7 @@ table_view=[
   {"key":"##features#memory_usage#min", "name":"Memory usage (B)"},
   {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "check_extra_key":"max", "format":"%.3f"},
   {"key":"##meta#platform_price_str", "name":"Platform price ($)"},
+  {"key":"##meta#platform_price_date", "name":"Platform price date"},
   {"key":"##characteristics#run#usage_cost#min", "name":"Usage cost per image ($)", "type":"float", "format":"%.2e"},
   {"key":"##extra#html_reproducibility", "name":"Reproducibility", "align":"left"}
 ]
@@ -1789,3 +1790,276 @@ def html_labels(i):
 
 def scoreboard(i):
     return dashboard(i)
+
+##############################################################################
+# get raw data for repo-widget
+
+def get_raw_data(i):
+    """
+    Input:  {
+               (crowd_module_uoa)       - if rendered from experiment crowdsourcing
+               (crowd_key)              - add extra name to Web keys to avoid overlapping with original crowdsourcing HTML
+               (crowd_on_change)        - reuse onchange doc from original crowdsourcing HTML
+
+               (highlight_behavior_uid) - highlight specific result (behavior)!
+               (highlight_by_user)      - highlight all results from a given user
+
+               (refresh_cache)          - if 'yes', refresh view cache
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    import os
+    import copy
+    import time
+    import json
+
+    # Preparing various parameters to render HTML dashboard
+    st=''
+
+    view_all=i.get(k_view_all,'')
+
+    cmuoa=i.get('crowd_module_uoa','')
+    ckey=i.get('crowd_key','')
+
+    if i.get(ckey+'plot_dimension1','')=='': i[ckey+'plot_dimension1']=dimensions[3]['key']
+    if i.get(ckey+'plot_dimension2','')=='': i[ckey+'plot_dimension2']=dimensions[4]['key']
+
+    if 'reset_'+form_name in i: reset=True
+    else: reset=False
+
+    if 'all_choices_'+form_name in i: all_choices=True
+    else: all_choices=False
+
+    debug=(i.get('debug','')=='yes')
+
+    conc=i.get('crowd_on_change','')
+    if conc=='':
+        conc=onchange
+
+    hi_uid=i.get(k_hi_uid,'')
+    hi_user=i.get(k_hi_user,'')
+
+    refresh_cache=i.get('refresh_cache','')
+
+    if 'refresh_cache_'+form_name in i: 
+       refresh_cache='yes'
+
+    # Check host URL prefix and default module/action *********************************************
+    rx=ck.access({'action':'form_url_prefix',
+                  'module_uoa':'wfe',
+                  'host':i.get('host',''), 
+                  'port':i.get('port',''), 
+                  'template':i.get('template','')})
+    if rx['return']>0: return rx
+    url0=rx['url']
+    template=rx['template']
+
+    url=url0
+    action=i.get('action','')
+    muoa=i.get('module_uoa','')
+
+    url+='action=index&module_uoa=wfe&native_action='+action+'&'+'native_module_uoa='+muoa
+    url1=url
+
+    # Check and add hidden keys ***************************************************
+
+    # Check repos
+    experiment_tags='request-asplos18'
+    experiment_repos=['ck-request', repo_with_validated_results]
+
+    # only selected repo (to simplify analysis)
+#    experiment_repos=[]
+
+    x=i.get(ckey+'results','')
+    if x=='all':
+       experiment_repos=[]
+    elif x=='local':
+       experiment_repos.append('local')
+    elif x!='':
+       experiment_repos.append(x)
+
+    # Prepare first level of selection with pruning ***********************************************
+    r=ck.access({'action':'prepare_selector',
+                 'module_uoa':cfg['module_deps']['experiment'],
+                 'original_input':i,
+                 'tags':experiment_tags,
+                 'search_repos':experiment_repos,
+                 'debug': debug,
+                 'selector':selector,
+                 'crowd_key':ckey,
+                 'crowd_on_change':conc,
+                 'url1':url1,
+                 'form_name':form_name,
+                 'skip_html_selector':'yes'})
+    if r['return']>0: return r
+
+    olst=r['lst'] # original list (if all_choices)
+    plst=r['pruned_lst']
+
+    # Compose extra meta (such as deps, versions, etc)
+    plst1=[]
+    for q in plst:
+        duid=q['data_uid']
+
+        meta=q['meta']['meta']
+
+        if meta.get('processed','')!='yes':
+           continue
+
+        ds=meta.get('deps_summary',{})
+
+        meta['versions']=ds
+
+        x=meta.get('platform_price','')
+        if x!='':
+           meta['platform_price_str']=str(x) 
+
+        plst1.append(q)
+
+    plst=plst1
+
+    # Sort list ***********************************************************************************
+    dt=time.time()
+    splst=plst
+
+    len_splst=len(splst)
+    if len_splst>prune_first_level:
+       splst=splst[:prune_first_level]
+
+    # Prepare and cache results for the table
+    for dim in dimensions:
+        k=dim['key']
+
+        if dim.get('skip_from_cache','')!='yes':
+           if dim.get('from_meta','')=='yes':
+              if k not in view_cache:
+                 view_cache.append(k)
+           else:
+              k1=k+'#min'
+              if k1 not in view_cache:
+                 view_cache.append(k1)
+              k2=k+'#max'
+              view_cache.append(k2)
+
+    r=ck.access({'action':'get_and_cache_results',
+                 'module_uoa':cfg['module_deps']['experiment'],
+                 'lst':splst,
+                 'cache_uid':work['self_module_uid'],
+                 'refresh_cache':refresh_cache,
+                 'view_cache':view_cache,
+                 'table_view':table_view})
+    if r['return']>0: return 
+    table=r['table']
+
+    # Prepare second level of selection with pruning ***********************************************
+    r=ck.access({'action':'prepare_selector',
+                 'module_uoa':cfg['module_deps']['experiment'],
+                 'original_input':i,
+                 'tags':experiment_tags,
+                 'search_repos':experiment_repos,
+                 'lst':table,
+                 'skip_meta_key':'yes',
+                 'debug': debug,
+                 'selector':selector2,
+                 'crowd_key':ckey,
+                 'crowd_on_change':conc,
+                 'url1':url1,
+                 'form_name':form_name,
+                 'skip_form_init':'yes'})
+    if r['return']>0: return r
+
+    h2=r['html']
+    table=r['pruned_lst']
+
+    choices2=r['choices']
+    wchoices2=r['wchoices']
+
+    # Extra fields (customized for this module) *****************************************************************************
+    for row in table:
+        duoa=row.get('##data_uid','')
+        dpoint=row.get('##point_uid','')
+
+        xhj=[]
+
+        # Replay
+        x=''
+        if duoa!='' and dpoint!='':
+           x='ck replay experiment:'+duoa+' --point='+str(dpoint)
+           y=ck.cfg.get('add_extra_to_replay','')
+           if y!='':x+=' '+y
+           xhj.append({
+            'title': 'CK replay',
+            'cmd': x
+           })
+
+        # Move to validated
+        x=''
+        if duoa!='' and dpoint!='':
+           x='ck validate request.asplos18 --experiment='+duoa+' --point='+str(dpoint)
+           xhj.append({
+            'title': 'Validate',
+            'cmd': x
+           })
+
+        row['##extra#html_reproducibility']=xhj
+
+        # Accuracy sum (Top1/Top5)
+        x=''
+
+        x1=row.get('##characteristics#run#accuracy_top1#min','')
+        x2=row.get('##characteristics#run#accuracy_top5#min','')
+
+        if x1!='':
+           x='%.3f' % x1
+        if x2!='':
+           x+=' / '
+           x+='%.3f' % x2
+
+        row['##extra#accuracy_sum']=x
+
+        # Images per second
+        t=row.get('##characteristics#run#prediction_time_avg_s#min','')
+        if t!=None and t!='':
+           ips=1/t
+           row['images_per_second']=ips
+
+    # Check if too many *****************************************************************************************************
+    ltable=len(table)
+
+    if ltable>prune_second_level and view_all!='yes' and ltable!=0:
+       table=table[:prune_second_level]
+
+    return {'return':0, 'table':table, 'view_cache':view_cache}
+
+##############################################################################
+# get raw config for repo widget
+
+def get_raw_config(i):
+    """
+    Input:  {
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    return {
+        'return':0,
+        'selector':selector,
+        'selector2':selector2,
+        'selector3':selector3,
+        'dimensions':dimensions,
+        'view_cache':view_cache,
+        'table_view':table_view
+        }
