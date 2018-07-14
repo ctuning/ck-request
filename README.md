@@ -271,6 +271,7 @@ in our collaborative optimization here:
 * [GPU](http://cknowledge.org/repo/web.php?action=index&module_uoa=wfe&native_action=show&native_module_uoa=platform.gpu)
 * [GPGPU](http://cknowledge.org/repo/web.php?action=index&module_uoa=wfe&native_action=show&native_module_uoa=platform.gpgpu)
 * [NN](http://cknowledge.org/repo/web.php?action=index&module_uoa=wfe&native_action=show&native_module_uoa=platform.nn)
+* [NPU](http://cknowledge.org/repo/web.php?action=index&module_uoa=wfe&native_action=show&native_module_uoa=platform.npu)
 
 You can even reuse this info as CK components by connecting the following CK repository:
 https://github.com/ctuning/ck-crowdtuning-platforms
