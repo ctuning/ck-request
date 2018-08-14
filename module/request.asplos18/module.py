@@ -77,7 +77,7 @@ dimensions=[
              {"key":"##characteristics#run#inference_throughput", "name":"Inference throughput (max, images per sec.)", "reverse":"yes"},
              {"key":"##characteristics#run#accuracy_top1", "name":"Accuracy on all images (Top1)"},
              {"key":"##characteristics#run#accuracy_top5", "name":"Accuracy on all images (Top5)"},
-             {"key":"##features#model_size", "name":"Model size (B)", "view_key":"##features#model_size#min"},
+             {"key":"##features#model_size", "name":"Model size (B)"},
              {"key":"##meta#platform_peak_power", "name":"Platform peak power (W)", "from_meta":"yes"},
              {"key":"##meta#platform_price", "name":"Platform price ($)", "from_meta":"yes"},
              {"key":"##characteristics#run#usage_cost", "name":"Usage cost ($)"},
@@ -2029,6 +2029,15 @@ def get_raw_data(i):
         if t!=None and t!='':
            ips=1/t
            row['images_per_second']=ips
+
+        for view in table_view:
+            if view.get('module_uoa', None)!=None:
+                r=ck.access({'action':'load','module_uoa':view['module_uoa'],'data_uoa':row[view['key']]})
+                if r['return']==0:
+                    mk='##data_name'
+                    rx=ck.get_by_flat_key({'dict':r, 'key':mk})
+                    if rx['return']==0:
+                        row[view['key']] = rx['value']
 
     # Check if too many *****************************************************************************************************
     ltable=len(table)
